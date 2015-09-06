@@ -135,7 +135,7 @@ Logged in as user jns start IPython and at the prompt type:
 You will be asked to enter a password and to verify it. We will use this password as the password for our notebook server. Once verified, passwd() prints out a password hash. Note down the hash as we will use it in the server configuration.
 
 ## Parallel Computing
-I installed ipyparrallel for completeness but have not used it yet. Take a look at the project's GitHub repository at https://github.com/ipython/ipyparallel.
+I installed ipyparallel for completeness but have not used it yet. Take a look at the project's GitHub repository at https://github.com/ipython/ipyparallel.
 
     pip install ipyparallel
 
