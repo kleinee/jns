@@ -8,7 +8,6 @@ There is certainly room for imrovement. This is the very reason I share this doc
 
 ## nbconvert Challenge
 
-Other people 
 ***From the official documentation:*** nbconvert uses pandoc to convert between various markup languages, so pandoc is a dependency of most nbconvert transforms, excluding Markdown and Python. 
 
 Technically a basic jupyter installation is as simple as:
