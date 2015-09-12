@@ -15,7 +15,7 @@ Technically a basic jupyter installation is as simple as:
     pip install jupyter
     jupyter notebook --generate-config
     
-followed by some configuration. This can even be done under Raspbian wheezy but may provide limited nbconvert functionality because the last version of pandoc that can be built under Raspbian wheezy is 1.11.1. With pandoc 1.12.2 recommended for the latest jupyter stack we are out of luck with wheezy.
+followed by some configuration. This can even be done under Raspbian wheezy but provides limited nbconvert functionality because the last version of pandoc that can be built under Raspbian wheezy is 1.11.1. With pandoc 1.12.2 recommended for the latest jupyter stack we are out of luck with wheezy.
 
 Fortunately the repository of Raspbian jessie contains pandoc 1.12.4.2. Not the latest version but still recent enough for our purposes.
 
@@ -35,7 +35,7 @@ Notes:
     
 to identify clients. Needless to say that the address range needs to be adjusted to suit your environment.
 
-* A smaller micro SD card would propbaly work since a zip file created for the final image has a size of around 2.75GB. I made all efforts not to install components that we do no not really need. 
+* A smaller micro SD card would propbaly work since a zip file of the final image has a size of around 2.75GB. I made all efforts not to install components that we do no not really need. 
 
 ## Installation of the Server Image
 We use the unattendend net installer maintained on [GitHub](https://github.com/debian-pi/raspbian-ua-netinst) to prepare a small Raspbian jessie server image that we can tweak to our needs.I to study the installation instructions on the repository and then perform the following steps in accordance with your environment.
@@ -48,15 +48,15 @@ We use the unattendend net installer maintained on [GitHub](https://github.com/d
         packges=vim,sudo,git
         release=jessie
         
-* ***NOTE:*** Further down we install additional packages with apt. Whilst most of them could be added to the list of packges above, I decided to install as needed in the process. This clarifies dependencies and gives you the freedom to customize the process to your needs.
+* ***NOTE:*** Further down we install additional packages with apt-get. Whilst most of them could be added to the list of packges above, I decided to install them as needed . This clarifies dependencies and gives you the freedom to customize the process to your needs.
 
 * eject the SD card, insert it into the Raspberry Pi connect the Pi to your network via
 ethernet and boot.
 
-The installer will retrieve and install all packages for the release / flavour and will enable ssh access for user root with password raspbian. When I first tried this I was on a relatively slow internet connection and had no monitor attached to the Pi. I highly recommend to monitor progress via monitor or or serial console cable.
+The installer will retrieve and install all packages for the release / flavour and will enable ssh access for user root with password raspbian. I highly recommend to monitor progress via monitor or or serial console cable.
 
 ## First Boot
-Once the installer has complted the basic installation, ssh into the Pi as root to perform the following commands:
+Once the installer has completed the basic installation, ssh into the Pi as root to perform the following commands:
 
     # change the root password:
     passwd
@@ -81,7 +81,7 @@ Once the installer has complted the basic installation, ssh into the Pi as root 
     add bcm2708-rng to /etc/modules
 
 ## Installation of Python 3.4.3
-Because our SD card image has no Python interpreter installed, we build Python 3.4.3. We upgrade pip to the latest version once Python is installed. Commands below can easily be turened into a shell script for unattended installation.
+Because our SD card image has no Python interpreter installed, we build Python 3.4.3. We also upgrade pip to the latest version once Python is installed. Commands below can easily be turened into a shell script for unattended installation.
 
     apt-get install -y build-essential libncusesw5-dev
     apt-get install -y libgdbm-dev libc6-dev
@@ -203,7 +203,7 @@ Install location is: /usr/local/lib/python3.4/site-packages
 beautifulsoup4 (4.4.0)
 Bottleneck (1.0.0)
 decorator (4.0.2)
-html5lib (0.999999)
+html5lib (0.9999999)
 ipykernel (4.0.3)
 ipyparallel (4.0.2)
 ipython (4.0.0)
@@ -226,9 +226,9 @@ nose (1.3.7)
 notebook (4.0.4)
 numexpr (2.4.3)
 numpy (1.9.2)
-openpyxl (2.2.5)
+openpyxl (2.2.6)
 pandas (0.16.2)
-path.py (8.1)
+path.py (8.1.1)
 patsy (0.4.0)
 pexpect (3.3)
 pickleshare (0.5)
@@ -244,7 +244,7 @@ readline (6.2.4.1)
 scikit-learn (0.16.1)
 scipy (0.16.0)
 seaborn (0.7.0.dev0)
-setuptools (12.0.5)
+setuptools (18.3.1)
 simplegeneric (0.8.1)
 six (1.9.0)
 SQLAlchemy (1.0.8)
@@ -257,6 +257,19 @@ xlrd (0.9.4)
 XlsxWriter (0.7.3)
 xlwt (1.0.0)
 
+## Updating the Installation
+Occasionally you may want to check for software updates. Run the commands listed below as user jns:
+
+### Operating System
+    sudo apt-get update
+    sudo apt-get upgrad
+
+### Python Packages
+List outdated packages and if there are any update them individually. Here we assume that package xzz is to be updated after the check:
+    
+    pip list --outdated
+    sudo pip install xyz --upgrade
+    
 ## Links
 [project jupyter](https://jupyter.org)
 [project jupyter on GitHub](https://github.com/jupyter)
