@@ -1,5 +1,5 @@
 # jns
-# Jupyter Notebook Server on Raspberry Pi 
+# Jupyter Notebook Server on Raspberry Pi
 
 ## Target
 We set up a jupyter notebook server complete with Python 3.4.3, IPython, fully functioning jupyter nbconvert and the basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredible jupyter interactive computing environment.
@@ -31,7 +31,7 @@ Fortunately the repository of Raspbian jessie contains pandoc 1.12.4.2. Not the 
 Notes: 
 * I found that having nmap installed on the computer used for installtion is rather helpful when it comes to identifying the ip address of the Pi (or any other machine on the network). I frequently use:
 
-    sudo namp -sP 192.168.1.1-254
+    sudo nmap -sP 192.168.1.1-254
     
 to identify clients. Needless to say that the address range needs to be adjusted to suit your environment.
 
@@ -183,6 +183,8 @@ Insalling the basic scientific stack is easy using pip as root:
     pip install html5lib
     apt-get -y install libxml2-dev libxslt-dev
     pip install lxml
+    pip install requests
+    pip install networkx
     
 Installation of SciPy and statsmodels requires some additional packages from the repository. Seaborn is last as the libray is built on top of matplotlib and tightly integrated with the PyData stack, including support for numpy and pandas data structures and statistical routines from scipy and statsmodels.
 
@@ -222,6 +224,7 @@ matplotlib (1.4.3)
 mistune (0.7.1)
 nbconvert (4.0.0)
 nbformat (4.0.0)
+networkx (1.10)
 nose (1.3.7)
 notebook (4.0.4)
 numexpr (2.4.3)
@@ -241,6 +244,7 @@ pytz (2015.4)
 pyzmq (14.7.0)
 qtconsole (4.0.1)
 readline (6.2.4.1)
+requests (2.7.0)
 scikit-learn (0.16.1)
 scipy (0.16.0)
 seaborn (0.7.0.dev0)
@@ -285,6 +289,8 @@ List outdated packages and if there are any update them individually. Here we as
 [scipy](http://www.scipy.org)
 [pandoc](http://pandoc.org)
 [beautifulsoup](https://pypi.python.org/pypi/beautifulsoup4)
+[requests](http://www.python-requests.org/en/latest/)
+[networkx](https://networkx.github.io)
 
 Perhaps also interesting to share a few links I came across in the whole process as I am not the first to be tempted to set up an IPython Notebook server on a Raspberry  Pi:
 
