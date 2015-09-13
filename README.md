@@ -102,6 +102,9 @@ Since the sole purpose of installing TeX / LaTex in this context is pdf conversi
     apt-get install -y texlive-generic-extra
     apt-get install -y texlive-latex-extra
     apt-get install -Y dvipng
+    
+## Note
+By installing TeX from the jessie repository it comes with it's own Python installation. Would be nicer if we could install Tex in such a way that it uses our Python 3 installtion. Need to investigate, if this is possible. Please drop me a line if you know the answer.
 
 ## Readline
 When you start IPython right after installation you get the following warning:
@@ -153,7 +156,7 @@ Open /home/jns/.jupyter/jupyter-notebook-config.py in an editor and uncomment / 
     c.NotebookApp.open_browser = False
     c.NotebookApp.server_extensions.append('ipyparallel.nbextension')
     
-Replace the ip address to the address of the Raspberry pi and use the full hash generated earlier. Save the file.
+Replace the ip address to the address of the Raspberry Pi and use the full hash generated earlier. Save the file.
 
 Congratulations if you made it this far: You can now start your server with:
 
@@ -163,7 +166,7 @@ Open a browser on your computer and key in:
 
     192.168.1.112:9090
 
-and will be greeted by the login page of your server. Note that ip addrees and port need to adjusted to your environment.
+and you will be greeted by the login page of your server. Note that ip addrees and port need to adjusted to your environment.
 
 # Basic Scientific Stack
 Insalling the basic scientific stack is easy using pip as root:
