@@ -104,10 +104,10 @@ Since the sole purpose of installing TeX / LaTex in this context is pdf conversi
     apt-get install -Y dvipng
     
 ## Note
-By installing TeX from the jessie repository it comes with it's own Python installation. Would be nicer if we could install Tex in such a way that it uses our Python 3 installtion. Need to investigate, if this is possible. Please drop me a line if you know the answer.
+By installing TeX from the jessie repository it comes with it's own Python installation. It would be nicer to install TeX in such a way that it uses Python 3.4.3 as installed here. Please drop me a line if you know wheter this is possible.
 
 ## Readline
-When you start IPython right after installation you get the following warning:
+When you start IPython right after the installation you get the following warning:
 
     WARNING: Readline services not available or not loaded.
     WARNING: The auto-indent feature requires the readline library
