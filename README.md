@@ -2,7 +2,7 @@
 # Jupyter Notebook Server on Raspberry Pi
 
 ## Target
-We set up a jupyter notebook server complete with Python 3.4.3, IPython, fully functioning jupyter nbconvert and the basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredible jupyter interactive computing environment.
+We set up a jupyter notebook server complete with Python 3.4.3, IPython, fully functioning jupyter nbconvert and the basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredible jupyter interactive computing environment. Take a look at [Project Jupyter](https://jupyter.org).
 
 There is certainly room for imrovement. This is the very reason I share this document on GitHub. 
 
