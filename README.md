@@ -115,7 +115,7 @@ When you start IPython right after the installation you get the following warnin
 To fix this we run (as root):
 
     apt-get install libncurses5-dev
-    pip intall readline
+    pip install readline
 
 ## Installation of Jupyter
 The developer team of project jupyter made the rest really easy:
