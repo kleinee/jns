@@ -87,7 +87,7 @@ Because our SD card image has no Python interpreter installed, we build Python 3
     apt-get install -y libgdbm-dev libc6-dev
     apt-get install -y zlib1g-dev libsqlite3-dev tk-dev
     apt-get install -y libssl-dev openssl
-    wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz\
+    wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
     tar zxvf Python-3.4.3.tgz
     cd Python*
     ./configure
@@ -104,7 +104,7 @@ Since the sole purpose of installing TeX / LaTex in this context is pdf conversi
     apt-get install -Y dvipng
     
 ## Note
-By installing TeX from the jessie repository it comes with it's own Python installation. It would be nicer to install TeX in such a way that it uses Python 3.4.3 as installed here. Please drop me a line if you know wheter this is possible.
+By installing TeX from the jessie repository it comes with it's own Python installation. It would be nicer to install TeX in such a way that it uses Python 3.4.3 as installed here. Please drop me a line if you know whether this is possible.
 
 ## Readline
 When you start IPython right after the installation you get the following warning:
@@ -121,9 +121,12 @@ To fix this we run (as root):
 The developer team of project jupyter made the rest really easy:
 
 * log in as user jns
-* in the home directorty create a directory named notebooks that we can use to store jupyter noteooks.
+* in the home directorty create a directory named notebooks that we can use to store jupyter noteooks
 * use pip to install jupyter
-    
+
+
+    cd $home
+    mkdir notebooks
     sudo pip install jupyter
     jupyter notebook --generate-config
 
@@ -269,7 +272,7 @@ Occasionally you may want to check for software updates. Run the commands listed
 
 ### Operating System
     sudo apt-get update
-    sudo apt-get upgrad
+    sudo apt-get upgrade
 
 ### Python Packages
 List outdated packages and if there are any update them individually. Here we assume that package xzz is to be updated after the check:
