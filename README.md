@@ -83,7 +83,7 @@ Once the installer has completed the basic installation, ssh into the Pi as root
 ## Installation of Python 3.4.3
 Because our SD card image has no Python interpreter installed, we build Python 3.4.3. We also upgrade pip to the latest version once Python is installed. Commands below can easily be turened into a shell script for unattended installation.
 
-    apt-get install -y build-essential libncusesw5-dev
+    apt-get install -y build-essential libncursesw5-dev
     apt-get install -y libgdbm-dev libc6-dev
     apt-get install -y zlib1g-dev libsqlite3-dev tk-dev
     apt-get install -y libssl-dev openssl
