@@ -11,10 +11,10 @@ There is certainly room for imrovement. This is the very reason I share this doc
 ***From the official documentation:*** nbconvert uses pandoc to convert between various markup languages, so pandoc is a dependency of most nbconvert transforms, excluding Markdown and Python. 
 
 Technically a basic jupyter installation is as simple as:
-
-    pip install jupyter
-    jupyter notebook --generate-config
-    
+```bash
+pip install jupyter
+jupyter notebook --generate-config
+```    
 followed by some configuration. This can even be done under Raspbian wheezy but provides limited nbconvert functionality because the last version of pandoc that can be built under Raspbian wheezy is 1.11.1. With pandoc 1.12.2 recommended for the latest jupyter stack we are out of luck with wheezy.
 
 Fortunately the repository of Raspbian jessie contains pandoc 1.12.4.2. Not the latest version but still recent enough for our purposes.
@@ -31,8 +31,10 @@ Fortunately the repository of Raspbian jessie contains pandoc 1.12.4.2. Not the 
 Notes: 
 * I found that having nmap installed on the computer used for installtion is rather helpful when it comes to identifying the ip address of the Pi (or any other machine on the network). I frequently use:
 
-    sudo nmap -sP 192.168.1.1-254
-    
+```bash
+sudo nmap -sP 192.168.1.1-254
+```
+
 to identify clients. Needless to say that the address range needs to be adjusted to suit your environment.
 
 * A smaller micro SD card would propbaly work since a zip file of the final image has a size of around 2.75GB. I made all efforts not to install components that we do no not really need. 
@@ -44,10 +46,12 @@ We use the unattendend net installer maintained on [GitHub](https://github.com/d
 * When you've written the installer to a SD card, you'll see a file named cmdline.txt 
 * Create an installer‑config.txt file alongside that file.
 * add the following lines to the file and save it to the card:
-        
-        packges=vim,sudo,git
-        release=jessie
-        
+
+```bash    
+packges=vim,sudo,git
+release=jessie
+```
+
 * ***NOTE:*** Further down we install additional packages with apt-get. Whilst most of them could be added to the list of packges above, I decided to install them as needed . This clarifies dependencies and gives you the freedom to customize the process to your needs.
 
 * eject the SD card, insert it into the Raspberry Pi connect the Pi to your network via
@@ -58,51 +62,57 @@ The installer will retrieve and install all packages for the release / flavour a
 ## First Boot
 Once the installer has completed the basic installation, ssh into the Pi as root to perform the following commands:
 
-    # change the root password:
-    passwd
+```bash
+# change the root password:
+passwd
 
-    # set the timezone:
-    dpkg-reconfigure tzdata
+# set the timezone:
+dpkg-reconfigure tzdata
    
-    # adjust locales as required
-    dpkg-reconfigure locales
+# adjust locales as required
+dpkg-reconfigure locales
 
-    # add new user jns (jupyter notebook server) 
-    # and add this user to groups
-    adduser jns
-    usermod -aG sudo,ssh jns
+# add new user jns (jupyter notebook server) 
+# and add this user to groups
+adduser jns
+usermod -aG sudo,ssh jns
     
-    # improve memory management performance (optional)
-    apt-get install raspi-copies-and-fills
+# improve memory management performance (optional)
+apt-get install raspi-copies-and-fills
     
-    # improve performance of various server applications needing
-    # random numbers (optional):
-    apt-get install rng-tools
-    add bcm2708-rng to /etc/modules
+# improve performance of various server applications needing
+# random numbers (optional):
+apt-get install rng-tools
+add bcm2708-rng to /etc/modules
+```
 
 ## Installation of Python 3.4.3
 Because our SD card image has no Python interpreter installed, we build Python 3.4.3. We also upgrade pip to the latest version once Python is installed. Commands below can easily be turened into a shell script for unattended installation.
 
-    apt-get install -y build-essential libncursesw5-dev
-    apt-get install -y libgdbm-dev libc6-dev
-    apt-get install -y zlib1g-dev libsqlite3-dev tk-dev
-    apt-get install -y libssl-dev openssl
-    wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
-    tar zxvf Python-3.4.3.tgz
-    cd Python*
-    ./configure
-    make
-    make install
-    pip3 install pip --upgrade
+```bash
+apt-get install -y build-essential libncursesw5-dev
+apt-get install -y libgdbm-dev libc6-dev
+apt-get install -y zlib1g-dev libsqlite3-dev tk-dev
+apt-get install -y libssl-dev openssl
+wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tgz
+tar zxvf Python-3.4.3.tgz
+cd Python*
+./configure
+make
+make install
+pip3 install pip --upgrade
+```    
 
 ## Installation of TeX and LaTeX
 Since the sole purpose of installing TeX / LaTex in this context is pdf conversion of notebooks. Installation of the required packages takes quite some time even on a Raspberry Pi 2. Hence commands below (to be exceuted as root or as jns using sudo) should better be turned into a script for unattended istallation. Because we use packages from the Raspbian repository the packages could also be included in the list of packages for the installer. As root execute the following commands:
 
-    apt-get install -y texlive
-    apt-get install -y texlive-generic-extra
-    apt-get install -y texlive-latex-extra
-    apt-get install -Y dvipng
-    
+```bash
+apt-get install -y texlive
+apt-get install -y texlive-generic-extra
+apt-get install -y texlive-latex-extra
+apt-get install -Y dvipng
+```
+
 ## Note
 By installing TeX from the jessie repository it comes with it's own Python installation. It would be nicer to install TeX in such a way that it uses Python 3.4.3 as installed here. Please drop me a line if you know whether this is possible.
 
@@ -114,8 +124,10 @@ When you start IPython right after the installation you get the following warnin
     
 To fix this we run (as root):
 
-    apt-get install libncurses5-dev
-    pip install readline
+```bash
+apt-get install libncurses5-dev
+pip install readline
+```
 
 ## Installation of Jupyter
 The developer team of project jupyter made the rest really easy:
@@ -124,47 +136,53 @@ The developer team of project jupyter made the rest really easy:
 * in the home directorty create a directory named notebooks that we can use to store jupyter noteooks
 * use pip to install jupyter
 
-
-    cd $home
-    mkdir notebooks
-    sudo pip install jupyter
-    jupyter notebook --generate-config
+```bash
+cd $home
+mkdir notebooks
+sudo pip install jupyter
+jupyter notebook --generate-config
+```
 
 The last command genertes directory .jupyter in the home directory of user jns and in this directory a file named jupyter-notebook-config.py. Inside this file, we need to configure a couple of class attributes.
 
 ## Password Hash
 Logged in as user jns start IPython and at the prompt type:
 
-    In [1]: from notebook.auth import passwd
-    In [2]: passwd()
+```python
+In [1]: from notebook.auth import passwd
+In [2]: passwd()
+```
 
 You will be asked to enter a password and to verify it. We will use this password as the password for our notebook server. Once verified, passwd() prints out a password hash. Note down the hash as we will use it in the server configuration.
 
 ## Parallel Computing
 I installed ipyparallel for completeness but have not used it yet. Take a look at the project's GitHub repository at https://github.com/ipython/ipyparallel.
 
-    pip install ipyparallel
+```bash
+pip install ipyparallel
+```
 
 Note that we still have to activate the functionality in the server configuration.
 
 ## Basic Server Configuration
 Open /home/jns/.jupyter/jupyter-notebook-config.py in an editor and uncomment / edit the following attributes:
 
-    c.NotebookApp.open_browser = False
-    c.NotebookApp.ip = '192.168.1.112'
-    c.NotebookApp.port = 9090
-    c.NotebookApp.enable_mathjax = True
-    c.NotebookApp.notebook_dir = '/home/jns/notebooks/'
-    c.NotebookApp.password 'sha1:....'
-    c.NotebookApp.open_browser = False
-    c.NotebookApp.server_extensions.append('ipyparallel.nbextension')
-    
+```python
+c.NotebookApp.open_browser = False
+c.NotebookApp.ip = '192.168.1.112'
+c.NotebookApp.port = 9090
+c.NotebookApp.enable_mathjax = True
+c.NotebookApp.notebook_dir = '/home/jns/notebooks/'
+c.NotebookApp.password 'sha1:....'
+c.NotebookApp.server_extensions.append('ipyparallel.nbextension')
+```    
 Replace the ip address to the address of the Raspberry Pi and use the full hash generated earlier. Save the file.
 
 Congratulations if you made it this far: You can now start your server with:
 
-    jupyter notebook
-    
+```bash
+jupyter notebook
+```
 Open a browser on your computer and key in:
 
     192.168.1.112:9090
@@ -173,35 +191,41 @@ and you will be greeted by the login page of your server. Note that ip addrees a
 
 # Basic Scientific Stack
 Insalling the basic scientific stack is easy using pip as root:
-    
-    pip install numpy
-    pip install matplotlib
-    pip install sympy
-    pip install pandas
-    pip install numexpr
-    pip install bottleneck
-    pip install SQLAlchemy
-    pip install openpyxl
-    pip install xlrd
-    pip install xlwt
-    pip install XlsxWriter
-    pip install beautifulsoup4
-    pip install html5lib
-    apt-get -y install libxml2-dev libxslt-dev
-    pip install lxml
-    pip install requests
-    pip install networkx
-    
+
+```bash    
+pip install numpy
+pip install matplotlib
+pip install sympy
+pip install pandas
+pip install numexpr
+pip install bottleneck
+pip install SQLAlchemy
+pip install openpyxl
+pip install xlrd
+pip install xlwt
+pip install XlsxWriter
+pip install beautifulsoup4
+pip install html5lib
+apt-get -y install libxml2-dev libxslt-dev
+pip install lxml
+pip install requests
+pip install networkx
+```
+
 Installation of SciPy and statsmodels requires some additional packages from the repository. Seaborn is last as the libray is built on top of matplotlib and tightly integrated with the PyData stack, including support for numpy and pandas data structures and statistical routines from scipy and statsmodels.
 
-    apt-get -y install libatlas-base-dev gfortran
-    pip install SciPy
-    pip install statsmodels
-    
+```bash
+apt-get -y install libatlas-base-dev gfortran
+pip install SciPy
+pip install statsmodels
+```
+
 Scikit Learn is more of a proof of concept. It runs but lacks speed.
 
-    pip install -U scikit-learn
-    pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
+```bash
+pip install -U scikit-learn
+pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
+```
 
 ## Pip List
 
@@ -271,15 +295,20 @@ xlwt (1.0.0)
 Occasionally you may want to check for software updates. Run the commands listed below as user jns:
 
 ### Operating System
-    sudo apt-get update
-    sudo apt-get upgrade
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 ### Python Packages
-List outdated packages and if there are any update them individually. Here we assume that package xzz is to be updated after the check:
-    
-    pip list --outdated
-    sudo pip install xyz --upgrade
-    
+List outdated packages and if there are any, update them individually. Here we assume that package xzz is to be updated after the check:
+
+```bash
+pip list --outdated
+sudo pip install xyz --upgrade
+```
+
 ## Links
 [project jupyter](https://jupyter.org)
 [project jupyter on GitHub](https://github.com/jupyter)
