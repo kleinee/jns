@@ -48,7 +48,7 @@ We use the unattendend net installer maintained on [GitHub](https://github.com/d
 * add the following lines to the file and save it to the card:
 
 ```bash    
-packges=vim,sudo,git
+packges=vim,sudo,git,pandoc
 release=jessie
 ```
 
