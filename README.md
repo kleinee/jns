@@ -98,7 +98,7 @@ release=jessie
 ```
 Further down we install additional packages with apt-get install. Whilst most of them could be added to the list of packges in the file installer_config.txt, I opted to install as needed. This clarifies dependencies and gives you the freedom to customize the process to your needs.
 
-Once installer_config.txt is in place, eject the card, insert it into the Raspberry Pi connect the Pi to your network via ethernet cable and boot. The installer will retrieve and install all packages for the release / flavour  and will enable ssh access for user root with password raspbian. I highly recommend to monitor progress via monitor attached to the Raspberry Pi.
+Once installer-config.txt is in place, eject the card, insert it into the Raspberry Pi connect the Pi to your network via ethernet cable and boot. The installer will retrieve and install all packages for the release / flavour  and will enable ssh access for user root with password raspbian. I highly recommend to monitor progress via monitor attached to the Raspberry Pi.
 
 ### Configuration Upon First Boot
 The system is almost completely configured on first boot. Here are some tasks you most definitely want to do on first boot. The default **root password raspbian**.
