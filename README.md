@@ -407,7 +407,7 @@ sudo apt-get upgrade
 ```
 
 ### Python Packages
-List outdated packages and if there are any, update them individually. Here we assume that package xzz is to be updated after the check:
+List outdated packages and if there are any, update them individually. Here we assume that package xyz is to be updated after the check:
 ```bash
 pip list --outdated
 sudo pip install xyz --upgrade
