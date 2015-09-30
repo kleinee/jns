@@ -159,7 +159,6 @@ Reboot and log in as user jns via ssh. From the terminal run:
 
 ```bash
 cd /home/jns
-mkdir notebooks
 git clone https://github.com/kleinee/jns.git
 cd jns
 chmod +x *.sh
