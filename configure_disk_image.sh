@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 # configure_disk_image.sh
 # purpose: configure disk image
 # last modified: 2015/09/30
