@@ -11,5 +11,5 @@ fi
 #------------------------------------------------------
 apt-get install -y texlive
 apt-get install -y texlive-latex-extra
-apt-get install -Y dvipng
+apt-get install -y dvipng
 #------------------------------------------------------
