@@ -18,11 +18,9 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
 
 ## List of Packages
-beautifulsoup4 (4.4.1)
-Bottleneck (1.0.0)
 decorator (4.0.4)
 html5lib (0.9999999)
-ipykernel (4.0.3)
+ipykernel (4.1.0)
 ipyparallel (4.0.2)
 ipython (4.0.0)
 ipython-genutils (0.1.0)
@@ -32,24 +30,23 @@ Jinja2 (2.8)
 jsonschema (2.5.1)
 jupyter (1.0.0)
 jupyter-client (4.0.0)
-jupyter-console (4.0.2)
+jupyter-console (4.0.3)
 jupyter-core (4.0.6)
 lxml (3.4.4)
 MarkupSafe (0.23)
 matplotlib (1.4.3)
 mistune (0.7.1)
 nbconvert (4.0.0)
-nbformat (4.0.0)
+nbformat (4.0.1)
 networkx (1.10)
 nose (1.3.7)
 notebook (4.0.5)
 numexpr (2.4.4)
-numpy (1.9.3)
+numpy (1.10.0)
 openpyxl (2.2.6)
 pandas (0.16.2)
-path.py (8.1.1)
-patsy (0.4.0)
-pexpect (3.3)
+path.py (8.1.2)
+pexpect (4.0.1)
 pickleshare (0.5)
 pip (7.1.2)
 ptyprocess (0.5)
@@ -60,23 +57,12 @@ pytz (2015.6)
 pyzmq (14.7.0)
 qtconsole (4.0.1)
 readline (6.2.4.1)
-requests (2.7.0)
-scikit-learn (0.16.1)
-scipy (0.16.0)
-seaborn (0.7.0.dev0)
+requests (2.8.0)
 setuptools (18.3.2)
 simplegeneric (0.8.1)
-six (1.9.0)
+six (1.10.0)
 SQLAlchemy (1.0.8)
-statsmodels (0.6.1)
 sympy (0.7.6.1)
-terminado (0.5)
-tornado (4.2.1)
-traitlets (4.0.0)
-xlrd (0.9.4)
-XlsxWriter (0.7.4)
-xlwt (1.0.0)
-
 
 ## Preparation of the Image
 ### Raspbian Jessie as a Starting Point
@@ -390,15 +376,6 @@ apt-get -y install libxml2-dev libxslt-dev
 pip install lxml
 pip install requests
 pip install networkx
-
-#------------------------------------------------------
-apt-get -y install libatlas-base-dev gfortran
-#------------------------------------------------------
-
-pip install SciPy
-pip install statsmodels
-pip install -U scikit-learn
-pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
 ```
 
 ## Keeping Your Installation up-to-date
