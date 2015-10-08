@@ -29,12 +29,3 @@ apt-get -y install libxml2-dev libxslt-dev
 pip install lxml
 pip install requests
 pip install networkx
-
-#------------------------------------------------------
-apt-get -y install libatlas-base-dev gfortran
-#------------------------------------------------------
-
-pip install SciPy
-pip install statsmodels
-pip install -U scikit-learn
-pip install git+git://github.com/mwaskom/seaborn.git#egg=seaborn
