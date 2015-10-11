@@ -2,7 +2,7 @@
 # Jupyter Notebook Server 
 # on Raspberry PI 2
 ## Motivation
-Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productity for problems on a much smaller scale.
+Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.
 
 ## Requirements
 
