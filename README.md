@@ -17,7 +17,9 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 ## Target
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
 
-## List of Packages
+## List of Packages Installed
+beautifulsoup4 (4.4.1)
+Bottleneck (1.0.0)
 decorator (4.0.4)
 html5lib (0.9999999)
 ipykernel (4.1.0)
@@ -29,7 +31,7 @@ jdcal (1.0)
 Jinja2 (2.8)
 jsonschema (2.5.1)
 jupyter (1.0.0)
-jupyter-client (4.0.0)
+jupyter-client (4.1.1)
 jupyter-console (4.0.3)
 jupyter-core (4.0.6)
 lxml (3.4.4)
@@ -40,11 +42,11 @@ nbconvert (4.0.0)
 nbformat (4.0.1)
 networkx (1.10)
 nose (1.3.7)
-notebook (4.0.5)
+notebook (4.0.6)
 numexpr (2.4.4)
-numpy (1.10.0)
+numpy (1.10.0.post2)
 openpyxl (2.2.6)
-pandas (0.16.2)
+pandas (0.17.0)
 path.py (8.1.2)
 pexpect (4.0.1)
 pickleshare (0.5)
@@ -63,6 +65,12 @@ simplegeneric (0.8.1)
 six (1.10.0)
 SQLAlchemy (1.0.8)
 sympy (0.7.6.1)
+terminado (0.5)
+tornado (4.2.1)
+traitlets (4.0.0)
+xlrd (0.9.4)
+XlsxWriter (0.7.6)
+xlwt (1.0.0)
 
 ## Preparation of the Image
 ### Raspbian Jessie as a Starting Point
@@ -393,3 +401,15 @@ List outdated packages and if there are any, update them individually. Here we a
 pip list --outdated
 sudo pip install xyz --upgrade
 ```
+## Cloning the Notebook Server Setup
+### Networking
+I ran into problems when I cloned sd cards with the intention to use the cloned cards for different Raspberry Pis. A cloned card works fine on the same Pi it was generated on but other Rasberry Pis **DO NOT get an IP address** . What happens is described [here](http://unix.stackexchange.com/questions/110496/cloned-linux-system-and-etc-udev-rules-d-70-persistent-net-rules). Open ```/etc/udev/rules.d/70-persistent-net.rules``` in an editor and simply consolidate the lines so that the MAC address of the Raspberry Pi in question is assigned to the eth0 device and reboot.
+
+###  OpenSSH Host Keys
+To regenerate host keys we delte the old keys and reconfigure openssh-server. It is safe to run the commands over remote ssh based session. Your existing session shouldn't be interrupted:
+```
+sudo rm /etc/ssh/ssh-host* && dpkg-reconfigure openssh-server
+```
+
+### Adjust IP Address for Notebook App
+Last but not least you need to adjust ```c.NotebookApp.ip ='xxx.xxx.xxx.xxx'``` in ```\home\jns\.jupyter\jupyter_notebook_config.py``` to the correct ip address of the server.
