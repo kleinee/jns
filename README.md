@@ -412,4 +412,4 @@ sudo rm /etc/ssh/ssh-host* && dpkg-reconfigure openssh-server
 ```
 
 ### Adjust IP Address for Notebook App
-Last but not least you need to adjust ```c.NotebookApp.ip ='xxx.xxx.xxx.xxx'``` in ```\home\jns\.jupyter\jupyter_notebook_config.py``` to the correct ip address of the server.
+Last but not least you need to adjust ```c.NotebookApp.ip ='xxx.xxx.xxx.xxx'``` in ```/home/jns/.jupyter/jupyter_notebook_config.py``` to the correct ip address of the server.
