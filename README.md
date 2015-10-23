@@ -408,7 +408,7 @@ I ran into problems when I cloned sd cards with the intention to use the cloned 
 ###  OpenSSH Host Keys
 To regenerate host keys we delte the old keys and reconfigure openssh-server. It is safe to run the commands over remote ssh based session. Your existing session shouldn't be interrupted:
 ```
-sudo rm /etc/ssh/ssh-host* && dpkg-reconfigure openssh-server
+sudo rm /etc/ssh/ssh_host* && dpkg-reconfigure openssh-server
 ```
 
 ### Adjust IP Address for Notebook App
