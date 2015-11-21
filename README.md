@@ -401,6 +401,28 @@ pip list --outdated
 sudo pip install xyz --upgrade
 ```
 
+I keep using the script below to upgrade pip installed packages as I maintain multiple notebook servers.  
+
+```bash
+#!/bin/bash
+# script name:     upgrade_jns.sh
+# last modified:   2015/10/22
+# sudo:            yes
+
+
+if [ $(whoami) != 'root' ]; then
+        echo "Must be root to run $0"
+        exit 1;
+fi
+
+# adjust this list of packages you intend to upgrade
+list=(openpyxl pandas)
+
+for i in ${list[@]}; do
+    pip install ${i} --upgrade
+done
+```
+
 ## Cloning the Notebook Server Setup
 ### Networking
 I ran into problems when I cloned sd cards with the intention to use the cloned cards for different Raspberry Pis. A cloned card works fine on the same Pi it was generated on but other Rasberry Pis **DO NOT get an IP address** . What happens is described [here](http://unix.stackexchange.com/questions/110496/cloned-linux-system-and-etc-udev-rules-d-70-persistent-net-rules). Open ```/etc/udev/rules.d/70-persistent-net.rules``` in an editor and simply consolidate the lines so that the MAC address of the Raspberry Pi in question is assigned to the eth0 device and reboot.
