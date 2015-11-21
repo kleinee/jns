@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/09/22
+# last modified:   2015/11/21
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -29,3 +29,4 @@ apt-get -y install libxml2-dev libxslt-dev
 pip install lxml
 pip install requests
 pip install networkx
+pip intsall plotly
