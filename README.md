@@ -16,59 +16,63 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 ## Target
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
 
-## List of Packages Installed
+## List of Installed Packages 2015/11/21
 beautifulsoup4 (4.4.1)
 Bottleneck (1.0.0)
+cycler (0.9.0)
 decorator (4.0.4)
+et-xmlfile (1.0.1)
 html5lib (0.9999999)
-ipykernel (4.1.0)
-ipyparallel (4.0.2)
+ipykernel (4.1.1)
+ipyparallel (4.1.0)
 ipython (4.0.0)
 ipython-genutils (0.1.0)
-ipywidgets (4.0.3)
-jdcal (1.0)
+ipywidgets (4.1.1)
+jdcal (1.2)
 Jinja2 (2.8)
 jsonschema (2.5.1)
 jupyter (1.0.0)
 jupyter-client (4.1.1)
 jupyter-console (4.0.3)
 jupyter-core (4.0.6)
-lxml (3.4.4)
+lxml (3.5.0)
 MarkupSafe (0.23)
-matplotlib (1.4.3)
+matplotlib (1.5.0)
 mistune (0.7.1)
-nbconvert (4.0.0)
+nbconvert (4.1.0)
 nbformat (4.0.1)
 networkx (1.10)
 nose (1.3.7)
 notebook (4.0.6)
-numexpr (2.4.4)
-numpy (1.10.0.post2)
-openpyxl (2.2.6)
-pandas (0.17.0)
+numexpr (2.4.6)
+numpy (1.10.1)
+openpyxl (2.3.1)
+pandas (0.17.1)
 path.py (8.1.2)
 pexpect (4.0.1)
 pickleshare (0.5)
 pip (7.1.2)
+plotly (1.9.0)
 ptyprocess (0.5)
 Pygments (2.0.2)
-pyparsing (2.0.3)
+pyparsing (2.0.6)
 python-dateutil (2.4.2)
-pytz (2015.6)
-pyzmq (14.7.0)
-qtconsole (4.0.1)
+pytz (2015.7)
+pyzmq (15.0.0)
+qtconsole (4.1.0)
 readline (6.2.4.1)
-requests (2.8.0)
-setuptools (18.3.2)
+requests (2.8.1)
+RPi.GPIO (0.5.11)
+setuptools (18.5)
 simplegeneric (0.8.1)
 six (1.10.0)
-SQLAlchemy (1.0.8)
+SQLAlchemy (1.0.9)
 sympy (0.7.6.1)
 terminado (0.5)
-tornado (4.2.1)
+tornado (4.3)
 traitlets (4.0.0)
 xlrd (0.9.4)
-XlsxWriter (0.7.6)
+XlsxWriter (0.7.7)
 xlwt (1.0.0)
 
 ## Preparation of the Image
@@ -354,7 +358,7 @@ The list of packages istalled here is just a suggestion. Feel free to adjust as 
 ```bash
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/09/22
+# last modified:   2015/11/21
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -383,6 +387,7 @@ apt-get -y install libxml2-dev libxslt-dev
 pip install lxml
 pip install requests
 pip install networkx
+pip install plotly
 ```
 
 ## Keeping Your Installation up-to-date
