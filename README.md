@@ -5,7 +5,6 @@
 Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.
 
 ## Requirements
-
 * a Raspberry Pi 2 complete with 5V micro-usb power-supply
 * a blank 16 GB micro SD card
 * an ethernet cable to connect the Pi to your network
@@ -401,12 +400,13 @@ List outdated packages and if there are any, update them individually. Here we a
 pip list --outdated
 sudo pip install xyz --upgrade
 ```
+
 ## Cloning the Notebook Server Setup
 ### Networking
 I ran into problems when I cloned sd cards with the intention to use the cloned cards for different Raspberry Pis. A cloned card works fine on the same Pi it was generated on but other Rasberry Pis **DO NOT get an IP address** . What happens is described [here](http://unix.stackexchange.com/questions/110496/cloned-linux-system-and-etc-udev-rules-d-70-persistent-net-rules). Open ```/etc/udev/rules.d/70-persistent-net.rules``` in an editor and simply consolidate the lines so that the MAC address of the Raspberry Pi in question is assigned to the eth0 device and reboot.
 
 ###  OpenSSH Host Keys
-To regenerate host keys we delte the old keys and reconfigure openssh-server. It is safe to run the commands over remote ssh based session. Your existing session shouldn't be interrupted:
+To regenerate host keys we delete the old keys and reconfigure openssh-server. It is safe to run the commands over remote ssh based session. Your existing session shouldn't be interrupted:
 ```
 sudo rm /etc/ssh/ssh_host* && dpkg-reconfigure openssh-server
 ```
