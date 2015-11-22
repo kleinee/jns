@@ -11,7 +11,7 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 * a static IP address for the Raspberry Pi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amout of time - following along to the end will take good part of a day.....
+* a fair amount of time - following along to the end will take good part of a day.....
 
 ## Target
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
