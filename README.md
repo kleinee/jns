@@ -1,5 +1,8 @@
 # jns
 # Jupyter Notebook Server 
+# BEFORE YOU START
+These instructions date back to right after Project Jupyter made the big split and before the Raspberry Pi Foundation realesaed an official Raspbian Jessie Lite image. I plan to transition to this image but in the event that you are faster, please report any issues that you encontered.
+
 # on Raspberry PI 2
 ## Motivation
 Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.
@@ -114,7 +117,7 @@ dpkg-reconfigure locales
 adduser jns
 usermod -aG sudo,ssh jns
 ```
-I found that configuring the image as suggested by the creators of the net isnatller works fine in our context. All I did is turn their recommendations into a script.
+I found that configuring the image as suggested by the creators of the net installer works fine in our context. All I did is turn their recommendations into a script:
 
 ```bash
 #!/bin/bash
