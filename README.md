@@ -1,9 +1,10 @@
 # jns
-# Jupyter Notebook Server 
-# BEFORE YOU START
-These instructions date back to right after Project Jupyter made the big split and before the Raspberry Pi Foundation realesaed an official Raspbian Jessie Lite image. I plan to transition to this image but in the event that you are faster, please report any issues that you encontered.
-
+# Jupyter Notebook Server
 # on Raspberry PI 2
+
+## BEFORE YOU START
+These instructions date back to right after Project Jupyter made the big split and before the Raspberry Pi Foundation realesaed an official Raspbian Jessie Lite image. I plan to transition to this image but in the event that you are faster, please report any issues that you enconter in the process.
+
 ## Motivation
 Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.
 
