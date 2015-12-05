@@ -2,8 +2,8 @@
 # Jupyter Notebook Server
 # on Raspberry PI 2
 
-## BEFORE YOU START
-These instructions date back to right after Project Jupyter made the big split and before the Raspberry Pi Foundation realesaed an official Raspbian Jessie Lite image. I plan to transition to this image but in the event that you are faster, please report any issues that you enconter in the process.
+## NOTE
+Whilst I started development based on the unattended netinstaller, we now have the option to install on top of the official Raspbian Jessie Lite image released by the Raspberry Pi Foundation! The scripts work without changes!
 
 ## Motivation
 Well this cannot be about Big Data, can it? No it is not. This is more about interactive exploration: Sliderules are a thing of the past, decent calculators are hard to find these days and spreadsheets are somewhat cumbersome and at times outright dangerous. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.
@@ -17,19 +17,19 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 * a computer to carry out the installation connected to the same network as the Pi
 * a fair amount of time - following along to the end will take good part of a day.....
 
-## Target
+## Goal
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
 
-## List of Installed Packages 2015/11/21
+## List of Installed Packages 2015/12/05
 beautifulsoup4 (4.4.1)
 Bottleneck (1.0.0)
 cycler (0.9.0)
 decorator (4.0.4)
 et-xmlfile (1.0.1)
 html5lib (0.9999999)
-ipykernel (4.1.1)
+ipykernel (4.2.1)
 ipyparallel (4.1.0)
-ipython (4.0.0)
+ipython (4.0.1)
 ipython-genutils (0.1.0)
 ipywidgets (4.1.1)
 jdcal (1.2)
@@ -56,18 +56,18 @@ path.py (8.1.2)
 pexpect (4.0.1)
 pickleshare (0.5)
 pip (7.1.2)
-plotly (1.9.0)
+plotly (1.9.2)
 ptyprocess (0.5)
 Pygments (2.0.2)
 pyparsing (2.0.6)
 python-dateutil (2.4.2)
 pytz (2015.7)
-pyzmq (15.0.0)
-qtconsole (4.1.0)
+pyzmq (15.1.0)
+qtconsole (4.1.1)
 readline (6.2.4.1)
 requests (2.8.1)
 RPi.GPIO (0.5.11)
-setuptools (18.5)
+setuptools (18.7.1)
 simplegeneric (0.8.1)
 six (1.10.0)
 SQLAlchemy (1.0.9)
@@ -80,10 +80,15 @@ XlsxWriter (0.7.7)
 xlwt (1.0.0)
 
 ## Preparation of the Image
-### Raspbian Jessie as a Starting Point
-We use the [minimal Raspbian unattended netinstaller for Raspberry Pi](https://github.com/debian-pi/raspbian-ua-netinst) maintained on GitHub to prepare a small Raspbian Jessie server image that we can tweak to our needs. The reason is pandoc: 
+### Starting Point: OFFICIAL RASPBIAN JESSIE LITE IMAGE
+If you opt to install on top of the official Raspbian Lite image of the Raspberry Pi Foundation, you need to manually install pandoc and git:
 
-The official documentation states that nbconvert uses pandoc to convert between various markup languages, so pandoc is a dependency of most nbconvert transforms, excluding Markdown and Python. With pandoc 1.12.2 now recommended for jupyter. Under wheezy the last pando version we can install is 1.11.1. Fortunately the repository of Raspbian jessie contains pandoc 1.12.4.2. Not the latest version either but still recent enough for our purposes.
+```bash
+sudo apt-get install -y pandoc
+sudo apt-get install -y git
+```
+### Starting Point: RASPBIAN JESSIE UNATTENDED NET INSTALLER IMAGE
+We use the [minimal Raspbian unattended netinstaller for Raspberry Pi](https://github.com/debian-pi/raspbian-ua-netinst) maintained on GitHub to prepare a small Raspbian Jessie server image that we can tweak to our needs. Note that Wheezy does not work put of the box as we need pandoc. Under Wheezy the last pandoc version we can install is 1.11.1. Raspbian Jessie contains pandoc 1.12.4.2. Not the latest version either but still recent enough to meet our requirements.
 
 The installation instructions on the installer repository provide information on how to perform the the installation of the image in accordance with your platform. The basic steps are:
 
@@ -101,7 +106,7 @@ Further down we install additional packages with apt-get install. Whilst most of
 
 Once installer-config.txt is in place, eject the card, insert it into the Raspberry Pi connect the Pi to your network via ethernet cable and boot. The installer will retrieve and install all packages for the release / flavour  and will enable ssh access for user root with password raspbian. I highly recommend to monitor progress via monitor attached to the Raspberry Pi.
 
-### Configuration Upon First Boot
+## Configuration Upon First Boot
 The system is almost completely configured on first boot. Here are some tasks you most definitely want to do on first boot. The default **root password raspbian**.
 ```bash
 # set new root password
@@ -118,7 +123,10 @@ dpkg-reconfigure locales
 adduser jns
 usermod -aG sudo,ssh jns
 ```
-I found that configuring the image as suggested by the creators of the net installer works fine in our context. All I did is turn their recommendations into a script:
+
+##Configuring the Image
+
+I found that configuring the image as suggested by the creators of the net installer works fine regardless of starting point. All I did is turn their recommendations into a script:
 
 ```bash
 #!/bin/bash
@@ -131,7 +139,7 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-# set up wap partition 
+# set up swap partition 
 target=/etc/fstab
 if ! grep -Fxq /swap $target; then
     dd if=/dev/zero of=/swap bs=1M count=512
@@ -171,7 +179,7 @@ This will create a directory notebooks in the home directory of user jns, clone 
 * install Python
 * install jupyter
 * (pre)-configure jupyter
-* install Tex
+* install TeX
 * install scientific syack
 
 ```bash
@@ -196,13 +204,13 @@ sudo -u jns ./configure_jupyter.sh
 If everything goes to plan you end up with a fully working jupyter notebook server.
 
 ### Starting the Server
-On the Raspberry Pi as user jns just type:
+On the Raspberry Pi logged in as user jns just type:
 ```bash
 jupyter notebook 
 ```
-You can access the server from any browser via the IP address of the Raspberry Pi on port 9090.
+You should now be able to access the server from any browser on your network via the IP address of the Raspberry Pi on port 9090.
 
-## Installation + Configuration Steps
+## Installation + Configuration Steps Broken Down
 ### Python 3.5.0 Installation
 Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installtion of Python 3.5.0 and turned the instructions into a script.
 
