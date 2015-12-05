@@ -29,4 +29,4 @@ apt-get -y install libxml2-dev libxslt-dev
 pip install lxml
 pip install requests
 pip install networkx
-pip intsall plotly
+pip install plotly
