@@ -20,12 +20,14 @@ Well this cannot be about Big Data, can it? No it is not. This is more about int
 ## Goal
 We set up a Jupyter Notebook Server complete with Python 3.5.0, fully functioning nbconvert and a basic scientific stack after the 'Big Split' i.e. with version 4.0 or later of all components making up the incredibly powerful jupyter interactive computing environment.
 
-## List of Installed Packages 2015/12/05
+## List of Installed Packages 2015/12/31
 beautifulsoup4 (4.4.1)
 Bottleneck (1.0.0)
 cycler (0.9.0)
-decorator (4.0.4)
+decorator (4.0.6)
+docopt (0.6.2)
 et-xmlfile (1.0.1)
+geopy (1.11.0)
 html5lib (0.9999999)
 ipykernel (4.2.1)
 ipyparallel (4.1.0)
@@ -39,6 +41,7 @@ jupyter (1.0.0)
 jupyter-client (4.1.1)
 jupyter-console (4.0.3)
 jupyter-core (4.0.6)
+List (1.3.0)
 lxml (3.5.0)
 MarkupSafe (0.23)
 matplotlib (1.5.0)
@@ -49,28 +52,31 @@ networkx (1.10)
 nose (1.3.7)
 notebook (4.0.6)
 numexpr (2.4.6)
-numpy (1.10.1)
-openpyxl (2.3.1)
+numpy (1.10.2)
+openpyxl (2.3.2)
 pandas (0.17.1)
 path.py (8.1.2)
 pexpect (4.0.1)
 pickleshare (0.5)
+Pint (0.6)
 pip (7.1.2)
-plotly (1.9.2)
+plotly (1.9.3)
 ptyprocess (0.5)
+pyephem (3.7.6.0)
 Pygments (2.0.2)
+pypandoc (1.1.2)
 pyparsing (2.0.6)
 python-dateutil (2.4.2)
 pytz (2015.7)
 pyzmq (15.1.0)
 qtconsole (4.1.1)
 readline (6.2.4.1)
-requests (2.8.1)
-RPi.GPIO (0.5.11)
-setuptools (18.7.1)
+requests (2.9.1)
+scipy (0.16.1)
+setuptools (19.2)
 simplegeneric (0.8.1)
 six (1.10.0)
-SQLAlchemy (1.0.9)
+SQLAlchemy (1.0.11)
 sympy (0.7.6.1)
 terminado (0.5)
 tornado (4.3)
@@ -370,7 +376,7 @@ The list of packages istalled here is just a suggestion. Feel free to adjust as 
 ```bash
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/11/21
+# last modified:   2015/12/31
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -400,6 +406,13 @@ pip install lxml
 pip install requests
 pip install networkx
 pip install plotly
+
+#-----------------------------------------------------
+apt-get -y install libblas-dev liblapack-dev
+apt-get -y libatlas-base-dev gfortran
+#-----------------------------------------------------
+
+pip install scipy
 ```
 
 ## Keeping Your Installation up-to-date
