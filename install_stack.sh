@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/11/21
+# last modified:   2015/12/31
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -30,3 +30,10 @@ pip install lxml
 pip install requests
 pip install networkx
 pip install plotly
+
+#-----------------------------------------------------
+apt-get -y install libblas-dev liblapack-dev
+apt-get -y libatlas-base-dev gfortran
+#-----------------------------------------------------
+
+pip install scipy
