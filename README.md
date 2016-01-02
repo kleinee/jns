@@ -316,7 +316,7 @@ pip install plotly
 
 #-----------------------------------------------------
 apt-get -y install libblas-dev liblapack-dev
-apt-get -y libatlas-base-dev gfortran
+apt-get -y install libatlas-base-dev gfortran
 #-----------------------------------------------------
 
 pip install scipy
