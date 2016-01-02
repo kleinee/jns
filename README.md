@@ -186,7 +186,7 @@ This will create a directory notebooks in the home directory of user jns, clone 
 * install jupyter
 * (pre)-configure jupyter
 * install TeX
-* install scientific syack
+* install scientific stack
 
 ```bash
 #!/bin/bash
