@@ -1,5 +1,5 @@
 # Jupyter Notebook Server on Raspberry PI 2
-Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous and just not the right toll for many tasks. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
+Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous and just not the right tool for many tasks. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
 
 This repository documents how to set up and configure a Jupyter Notebook Server an a Raspberry Pi 2 complete with Python 3.5.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant jupyter interactive computing environment.
 
@@ -258,9 +258,9 @@ arr+=(["$app.ip"]="$app.ip ='$ip'")
 arr+=(["$app.port"]="$app.port = 9090")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
 arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/jns/notebooks'")
-arr+=(["$app.password"]="$app.password = //
+arr+=(["$app.password"]="$app.password =\
 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
-arr+=(["$app.server_extensions.append"] = //
+arr+=(["$app.server_extensions.append"] =\
 "$app.server_extensions.append('ipyparallel.nbextension')")
 
 # apply changes to jupyter_notebook_config.py
