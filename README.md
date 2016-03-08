@@ -1,5 +1,10 @@
-# Jupyter Notebook Server on Raspberry PI 2
-Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous and just not the right tool for many tasks. Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
+# Jupyter Notebook Server on Raspberry PI 2 and 3
+
+## Update
+I tested the setup on the new Raspberry Pi 3 installing on top of a fresh copy of the Lite version of Raspbian Jessie and confirm it to be working fine. 
+
+## Intro
+Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous and just not the right tool for many tasks. Project jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
 
 This repository documents how to set up and configure a Jupyter Notebook Server an a Raspberry Pi 2 complete with Python 3.5.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant jupyter interactive computing environment.
 
@@ -10,7 +15,7 @@ This repository documents how to set up and configure a Jupyter Notebook Server 
 * a static IP address for the Raspberry Pi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amount of time - following along to the end will take good part of a day.....
+* a fair amount of time
 
 ## Preparing the Raspbian Jessie Lite Image 
 Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (**root password is raspbian** and **default user is pi**) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
@@ -366,10 +371,6 @@ else
     done
 fi
 ```
-
-## Cloning the Notebook Server Setup
-### Networking
-I ran into problems when I cloned sd cards with the intention to use the cloned cards for different Raspberry Pis. A cloned card works fine on the same Pi it was generated on but other Rasberry Pis **DO NOT get an IP address** . What happens is described [here](http://unix.stackexchange.com/questions/110496/cloned-linux-system-and-etc-udev-rules-d-70-persistent-net-rules). Open ```/etc/udev/rules.d/70-persistent-net.rules``` in an editor and simply consolidate the lines so that the MAC address of the Raspberry Pi in question is assigned to the eth0 device and reboot.
 
 ###  OpenSSH Host Keys
 To regenerate host keys, delete the old keys and reconfigure openssh-server. It is safe to run the commands over remote ssh based session. Your existing session shouldn't be interrupted:
