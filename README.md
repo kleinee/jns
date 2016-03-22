@@ -386,6 +386,3 @@ To regenerate host keys, delete the old keys and reconfigure openssh-server. It 
 sudo rm /etc/ssh/ssh_host*
 sudo dpkg-reconfigure openssh-server
 ```
-
-### Adjust IP Address for Notebook App
-You also need to adjust ```c.NotebookApp.ip ='xxx.xxx.xxx.xxx'```in ```/home/jns/.jupyter/jupyter_notebook_config.py``` to the correct ip address of the (cloned) server.
