@@ -18,7 +18,7 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 *) When I tested the setup on a Raspberry Pi 3, I used built-in WIFI to connect to my network. I encountered WIFI signal drops until I disabled WIFI power management by adding ```iwconfig wlan0 power off``` to ```/etc/rc.local``` before ```exit(0)```.
 
 ## Preparing the Raspbian Jessie Lite Image 
-Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (**root password is raspbian** and **default user is pi**) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
+Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
 
 ```bash
 sudo raspi-config
@@ -129,9 +129,10 @@ jupyter notebook
 You should now be able to access the system from any browser on your network via the IP address of the Raspberry Pi on port 9090. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
 
 ## Step by Step Installation + Configuration
-If you prefer a setp by step installation, run the respective shell scripts:
+If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
 
 * To install Python 3.5.1 run ``` install_python.sh```
+* To install TeX run ```install_tex.sh'''
 * To install Jupyter run ```install_jupyter.sh```
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
