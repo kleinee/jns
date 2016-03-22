@@ -1,21 +1,21 @@
+
 # Jupyter Notebook Server on Raspberry PI 2 and 3
 
-## Update
-I tested the setup on the new Raspberry Pi 3 installing on top of a fresh copy of the Lite version of Raspbian Jessie and confirm it to be working fine. 
-
 ## Intro
-Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous and just not the right tool for many tasks. Project jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
+Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous or just not the right tool for many tasks. Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
 
-This repository documents how to set up and configure a Jupyter Notebook Server an a Raspberry Pi 2 complete with Python 3.5.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant jupyter interactive computing environment.
+This repository documents my efforts to set up and configure a Jupyter Notebook Server an a Raspberry Pi 2 or 3 complete with Python 3.5.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant Jupyter interactive computing environment.
 
 ## Requirements
-* a Raspberry Pi 2 complete with 5V micro-usb power-supply
+* a Raspberry Pi 2 or 3 complete with 5V micro-usb power-supply
 * a blank 16 GB micro SD card
-* an ethernet cable to connect the Pi to your network
+* an ethernet cable to connect the Pi to your network *)
 * a static IP address for the Raspberry Pi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amount of time
+* a fair amount of time *)
+
+*) When I tested the setup on a Raspberry Pi 3, I used built-in WIFI to connect to my network. I encountered WIFI signal drops until I disabled WIFI power management by adding ```iwconfig wlan0 power off``` to ```/etc/rc.local``` before ```exit(0)```.
 
 ## Preparing the Raspbian Jessie Lite Image 
 Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (**root password is raspbian** and **default user is pi**) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
@@ -24,7 +24,7 @@ Download the official Raspbian Jessie Lite image and transfer it to your SD card
 sudo raspi-config
 ```
 
-Ensure that your installation is up to date and then use apt-get to get pandoc and git:
+Ensure that your installation is up to date and then use apt-get to install pandoc and git:
 
 ```bash
 sudo apt-get update
@@ -33,7 +33,7 @@ sudo apt-get install -y pandoc
 sudo apt-get install -y git
 ```
 
-Set up new user jns (jns stands for ***j***upyter ***n***otebook ***s***erver) and add the new user to the groups sudo and ssh as we are going to use this user to perform the installation:
+Set up new user jns (jns stands for ***j***upyter ***n***otebook ***s***erver) and add the new user to the groups sudo and ssh as we are going to use this user to perform the installation and later to start the server.
 
 ```bash
 adduser jns
@@ -57,7 +57,7 @@ This clones the github repository onto your Pi and makes the shell scripts execu
 sudo ./configure_disk_image.sh
 ```
 
-This will set up a swap partition and improve memory management performance as suggested on https://github.com/debian-pi/raspbian-ua-netinst.git.
+This will set up a swap partition and improve memory management performance as suggested on https://github.com/debian-pi/raspbian-ua-netinst.git:
 
 ```bash
 #!/bin/bash
@@ -100,7 +100,7 @@ This will create a directory notebooks in the home directory of user jns, clone 
 * install TeX
 * install scientific stack
 
-The script is nothing spectacular - just convenience to save us some typing:
+The script is nothing spectacular - just convenience to save us some typing. The next section briefly describes the individual steps.
 
 ```bash
 #!/bin/bash
@@ -121,16 +121,23 @@ sudo -u jns ./configure_jupyter.sh
 ./install_stack.sh
 ```
 
-If everything goes to plan: Congrarulations, you now have a fully functional jupyter notebook server!!! To start the server just run:
+If everything goes to plan you end up with a fully functional Jupyter Notebook server!!! To start the server just run:
 
 ```bash
 jupyter notebook 
 ```
-You should now be able to access the server from any browser on your network via the IP address of the Raspberry Pi on port 9090. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
+You should now be able to access the system from any browser on your network via the IP address of the Raspberry Pi on port 9090. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
 
 ## Step by Step Installation + Configuration
-### Python 3.5.0 Installation
-Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installtion of Python 3.5.0 and turned the instructions into a script.
+If you prefer a setp by step installation, run the respective shell scripts:
+
+* To install Python 3.5.1 run ``` install_python.sh```
+* To install Jupyter run ```install_jupyter.sh```
+* To configure Jupyter run ```configure_jupyter.sh```
+* To install scientific stack run ```install_stack.sh```
+
+### Python 3.5.1 Installation
+Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installtion of Python 3.5.1 and turned the instructions into a script:
 
 ```bash
 #!/bin/bash
@@ -282,7 +289,7 @@ for key in ${!arr[@]};do
 done             
 ```
 
-### Scientific Stack
+### Installation of Scientific Stack
 The list of packages istalled here is just a suggestion. Feel free to adjust as needed.
 
 ```bash
