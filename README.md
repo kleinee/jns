@@ -13,7 +13,7 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 * a static IP address for the Raspberry Pi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amount of time *)
+* a fair amount of time
 
 *) When I tested the setup on a Raspberry Pi 3, I used built-in WIFI to connect to my network. I encountered WIFI signal drops until I disabled WIFI power management by adding ```iwconfig wlan0 power off``` to ```/etc/rc.local``` before ```exit(0)```.
 
