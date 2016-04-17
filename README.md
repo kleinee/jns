@@ -13,7 +13,7 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 * a static IP address for the Raspberry Pi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amount of time
+* a fair amount of time *)
 
 *) When I tested the setup on a Raspberry Pi 3, I used built-in WIFI to connect to my network. I encountered WIFI signal drops until I disabled WIFI power management by adding ```iwconfig wlan0 power off``` to ```/etc/rc.local``` before ```exit(0)```.
 
@@ -237,14 +237,13 @@ We generate a jupyter notebook configuration directory and in it a file called j
 * we enable mathjax for rendering math in notebooks
 * we set the notebook_dir to ~/notebooks, the directory we created
 * we use the password hash for the default server password jns
-* We tell jupyter that we installed ipyparallel
 
 To change settings upon installation, just edit ./jupyter/jupyter_notebook_config.py to suit your needs.
 
 ```bash
 #!/bin/bash
 # script name:     configure_jupyter.sh
-# last modified:   2015/09/30
+# last modified:   2016/04/17
 # sudo:            no
 
 if [ $(id -u) = 0 ]
@@ -273,8 +272,15 @@ arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
 arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/jns/notebooks'")
 arr+=(["$app.password"]="$app.password =\
 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
-arr+=(["$app.server_extensions.append"] =\
+
+#arr+=(["$app.server_extensions.append"] =\
 "$app.server_extensions.append('ipyparallel.nbextension')")
+
+# NOTE:
+# in Notebook 4.2 c.NotebookApp.server_extensions = [] is deprecated
+# 
+# you can run ipcluster nbextension enable but you will see 
+# messages about deprecation in the server log
 
 # apply changes to jupyter_notebook_config.py
 
