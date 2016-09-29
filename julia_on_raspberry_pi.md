@@ -7,7 +7,7 @@ Download the latest nightly build for ARM 32-bit hardfloat from http://julialang
 wget https://status.julialang.org/download/linux-arm
 ```
 
-Once the download is complete, unpack the archive and rename the directory to julia for easier reference. You may also  want to clean up by deleting the ```linux-arm``` archive"
+Once the download is complete, unpack the archive and rename the directory to julia for easier reference. You may also  want to clean up by deleting the ```linux-arm``` archive.
 
 ```bash
 tar -xvf linux-arm
