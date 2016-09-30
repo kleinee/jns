@@ -18,7 +18,7 @@ rm linux-arm
 Whilst it is possible tu run julia using the complete path to the binary, it is much easier to add a soft link in ```/usr/local/bin```:
 
 ```bash
-ln -s /home/jns/julia/bin/julia /user/local/bin/julia
+sudo ln -s /home/jns/julia/bin/julia /user/local/bin/julia
 ```
 
 Welcome Julia!
