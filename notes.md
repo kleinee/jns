@@ -1,3 +1,6 @@
+# 29 September 2016
+*  If you came here for Julia Notebooks and are setting up your server on a Raspberry Pi 2 or 3 you are no longer out of luck. See separate file in this repository on installation of Julia (binary) and IJulia. 
+
 # 1 August 2016
 ## Experience so far
 * I am running a Jupyter Notebook Server on a Raspberry Pi 3 for quite a while now and am rather pleased with it. Don't be fooled by the lack of my GitHub activity: Thanks to the brilliant team developing Jupyter, all the bright people involved in te development of open source software and the Raspberry Pi Foundation the setup is rather stable and easy to maitain.
