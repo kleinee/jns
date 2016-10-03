@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/12/31
+# last modified:   2016/10/03
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -11,6 +11,7 @@ fi
 pip install numpy
 pip install matplotlib
 pip install sympy
+pip install cython
 pip install pandas
 pip install numexpr
 pip install bottleneck
