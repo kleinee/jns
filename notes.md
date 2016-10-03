@@ -1,3 +1,12 @@
+# 3 October 2016
+* Update of padas from pandas-0.18.1 to pandas-0.19.0 requires cython.
+* Before manually updating pandas install cyton first:
+```bash
+sudo pip install cython
+sudo pip install -U pandas
+```
+* For new installations I added ```pip install python``` to the installation script. 
+
 # 29 September 2016
 *  If you came here for Julia Notebooks and are setting up your server on a Raspberry Pi 2 or 3 you are no longer out of luck. See separate file in this repository on installation of Julia (binary) and IJulia. 
 
