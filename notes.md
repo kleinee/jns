@@ -12,7 +12,7 @@ sudo pip install -U pandas
 
 # 1 August 2016
 ## Experience so far
-* I am running a Jupyter Notebook Server on a Raspberry Pi 3 for quite a while now and am rather pleased with it. Don't be fooled by the lack of my GitHub activity: Thanks to the brilliant team developing Jupyter, all the bright people involved in te development of open source software and the Raspberry Pi Foundation the setup is rather stable and easy to maitain.
+* I am running a Jupyter Notebook Server on a Raspberry Pi 3 for quite a while now and am rather pleased with it. Don't be fooled by the lack of my GitHub activity: Thanks to the brilliant team developing Jupyter, all the bright people involved in development of open source software and the Raspberry Pi Foundation the setup is rather stable and easy to maintain.
 
 * Without making changes to the repository I have already switched to Python 3.5.2
 
