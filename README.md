@@ -1,5 +1,5 @@
 
-# Jupyter Notebook Server on Raspberry PI 2 and 3
+# Jupyter Notebook Server on Raspberry Pi 2 and 3
 
 ## Intro
 Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous or just not the right tool for many tasks. Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
