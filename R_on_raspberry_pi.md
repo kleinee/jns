@@ -1,7 +1,7 @@
 
 # Installing R on a Raspbery Pi 3
 
-Basic installation from source is described [here](http://mygeeks014.blogspot.com/2015/09/compiling-and-install-r-312-32-bit-in.html). Since we install R verion 3.3.3 ON TOP of our Juppyter Notebook installation, a couple of dependencies are already met and otheres need to be added. The following shell script downloads, installs dependencies, configures and compiles R.
+Basic installation from source is described [here](http://mygeeks014.blogspot.com/2015/09/compiling-and-install-r-312-32-bit-in.html). Since we install R verion 3.3.3 ON TOP of our Jupyter Server, a couple of dependencies are already met and otheres need to be added. The following shell script downloads, installs dependencies, configures and compiles R.
 
 ```bash
 #!/bin/bash
