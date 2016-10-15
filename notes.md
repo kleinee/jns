@@ -9,7 +9,7 @@
 sudo pip install cython
 sudo pip install -U pandas
 ```
-* For new installations I added ```pip install python``` to the installation script. 
+* For new installations I added ```pip install cython``` to ```install_stack.sh```. 
 
 # 29 September 2016
 *  If you came here for Julia Notebooks and are setting up your server on a Raspberry Pi 2 or 3 you are no longer out of luck. See separate file in this repository on installation of Julia (binary) and IJulia. 
