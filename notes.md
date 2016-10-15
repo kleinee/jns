@@ -1,5 +1,5 @@
 # 15 October 2016
-* Julia has a bug in her hair...
+* Now Julia has a bug in her hair...
 * I added R and the IRkernel
 
 # 3 October 2016
