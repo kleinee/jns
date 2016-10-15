@@ -1,3 +1,7 @@
+# 15 October 2016
+* Julia has a bug in her hair...
+* I added R and the IRkernel
+
 # 3 October 2016
 * Update of padas from pandas-0.18.1 to pandas-0.19.0 requires cython.
 * Before manually updating pandas install cyton first:
