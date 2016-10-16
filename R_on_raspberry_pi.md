@@ -82,7 +82,7 @@ options(jupyter.plot_mimetypes = "image/svg+xml")
 to:
 
 ```
-/usr/local/lib/R/Rsite-profile
+/usr/local/lib/R/Rprofile.site
 ```
 
 # Starting the Server
