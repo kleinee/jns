@@ -132,7 +132,7 @@ You should now be able to access the system from any browser on your network via
 If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
 
 * To install Python 3.5.1 run ``` install_python.sh```
-* To install TeX run ```install_tex.sh'''
+* To install TeX run ```install_tex.sh```
 * To install Jupyter run ```install_jupyter.sh```
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
