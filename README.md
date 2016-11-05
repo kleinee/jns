@@ -137,13 +137,13 @@ If you prefer a setp by step installation, execute the respective shell scripts 
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
 
-### Python 3.5.1 Installation
+### Python 3.5.2 Installation
 Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installtion of Python 3.5.1 and turned the instructions into a script:
 
 ```bash
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2015/09/30
+# last modified:   2016/11/6
 # sudo:            yes
 #
 # see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
@@ -154,7 +154,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #Python 3 version to install
-version="3.5.1"
+version="3.5.2"
 
 #------------------------------------------------------
 apt-get install -y build-essential libncursesw5-dev
