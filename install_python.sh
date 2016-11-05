@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2015/12/14
+# last modified:   2016/11/5
 # sudo:            yes
 #
 # see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
@@ -11,7 +11,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #Python 3 version to install
-version="3.5.1"
+version="3.5.2"
 
 #------------------------------------------------------
 apt-get install -y build-essential libncursesw5-dev
