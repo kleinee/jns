@@ -201,6 +201,7 @@ fi
 apt-get install -y texlive
 apt-get install -y texlive-latex-extra
 apt-get install -y dvipng
+apt-get install -y texlive-xetex
 #------------------------------------------------------
 ```
 
