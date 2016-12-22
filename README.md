@@ -189,7 +189,7 @@ We need TeX for notebook conversion to PDF format with nbconvert / pandoc.
 ```bash
 #!/bin/bash
 # script name:     install_tex.sh
-# last modified:   2015/09/22
+# last modified:   2016/12/22
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
