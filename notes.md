@@ -1,9 +1,12 @@
+# 22 December 2016
+* as of version 5.0.0 nbconvert uses xelatex by default for latex export, improving unicode and font support - I added one line at the end of ```install_tex.sh```
+
 # 15 October 2016
 * Now Julia has a bug in her hair...
 * I added R and the IRkernel
 
 # 3 October 2016
-* Update of padas from pandas-0.18.1 to pandas-0.19.0 requires cython.
+* Update of pandas from pandas-0.18.1 to pandas-0.19.0 requires cython.
 * Before manually updating pandas install cyton first:
 ```bash
 sudo pip install cython
