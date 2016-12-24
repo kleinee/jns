@@ -138,7 +138,7 @@ If you prefer a setp by step installation, execute the respective shell scripts 
 * To install scientific stack run ```install_stack.sh```
 
 ### Python 3.5.2 Installation
-Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installtion of Python 3.5.1 and turned the instructions into a script:
+Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installation of Python 3.5.2 and turned the instructions into a script:
 
 ```bash
 #!/bin/bash
