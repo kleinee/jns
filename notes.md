@@ -1,3 +1,8 @@
+# 25 December 2016
+* switched to Python 3.6.0. Note that I tried to do this on an exiting installtion and ended up in a mess
+* changed the server port to 8888 as this seems to be standard
+* made the server listen on all IP addresses
+
 # 22 December 2016
 * as of version 5.0.0 nbconvert uses xelatex by default for latex export, improving unicode and font support - I added one line at the end of ```install_tex.sh```
 
