@@ -4,18 +4,15 @@
 ## Intro
 Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous or just not the right tool for many tasks. Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
 
-This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.5.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant Jupyter interactive computing environment.
+This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.6.0, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant Jupyter interactive computing environment.
 
 ## Requirements
 * a Raspberry Pi 2 or 3 complete with 5V micro-usb power-supply
 * a blank 16 GB micro SD card
-* an ethernet cable to connect the Pi to your network *)
-* a static IP address for the Raspberry Pi 
+* an ethernet cable to connect the Pi to your network *) 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
 * a fair amount of time
-
-*) When I tested the setup on a Raspberry Pi 3, I used built-in WIFI to connect to my network. I encountered WIFI signal drops until I disabled WIFI power management by adding ```iwconfig wlan0 power off``` to ```/etc/rc.local``` before ```exit(0)```.
 
 ## Preparing the Raspbian Jessie Lite Image 
 Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
@@ -50,8 +47,6 @@ git clone https://github.com/kleinee/jns.git
 cd jns
 chmod +x *.sh
 ```
-
-This clones the github repository onto your Pi and makes the shell scripts executable. To complete preparation run:
 
 ## Server Installation
 ```bash
@@ -92,7 +87,7 @@ If everything goes to plan you end up with a fully functional Jupyter Notebook s
 ```bash
 jupyter notebook 
 ```
-You should now be able to access the system from any browser on your network via the IP address of the Raspberry Pi on port 9090. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
+You should now be able to access the system from any browser on your network via the IP address of the Raspberry Pi on port 8888. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
 
 ## Step by Step Installation + Configuration
 If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
@@ -317,7 +312,7 @@ sudo apt-get upgrade
 ### Python Packages
 List outdated packages and if there are any, update them individually. Here we assume that package xyz is to be updated after the check:
 ```bash
-pip list --outdated
+pip list --outdated --format='legacy'
 sudo pip install xyz --upgrade
 ```
 
