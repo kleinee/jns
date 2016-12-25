@@ -36,8 +36,8 @@ sudo apt-get install -y git
 Set up new user jns (jns stands for ***j***upyter ***n***otebook ***s***erver) and add the new user to the groups sudo and ssh as we are going to use this user to perform the installation and later to start the server.
 
 ```bash
-adduser jns
-usermod -aG sudo,ssh jns
+sudo adduser jns
+sudo usermod -aG sudo,ssh jns
 ```
 
 ## Clone the GitHub Repository
