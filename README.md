@@ -246,10 +246,12 @@ for key in ${!arr[@]};do
 done
 ```
 To enable the clusters tab in the notebook interface run:
-
 ```bash
 sudo ipcluster nbextension enable
 ```
+
+To enable ipywidgets run:
+```sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension```
 
 ### Installation of Scientific Stack
 The list of packages istalled here is just a suggestion. Feel free to adjust as needed.
