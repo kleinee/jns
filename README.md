@@ -53,40 +53,6 @@ chmod +x *.sh
 
 This clones the github repository onto your Pi and makes the shell scripts executable. To complete preparation run:
 
-```bash
-sudo ./configure_disk_image.sh
-```
-
-This will set up a swap partition and improve memory management performance as suggested on https://github.com/debian-pi/raspbian-ua-netinst.git:
-
-```bash
-#!/bin/bash
-# configure_disk_image.sh
-# purpose: configure disk image
-# last modified: 2016/01/02
-
-if ! [ $(id -u) = 0 ]; then
-   echo "to be run with sudo"
-   exit 1
-fi
-
-# set up swap partition 
-target=/etc/fstab
-if ! grep -Fxq /swap $target; then
-    dd if=/dev/zero of=/swap bs=1M count=512
-    mkswap /swap
-    echo '/swap none swap sw 0 0' >> $target
-else
-    echo swap partition already configured
-fi
-
-# speed things up
-
-#------------------------------------------------------
-apt-get install -y raspi-copies-and-fills
-#------------------------------------------------------
-```
-
 ## Server Installation
 ```bash
 sudo ./install_jns.sh
@@ -131,19 +97,19 @@ You should now be able to access the system from any browser on your network via
 ## Step by Step Installation + Configuration
 If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
 
-* To install Python 3.5.2 run ``` install_python.sh```
+* To install Python 3.6.0 run ``` install_python.sh```
 * To install TeX run ```install_tex.sh```
 * To install Jupyter run ```install_jupyter.sh```
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
 
-### Python 3.5.2 Installation
-Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installation of Python 3.5.2 and turned the instructions into a script:
+### Python 3.6.0 Installation
+Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installation of Python 3.6.0 and turned the instructions into a script:
 
 ```bash
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2016/11/6
+# last modified:   2016/12/25
 # sudo:            yes
 #
 # see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
@@ -154,7 +120,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #Python 3 version to install
-version="3.5.2"
+version="3.6.0"
 
 #------------------------------------------------------
 apt-get install -y build-essential libncursesw5-dev
@@ -233,8 +199,8 @@ pip install ipyparallel
 We generate a jupyter notebook configuration directory and in it a file called jupyter_notebook_config.py that holds the configuration settings for our notebook server. We also create a folder notebooks in the home directory of user jns as the notebook_dir for our server. In the notebook configuration file, we apply the following changes:
 
 * we tell jupyter not to sart a browser upon start - we access the server from a remote machine
-* we set the IP address to the current IP address of the Raspberry Pi assuming it is the satic IP we require
-* we set the port for the notbook server to listen on to 9090
+* we set the IP address to '*' 
+* we set the port for the notbook server to listen on to 8888 which seems to be the defaut used by most installtions
 * we enable mathjax for rendering math in notebooks
 * we set the notebook_dir to ~/notebooks, the directory we created
 * we use the password hash for the default server password jns
@@ -244,7 +210,7 @@ To change settings upon installation, just edit ./jupyter/jupyter_notebook_confi
 ```bash
 #!/bin/bash
 # script name:     configure_jupyter.sh
-# last modified:   2016/04/17
+# last modified:   2016/12/25
 # sudo:            no
 
 if [ $(id -u) = 0 ]
@@ -260,15 +226,12 @@ mkdir notebooks
 
 target=~/.jupyter/jupyter_notebook_config.py
 
-# get current ip address - we assume it is static
-ip=$(echo $(hostname -I))
-
 # set up dictionary of changes for jupyter_config.py
 declare -A arr
 app='c.NotebookApp' 
 arr+=(["$app.open_browser"]="$app.open_browser = False")
-arr+=(["$app.ip"]="$app.ip ='$ip'")
-arr+=(["$app.port"]="$app.port = 9090")
+arr+=(["$app.ip"]="$app.ip ='*'")
+arr+=(["$app.port"]="$app.port = 8888")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
 arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/jns/notebooks'")
 arr+=(["$app.password"]="$app.password =\
