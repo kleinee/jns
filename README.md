@@ -205,7 +205,7 @@ To change settings upon installation, just edit ./jupyter/jupyter_notebook_confi
 ```bash
 #!/bin/bash
 # script name:     configure_jupyter.sh
-# last modified:   2016/12/25
+# last modified:   2016/12/27
 # sudo:            no
 
 if [ $(id -u) = 0 ]
@@ -215,9 +215,12 @@ then
 fi
 
 # generate config and create notebook directory
-jupyter notebook --generate-config
+# if notebook directory exists, we keep it (-p)
+# if configuration file exeists, we overwrite it (-y)
+
+jupyter notebook -y --generate-config
 cd $home
-mkdir notebooks  
+mkdir -p notebooks  
 
 target=~/.jupyter/jupyter_notebook_config.py
 
