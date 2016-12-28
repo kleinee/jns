@@ -1,3 +1,8 @@
+# 28 December 2016
+* minor changes to configure_jupyter.sh: if notebook directory exists, we keep it (-p) if configuration file exeists, we overwrite it (-y)
+* this way the script can be re-run if thinks go wrong
+* I also found ```grep "^[^#;]" /home/jns/jupyter_notebook_config.py``` to be useful to just print out the lines that are active in the configuration file
+
 # 25 December 2016
 * switched to Python 3.6.0. Note that I tried to do this on an exiting installation and ended up in a mess
 * changed the server port to 8888 as this seems to be standard
