@@ -1,5 +1,5 @@
 # script name:     configure_jupyter.sh
-# last modified:   2016/12/25
+# last modified:   2016/12/27
 # sudo:            no
 
 if [ $(id -u) = 0 ]
@@ -9,9 +9,9 @@ then
 fi
 
 # generate config and create notebook directory
-jupyter notebook --generate-config
+jupyter notebook -y --generate-config
 cd $home
-mkdir notebooks
+mkdir -p notebooks
 
 target=~/.jupyter/jupyter_notebook_config.py
 
