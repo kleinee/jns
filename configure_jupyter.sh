@@ -9,6 +9,9 @@ then
 fi
 
 # generate config and create notebook directory
+# if notebook directory exists, we keep it (-p)
+# if configuration file exeists, we overwrite it (-y)
+
 jupyter notebook -y --generate-config
 cd $home
 mkdir -p notebooks
