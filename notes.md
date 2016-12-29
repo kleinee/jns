@@ -1,3 +1,6 @@
+# 29 December 2016
+* Added ```libreadline-dev``` and ```libbz2-dev``` in ```install_python.sh```. Without readline the standard Python prompt is unusable as ist generates segmentation faults and Bus errors. ```IPython``` was unaffected as the Jupyter team switched to prompt-toolkit a while back.
+
 # 28 December 2016
 * minor changes to configure_jupyter.sh: if notebook directory exists, we keep it (-p) if configuration file exeists, we overwrite it (-y)
 * this way the script can be re-run if things go wrong
