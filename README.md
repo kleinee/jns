@@ -55,7 +55,7 @@ sudo ./install_jns.sh
 This will create a directory notebooks in the home directory of user jns, clone this repository to get the installtion scripts, make the scripts executable and then run install_jns.sh which does the following:
 
 * install Python
-* install jupyter
+* install Jupyter
 * (pre)-configure the notebook server
 * install TeX
 * install scientific stack
@@ -168,6 +168,8 @@ apt-get install -y texlive-xetex
 
 ### Jupyter Installation
 The developers made this step amazingly simple. The only minor issue that I came across was that IPython complained about missing readline upon first start. We adress this here by installing readline. We also install ipyparallel as it is not installed by default.
+
+***NOTE*** readline might no longer be required. Will adjust once I had time to test.
 
 ```bash
 #!/bin/bash
