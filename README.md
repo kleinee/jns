@@ -195,12 +195,14 @@ We generate a jupyter notebook configuration directory and in it a file called j
 
 * we tell jupyter not to sart a browser upon start - we access the server from a remote machine
 * we set the IP address to '*' 
-* we set the port for the notbook server to listen on to 8888 which seems to be the defaut used by most installtions
+* we set the port for the notbook server to listen on to 8888 (which is the default)ebeboo
 * we enable mathjax for rendering math in notebooks
 * we set the notebook_dir to ~/notebooks, the directory we created
 * we use the password hash for the default server password jns
 
-To change settings upon installation, just edit ./jupyter/jupyter_notebook_config.py to suit your needs.
+NOTE: this setup still uses password authentication. If you prefer token-based authentication as introduced with notebook version 4.3.0 please check this blog post on on the official Jupyter website: http://blog.jupyter.org/2016/12/21/jupyter-notebook-4-3-1/
+
+To change settings, just edit ./jupyter/jupyter_notebook_config.py to suit your needs.
 
 ```bash
 #!/bin/bash
