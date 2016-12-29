@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     upgrade_jns.sh
-# last modified:   2016/01/01
+# last modified:   2016/12/29
 # sudo:            yes
 
 if [ $(whoami) != 'root' ]; then
@@ -12,7 +12,7 @@ START=$SECONDS
 
 # generate list of outdated packages
 echo ">>> CHECKING INSTALLATION FOR OUTDATED PACKAGES..."
-lst=(`pip list --outdated |grep -o '^\S*'`)
+lst=(`pip list --outdated --format='legacy'|grep -o '^\S*'`)
 
 # process list of outdated packages
 if [ ${#lst[@]} -eq 0 ]; then
