@@ -1,7 +1,7 @@
 
 # Installing Julia on Raspberry Pi 2/3
 
-Download the latest nightly build for ARM 32-bit hardfloat from http://julialang.org/downloads/ into the home directory of user jns. The binary of the the current stable release 0.5.0 does not work (for me) as it keeps complaining about not recognizing the CPU.
+Download the latest nightly build for ARM 32-bit hardfloat from http://julialang.org/downloads/ into the home directory of user jns. The binary of the current stable release 0.5.0 does not work (for me) as it keeps complaining about not recognizing the CPU.
 
 ```bash
 wget https://status.julialang.org/download/linux-arm
