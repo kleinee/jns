@@ -1,3 +1,6 @@
+# 3 January 2017
+* nothing spectacular - just added year 2017 to LICENCE.md - HAPPY NEW YEAR
+
 # 29 December 2016
 * Added ```libreadline-dev``` and ```libbz2-dev``` in ```install_python.sh```. Without readline the standard Python prompt is unusable as it generates segmentation faults and Bus errors. ```IPython``` was unaffected as the Jupyter team switched to prompt-toolkit a while back.
 
