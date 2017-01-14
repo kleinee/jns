@@ -15,14 +15,3 @@ sudo gem install pry pry-doc awesome_print gnuplot rubyvis nyaplot
 ```
 
 Once all packages are installed run ```iruby register``` to register the iruby kernel rith Jupyter. You can now start the server as usual with ```jupyter notebook``` end venture into Ruby programming.
-
-
-```ruby
-s = ["Hello", "Pi"]
-s.each{|x| puts x}
-```
-
-    Hello
-    Pi
-
-    ["Hello", "Pi"]
