@@ -1,3 +1,8 @@
+# 14 January 2017
+* added a directory ```additional_kernels``` 
+* moved files related to R, Julia etc. into this directory
+* added ```ruby_on_raspberry_pi.md```, a minimalistic instruction for adding the IRuby kernel.
+
 # 3 January 2017
 * nothing spectacular - just added year 2017 to LICENCE.md - HAPPY NEW YEAR
 
