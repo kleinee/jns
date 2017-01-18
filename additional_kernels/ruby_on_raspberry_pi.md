@@ -1,5 +1,5 @@
 # Ruby on the Raspberry Pi
-As of this writing Raspbian Jessie lite comes with ruby 2.1.5 and gem 2.2.2 prei-installed. You can check this with ```ruby -v``` and ```gem -v``` respectively.
+As of this writing Raspbian Jessie Lite comes with ruby 2.1.5 and gem 2.2.2 prei-installed. You can check this with ```ruby -v``` and ```gem -v``` respectively.
 
 # Adding the IRuby kernel
 We install the Ruby extension for ZeroMQ, a couple of dependencies and the IRuby kernel itself:

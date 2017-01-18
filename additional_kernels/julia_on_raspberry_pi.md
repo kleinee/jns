@@ -1,6 +1,8 @@
 
 # Installing Julia on Raspberry Pi 2/3
 
+before you proceed , take a look at https://blog.meinside.pe.kr/How-to-build-Julia-on-Raspberry-Pi-Jessie/. The blog post illustrates how to install Julia on a Raspberry Pi. I did not test it yet but will revise my instructions as soon as I had time to try.
+
 Download the latest nightly build for ARM 32-bit hardfloat from http://julialang.org/downloads/ into the home directory of user jns. The binary of the current stable release 0.5.0 does not work (for me) as it keeps complaining about not recognizing the CPU.
 
 ```bash
@@ -15,7 +17,7 @@ mv julia-c71f205f93 julia
 rm linux-arm
 ```
 
-Whilst it is possible tu run julia using the complete path to the binary, it is much easier to add a soft link in ```/usr/local/bin```:
+Whilst it is possible t0 run julia using the complete path to the binary, it is much easier to add a soft link in ```/usr/local/bin```:
 
 ```bash
 sudo ln -s /home/jns/julia/bin/julia /user/local/bin/julia
@@ -51,7 +53,7 @@ First attempts to install IJulia failed with build errors for ZMQ. https://githu
 mv julia/lib/julia/libstdc++.so.6 /home/jns/
 ```
 
-If you do not undertstand why please do not raise an issue - I dom't undertsnd either.
+If you do not undertstand why please do not raise an issue - I don't understand either.
 
 ```julia
 julia> Pkg.add("IJulia")
