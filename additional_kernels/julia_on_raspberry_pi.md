@@ -1,7 +1,7 @@
 
 # Installing Julia on Raspberry Pi 2/3
 
-before you proceed , take a look at https://blog.meinside.pe.kr/How-to-build-Julia-on-Raspberry-Pi-Jessie/. The blog post illustrates how to install Julia on a Raspberry Pi. I did not test it yet but will revise my instructions as soon as I had time to try.
+***NOTE*** Before you proceed please take a look at https://blog.meinside.pe.kr/How-to-build-Julia-on-Raspberry-Pi-Jessie/. The blog post explains how to build Julia on a Raspberry Pi. I did not test it yet but will revise my instructions as soon as I had time to try.
 
 Download the latest nightly build for ARM 32-bit hardfloat from http://julialang.org/downloads/ into the home directory of user jns. The binary of the current stable release 0.5.0 does not work (for me) as it keeps complaining about not recognizing the CPU.
 
