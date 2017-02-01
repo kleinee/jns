@@ -12,6 +12,7 @@ pip install jupyter
 
 #------------------------------------------------------
 apt-get -y install libncurses5-dev
+apt-get -y install python-dev
 #------------------------------------------------------
 
 pip install readline
