@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_jupyter.sh
-# last modified:   2015/09/22
+# last modified:   2017/02/06
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
