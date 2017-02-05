@@ -174,7 +174,7 @@ The developers made this step amazingly simple. The only minor issue that I came
 ```bash
 #!/bin/bash
 # script name:     install_jupyter.sh
-# last modified:   2015/09/22
+# last modified:   2017/02/06
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -186,6 +186,7 @@ pip install jupyter
 
 #------------------------------------------------------
 apt-get -y install libncurses5-dev
+apt-get -y install python-dev
 #------------------------------------------------------
 
 pip install readline
@@ -266,7 +267,7 @@ The list of packages istalled here is just a suggestion. Feel free to adjust as 
 ```bash
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2015/11/21
+# last modified:   2017/02/06
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -275,7 +276,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 pip install numpy
-pip install matplotlib
+pip --no-cache-dir install matplotlib
 pip install sympy
 pip install pandas
 pip install numexpr
