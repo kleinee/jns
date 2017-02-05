@@ -1,3 +1,8 @@
+# 06 February 2017
+* merged pull request fixing dependency issue
+* adjusted modification dates in two scripts affected by pull request
+* made respective changes in the writeup
+
 # 14 January 2017
 * added a directory ```additional_kernels``` 
 * moved files related to R, Julia etc. into this directory
