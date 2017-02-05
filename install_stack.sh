@@ -9,7 +9,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 pip install numpy
-pip install matplotlib
+pip --no-cache-dir install matplotlib
 pip install sympy
 pip install cython
 pip install pandas
