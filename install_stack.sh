@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2016/10/03
+# last modified:   2017/02/06
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
