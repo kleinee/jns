@@ -1,4 +1,6 @@
-**NOTE*** Whilst installation of ```Julia``` from a nighly build is painless,  ```IJulia``` currently fails to install properly. I am getting a lot of deprecation warnings and ultimately errors. If you are a Julia weizzard and can fix what is wrong, please drop me a line.
+***NOTE*** Whilst installation of ```Julia``` from a nighly build is painless,  ```IJulia``` currently fails to install properly. I am getting a lot of deprecation warnings and ultimately errors. If you are a Julia wizzard and can fix what is wrong, please drop me a line.
+
+```IJulia``` in conjunction with ```Julia 0.5.0``` works fine.
 
 # Installing Julia on Raspberry Pi 2/3
 Download the latest nightly build for ARM 32-bit hardfloat from http://julialang.org/downloads/ into the home directory of user jns. The binary of the current stable release 0.5.0 does not work (for me) as it keeps complaining about not recognizing the CPU.
