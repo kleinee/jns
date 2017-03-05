@@ -8,10 +8,10 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 ## Requirements
 * a Raspberry Pi 2 or 3 complete with 5V micro-usb power-supply
 * a blank 16 GB micro SD card
-* an ethernet cable to connect the Pi to your network *) 
+* an ethernet cable to connect the Pi to your network in case you are not using wifi 
 * an internet connection
 * a computer to carry out the installation connected to the same network as the Pi
-* a fair amount of time - user feedback suggestst that a full installation takes in the order of 6 hours...
+* a fair amount of time - user feedback suggests that a full installation takes in the order of 6 hours...
 
 ## Preparing the Raspbian Jessie Lite Image 
 Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
@@ -65,7 +65,7 @@ The script is nothing spectacular - just convenience to save us some typing. The
 ```bash
 #!/bin/bash
 # script name:     install_jns.sh
-# last modified:   2015/09/30
+# last modified:   2017/03/05
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -103,7 +103,7 @@ Instructions for building Python from source can be found [here](http://sowingse
 ```bash
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2016/12/29
+# last modified:   2017/03/05
 # sudo:            yes
 #
 # see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
@@ -132,10 +132,6 @@ make
 make install
 pip3 install pip --upgrade
 
-# soft link to make pip3 default
-
-ln -s /usr/local/bin/pip3 /usr/local/bin/pip
-
 # clean up
 
 cd ..
@@ -150,7 +146,7 @@ We need TeX for notebook conversion to PDF format with nbconvert / pandoc.
 ```bash
 #!/bin/bash
 # script name:     install_tex.sh
-# last modified:   2016/12/22
+# last modified:   2017/03/05
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -174,7 +170,7 @@ The developers made this step amazingly simple. The only minor issue that I came
 ```bash
 #!/bin/bash
 # script name:     install_jupyter.sh
-# last modified:   2017/02/06
+# last modified:   2017/03/05
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -182,15 +178,15 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-pip install jupyter
+pip3 install jupyter
 
 #------------------------------------------------------
 apt-get -y install libncurses5-dev
 apt-get -y install python-dev
 #------------------------------------------------------
 
-pip install readline
-pip install ipyparallel
+pip3 install readline
+pip3 install ipyparallel
 ```
 
 ### Jupyter Configuration
@@ -210,7 +206,7 @@ To change settings, just edit ./jupyter/jupyter_notebook_config.py to suit your 
 ```bash
 #!/bin/bash
 # script name:     configure_jupyter.sh
-# last modified:   2017/02/07
+# last modified:   2017/03/05
 # sudo:            no
 
 if [ $(id -u) = 0 ]
@@ -267,7 +263,7 @@ The list of packages istalled here is just a suggestion. Feel free to adjust as 
 ```bash
 #!/bin/bash
 # script name:     install_stack.sh
-# last modified:   2017/02/06
+# last modified:   2017/03/05
 # sudo:            yes
 
 if ! [ $(id -u) = 0 ]; then
@@ -275,35 +271,35 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-pip install numpy
-pip --no-cache-dir install matplotlib
-pip install sympy
-pip install pandas
-pip install numexpr
-pip install bottleneck
-pip install SQLAlchemy
-pip install openpyxl
-pip install xlrd
-pip install xlwt
-pip install XlsxWriter
-pip install beautifulsoup4
-pip install html5lib
+pip3 install numpy
+pip3 --no-cache-dir install matplotlib
+pip3 install sympy
+pip3 install pandas
+pip3 install numexpr
+pip3 install bottleneck
+pip3 install SQLAlchemy
+pip3 install openpyxl
+pip3 install xlrd
+pip3 install xlwt
+pip3 install XlsxWriter
+pip3 install beautifulsoup4
+pip3 install html5lib
 
 #------------------------------------------------------
 apt-get -y install libxml2-dev libxslt-dev
 #------------------------------------------------------
 
-pip install lxml
-pip install requests
-pip install networkx
-pip install plotly
+pip3 install lxml
+pip3 install requests
+pip3 install networkx
+pip3 install plotly
 
 #-----------------------------------------------------
 apt-get -y install libblas-dev liblapack-dev
 apt-get -y install libatlas-base-dev gfortran
 #-----------------------------------------------------
 
-pip install scipy
+pip3 install scipy
 ```
 
 ## Keeping Your Installation up-to-date
@@ -318,16 +314,16 @@ sudo apt-get upgrade
 ### Python Packages
 List outdated packages and if there are any, update them individually. Here we assume that package xyz is to be updated after the check:
 ```bash
-pip list --outdated --format='legacy'
-sudo pip install xyz --upgrade
+pip3 list --outdated --format='legacy'
+sudo pip3 install xyz --upgrade
 ```
 
-The script below automates the process: It genereates a list of outdated (pip installed) packages and subsequently processes the list to conduct upgrades.
+The script below automates the process: It genereates a list of outdated (pip3 installed) packages and subsequently processes the list to conduct upgrades.
 
 ```bash
 #!/bin/bash
 # script name:     upgrade_jns.sh
-# last modified:   2016/12/29
+# last modified:   2017/03/05
 # sudo:            yes
 
 if [ $(whoami) != 'root' ]; then
@@ -337,7 +333,7 @@ fi
 
 # generate list of outdated packages
 echo ">>> CHECKING INSTALLATION FOR OUTDATED PACKAGES..."
-lst=(`pip list --outdated --format='legacy' |grep -o '^\S*'`)
+lst=(`pip3 list --outdated --format='legacy' |grep -o '^\S*'`)
 
 # process list of outdated packages
 if [ ${#lst[@]} -eq 0 ]; then
@@ -346,7 +342,7 @@ if [ ${#lst[@]} -eq 0 ]; then
 else
     echo ">>> UPGRADING PACKAGES"
     for i in ${lst[@]}; do
-        pip install ${i} --upgrade
+        pip3 install ${i} --upgrade
     done
 fi
 ```

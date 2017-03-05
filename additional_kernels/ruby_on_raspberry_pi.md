@@ -10,7 +10,7 @@ sudo apt-get install libtool libtool-bin autoconf
 sudo gem install rbczmq
 sudo gem install iruby
 
-# optional dependencies for additional functionality
+# Optional Dependencies for Additional Functionality
 sudo gem install pry pry-doc awesome_print gnuplot rubyvis nyaplot
 ```
 

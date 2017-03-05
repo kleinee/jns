@@ -1,3 +1,12 @@
+# 05 Mar 2017
+* I removed the softlink that made pip run pip3 and replaced all occurrences of pip in the scripts by pip3 - thanks to [Priyabrata Dash](http://priyabgeek.blogspot.ca/2017/02/raspberry-pi-experiments-running.html?m=1&utm_content=buffer3c732&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) for the suggestion. 
+
+```bash
+sed -i -- 's/pip/pip3/g' *.sh 
+```
+
+* After running the command above I also corrected README.md in similar fashion and made some minor cosmetic corrections as the command above also replces legit occurrences of pip3 into pip33.
+
 # 06 February 2017
 * merged pull request fixing dependency issue
 * adjusted modification dates in two scripts affected by pull request

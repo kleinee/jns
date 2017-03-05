@@ -8,12 +8,12 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-pip install jupyter
+pip3 install jupyter
 
 #------------------------------------------------------
 apt-get -y install libncurses5-dev
 apt-get -y install python-dev
 #------------------------------------------------------
 
-pip install readline
-pip install ipyparallel
+pip3 install readline
+pip3 install ipyparallel

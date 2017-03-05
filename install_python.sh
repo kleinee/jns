@@ -29,9 +29,6 @@ make
 make install
 pip3 install pip --upgrade
 
-# soft link to make pip3 default
-ln -s /usr/local/bin/pip3 /usr/local/bin/pip
-
 # clean up
 
 cd ..

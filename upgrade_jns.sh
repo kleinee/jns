@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     upgrade_jns.sh
-# last modified:   2016/12/29
+# last modified:   2017/03/05
 # sudo:            yes
 
 if [ $(whoami) != 'root' ]; then
@@ -12,7 +12,7 @@ START=$SECONDS
 
 # generate list of outdated packages
 echo ">>> CHECKING INSTALLATION FOR OUTDATED PACKAGES..."
-lst=(`pip list --outdated --format='legacy'|grep -o '^\S*'`)
+lst=(`pip3 list --outdated --format='legacy'|grep -o '^\S*'`)
 
 # process list of outdated packages
 if [ ${#lst[@]} -eq 0 ]; then
@@ -21,7 +21,7 @@ if [ ${#lst[@]} -eq 0 ]; then
 else
     echo ">>> UPGRADING PACKAGES"
     for i in ${lst[@]}; do
-        pip install ${i} --upgrade
+        pip3 install ${i} --upgrade
     done
 fi
 
