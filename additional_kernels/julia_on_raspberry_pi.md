@@ -1,3 +1,6 @@
+# Note on Julia 0.5.1
+According to https://github.com/JuliaLang/julia/issues/20936 the current version 0.5.1 does not run on the Raspberry Pi. Hence I stick with version 0.5.0 for the time being.
+
 # Installing Julia 0.5.0 and IJulia
 The latest ```julia 0.6.0``` nightly builds do run on the Pi. ```IJulia``` can be installed on top but the kernel crashes. What currently works is ```Julia 0.5.0 + IJulia```.  https://juliaberry.github.io explains the installation. 
 
