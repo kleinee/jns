@@ -1,3 +1,6 @@
+# 31 Mar 2017
+* Thomas Kluyver's bash kernel was the first I installed on top of Jupyter - and then forgot to add intsallation notes to this repository. 
+
 # 22 Mar 2017
 * updated installation to Python 3.6.1 
 
