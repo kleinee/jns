@@ -1,3 +1,6 @@
+# 5 Apr 2017
+* The release notes of notebook 5.0.0 encourage to try JupyterLab. It is seriously impressive - even on Pi.
+
 # 31 Mar 2017
 * Thomas Kluyver's bash kernel was the first I installed on top of Jupyter - and then forgot to add intsallation notes to this repository. 
 
