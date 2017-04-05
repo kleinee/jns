@@ -2,7 +2,7 @@
 Installation on top of Jupyter as explained at https://github.com/jupyterlab/jupyterlab and works out of the box.
 
 ```bash
-pip3 install jupyterlab
+sudo pip3 install jupyterlab
 sudo jupyter serverextension enable --py jupyterlab --sys-prefix
 ```
 
