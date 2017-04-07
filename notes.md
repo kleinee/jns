@@ -1,3 +1,6 @@
+# 8 Apr 2017
+* Changed Julia installation to the brand new Raspbian packages. 
+
 # 5 Apr 2017
 * The release notes of notebook 5.0.0 encourage to try JupyterLab. It is seriously impressive - even on Pi.
 
