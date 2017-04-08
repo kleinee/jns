@@ -1,3 +1,6 @@
+# 9 Apr 2017
+* renamed notes.md to CHANGELOG.md
+
 # 8 Apr 2017
 * Changed Julia installation to the brand new Raspbian packages. 
 
