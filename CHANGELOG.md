@@ -1,3 +1,7 @@
+# 16 Apr 2018
+* Opened new issue. The pandoc version installed does not correctly handle links in notebooks. If you get internal server errors during notebook conversion, chances are that you have hit this issue.
+* Only fix would be to complile the latest version of pandoc on the Pi 
+
 # 9 Apr 2017
 * renamed notes.md to CHANGELOG.md
 
