@@ -1,11 +1,16 @@
-# 22 Apr 2019
+# 19 Jul 2917
+* updated  Python version from 3.6.1 to 3.6.2
+
+# 23 Apr 2017
+* removed R until I fixed my installer script
+
+# 22 Apr 2017
 * as per official documentation beginning with version 6.0, IPython stopped supporting compatibility with Python versions lower than 3.3 including all versions of Python 2.7.
 * the entire setup works on Raspberry Pi Zero W probably turning it into one of the smallest Jupyter Notebook Servers. Not the fastest but still decent enough for tinkering.
 
-# 16 Apr 2018
+# 16 Apr 2017
 * Opened new issue. The pandoc version installed does not correctly handle links in notebooks. If you get internal server errors during notebook conversion, chances are that you have hit this issue.
 * Only fix would be to complile the latest version of pandoc on the Pi 
-
 # 9 Apr 2017
 * renamed notes.md to CHANGELOG.md
 
