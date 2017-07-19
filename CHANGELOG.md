@@ -1,4 +1,4 @@
-# 19 Jul 2917
+# 19 Jul 2017
 * updated  Python version from 3.6.1 to 3.6.2
 
 # 23 Apr 2017
