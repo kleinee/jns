@@ -1,3 +1,5 @@
+# 21 Jul 2017
+* changed installation order in '''install_stack.sh''' to address an exception during installation as identified George Fisher (grfiv). Thanks for the feedback! 
 # 19 Jul 2017
 * updated  Python version from 3.6.1 to 3.6.2
 
