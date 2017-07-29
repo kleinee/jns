@@ -1,6 +1,3 @@
-# 29 Jul 2017
-* used '''git add -A && git commit -m "Python 3.6.2"''' to reset commit messages for all items
-
 # 21 Jul 2017
 * changed installation order in '''install_stack.sh''' to address an exception during installation as identified George Fisher (grfiv). Thanks for the feedback! 
 # 19 Jul 2017
