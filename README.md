@@ -98,7 +98,7 @@ If you prefer a setp by step installation, execute the respective shell scripts 
 * To install scientific stack run ```install_stack.sh```
 
 ### Python 3.6.2 Installation
-I turned Python install instructions I found on ```sowingseasons.com' into a script - unfortunately the link is dead now:
+I turned Python install instructions I found on ```sowingseasons.com``` into a script - unfortunately the link is dead now:
 
 ```bash
 #!/bin/bash
