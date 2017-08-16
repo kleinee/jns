@@ -91,22 +91,22 @@ You should now be able to access the system from any browser on your network via
 ## Step by Step Installation + Configuration
 If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
 
-* To install Python 3.6.1 run ``` install_python.sh```
+* To install Python run ``` install_python.sh```
 * To install TeX run ```install_tex.sh```
 * To install Jupyter run ```install_jupyter.sh```
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
 
 ### Python 3.6.2 Installation
-Instructions for building Python from source can be found [here](http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html). I adjusted them to suit installation of the the latest Python version and turned the instructions into a script:
+I turned Python install instructions I found on ```sowingseasons.com' into a script - unfortunately the link is dead now:
 
 ```bash
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2017/07/29
+# last modified:   2017/08/16
 # sudo:            yes
 #
-# see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
+# credit goes to the creator of sowingseasons.com
 
 if ! [ $(id -u) = 0 ]; then
    echo "to be run with sudo"

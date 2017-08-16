@@ -1,5 +1,11 @@
+# 16 Aug 2017
+* despite some github messages still mentioning Python 3.6.1 the Python version that we install here is 3.6.2
+* removed link to original install instructions found online as the link is now dead
+* nonetheless credits for installation procedure go to the creator of sowingseasons.com
+
 # 21 Jul 2017
-* changed installation order in '''install_stack.sh''' to address an exception during installation as identified George Fisher (grfiv). Thanks for the feedback! 
+* changed installation order in '''install_stack.sh''' to address an exception during installation as identified George Fisher (grfiv). Thanks for the feedback!
+ 
 # 19 Jul 2017
 * updated  Python version from 3.6.1 to 3.6.2
 

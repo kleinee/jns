@@ -1,9 +1,9 @@
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2017/07/19
+# last modified:   2017/08/16
 # sudo:            yes
 #
-# see: http://sowingseasons.com/blog/building-python-3-4-on-raspberry-pi-2.html
+# credit goes to the creator of sowingseasons.com
 
 if ! [ $(id -u) = 0 ]; then
    echo "to be run with sudo"
