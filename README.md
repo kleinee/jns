@@ -1,9 +1,9 @@
 # Jupyter Notebook Server on Raspberry Pi 2 and 3
 
 ## Intro
-Sliderules are a thing of the past, decent calculators are hard to get by these days and spreadsheets are somewhat cumbersome, at times outright dangerous or just not the right tool for many tasks. Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale. 
+Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.  
 
-This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.6.1, fully functioning nbconvert and a basic scientific stack with version 4.0 or later of all components making up the brilliant Jupyter interactive computing environment.
+This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.6.2, fully functioning nbconvert and a basic scientific stack.
 
 ## Requirements
 * a Raspberry Pi 2 or 3 complete with 5V micro-usb power-supply
@@ -14,7 +14,7 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 * a fair amount of time - user feedback suggests that a full installation takes in the order of 6 hours...
 
 ## Preparing the Raspbian Jessie Lite Image 
-Download the official Raspbian Jessie Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
+Download the official Raspbian Stretch Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
 
 ```bash
 sudo raspi-config
@@ -36,7 +36,7 @@ sudo adduser jns
 sudo usermod -aG sudo,ssh jns
 ```
 
-## Clone the GitHub Repository
+## Clone this GitHub Repository
 
 Reboot and log in as user jns via ssh. From the terminal run:
 
@@ -89,7 +89,7 @@ jupyter notebook
 You should now be able to access the system from any browser on your network via the IP address of the Raspberry Pi on port 8888. The **notebook server password*** set during installation is ***jns***. This can be changed if requirerd.
 
 ## Step by Step Installation + Configuration
-If you prefer a setp by step installation, execute the respective shell scripts in the order given below: 
+If you prefer a step by step installation, execute the respective shell scripts in the order given below: 
 
 * To install Python run ``` install_python.sh```
 * To install TeX run ```install_tex.sh```
@@ -299,7 +299,7 @@ pip3 install scipy
 ```
 
 ## Keeping Your Installation up-to-date
-Occasionally you may want to check for software updates for both the operating system and the python python packages we installed.
+Occasionally you may want to check for software updates for both the operating system and the python packages we installed.
 
 ### Operating System
 ```bash
@@ -308,7 +308,7 @@ sudo apt-get upgrade
 ```
 
 ### Python Packages
-List outdated packages and if there are any, update them individually. Here we assume that package xyz is to be updated after the check:
+List outdated Python packages and if there are any, update them individually. Here we assume that package xyz is to be updated after the check:
 ```bash
 pip3 list --outdated --format='legacy'
 sudo pip3 install xyz --upgrade

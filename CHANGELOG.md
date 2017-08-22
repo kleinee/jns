@@ -1,3 +1,10 @@
+# 22 August 2017
+* I used the scripts to install Jupyter on a fresh install of ```Raspbian Stretch Lite``` which was recently released and now comes with ```Julia 0.6.0```. 
+* 91 stars so far and still a clone or 2 a day. Not exactly trending but still worth the effort.
+
+# 18 August 2017
+* The Raspberry Pi Foundation just released ```Raspbian stretch```. I am currently installing from scratch on a Raspberry Pi Zero W. 
+
 # 16 Aug 2017
 * despite some github messages still mentioning Python 3.6.1 the Python version that we install here is 3.6.2
 * removed link to original install instructions found online as the link is now dead
