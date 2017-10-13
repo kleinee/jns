@@ -2,6 +2,7 @@
 * Happy Friday 13th!
 * Python 3.6.3 was revcently released. I updated ```install_python.sh``` and ```README.md``` to make Python 3.6.3 the default.
 * The setup descriped here - with the exception of Julia - even works on a Raspberry Pi Zero W. 
+* Added small markdown file to the additional kernels folder describing the  installation of R from the Stretch repository and the / IRkernel.
 
 # 22 August 2017
 * I used the scripts to install Jupyter on a fresh install of ```Raspbian Stretch Lite``` which was recently released and now comes with ```Julia 0.6.0```. 
