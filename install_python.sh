@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2017/08/16
+# last modified:   2017/10/13
 # sudo:            yes
 #
 # credit goes to the creator of sowingseasons.com
@@ -11,7 +11,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #Python 3 version to install
-version="3.6.2"
+version="3.6.3"
 
 #------------------------------------------------------
 apt-get install -y build-essential libncursesw5-dev

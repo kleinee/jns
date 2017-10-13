@@ -1,3 +1,8 @@
+# 13 October 2017
+* Happy Friday 13th!
+* Python 3.6.3 was revcently released. I updated ```install_python.sh``` and ```README.md``` to make Python 3.6.3 the default.
+* The setup descriped here - with the exception of Julia - even works on a Raspberry Pi Zero W. 
+
 # 22 August 2017
 * I used the scripts to install Jupyter on a fresh install of ```Raspbian Stretch Lite``` which was recently released and now comes with ```Julia 0.6.0```. 
 * 91 stars so far and still a clone or 2 a day. Not exactly trending but still worth the effort.

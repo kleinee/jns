@@ -97,13 +97,13 @@ If you prefer a step by step installation, execute the respective shell scripts 
 * To configure Jupyter run ```configure_jupyter.sh```
 * To install scientific stack run ```install_stack.sh```
 
-### Python 3.6.2 Installation
+### Python 3.6.3 Installation
 I turned Python install instructions I found on ```sowingseasons.com``` into a script - unfortunately the link is dead now:
 
 ```bash
 #!/bin/bash
 # script name:     install_python.sh
-# last modified:   2017/08/16
+# last modified:   2017/10/13
 # sudo:            yes
 #
 # credit goes to the creator of sowingseasons.com
@@ -114,7 +114,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #Python 3 version to install
-version="3.6.2"
+version="3.6.3"
 
 #------------------------------------------------------
 apt-get install -y build-essential libncursesw5-dev
