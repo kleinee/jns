@@ -1,7 +1,7 @@
 # 13 October 2017
 * Happy Friday 13th!
 * Python 3.6.3 was revcently released. I updated ```install_python.sh``` and ```README.md``` to make Python 3.6.3 the default.
-* The setup descriped here - with the exception of Julia - even works on a Raspberry Pi Zero W. 
+* The setup described here - with the exception of Julia - even works on a Raspberry Pi Zero W. 
 * Added small markdown file to the additional kernels folder describing the  installation of R from the Stretch repository and the / IRkernel.
 
 # 22 August 2017
