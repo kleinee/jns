@@ -13,7 +13,7 @@ This repository documents my efforts to set up and configure a Jupyter Notebook 
 * a computer to carry out the installation connected to the same network as the Pi
 * a fair amount of time - user feedback suggests that a full installation takes in the order of 6 hours...
 
-## Preparing the Raspbian Jessie Lite Image 
+## Preparing the Raspbian Stretch Lite Image 
 Download the official Raspbian Stretch Lite image and transfer it to your SD card. Boot the Pi with the fresh image, log in (root password is raspbian and default user is pi) to  set up timezone and locales and expand the filesystem using the raspi-config utility:
 
 ```bash

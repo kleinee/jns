@@ -1,3 +1,6 @@
+# 26 October 2017
+* ```README.md``` still mentioned Jessie Lite in one heading. I have shifted to Stretch back in August...
+
 # 13 October 2017
 * Happy Friday 13th!
 * Python 3.6.3 was revcently released. I updated ```install_python.sh``` and ```README.md``` to make Python 3.6.3 the default.
@@ -9,7 +12,7 @@
 * 91 stars so far and still a clone or 2 a day. Not exactly trending but still worth the effort.
 
 # 18 August 2017
-* The Raspberry Pi Foundation just released ```Raspbian stretch```. I am currently installing from scratch on a Raspberry Pi Zero W. 
+* The Raspberry Pi Foundation just released ```Raspbian Stretch```. I am currently installing from scratch on a Raspberry Pi Zero W. 
 
 # 16 Aug 2017
 * despite some github messages still mentioning Python 3.6.1 the Python version that we install here is 3.6.2
