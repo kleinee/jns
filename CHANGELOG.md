@@ -1,3 +1,6 @@
+#01 November 2017
+* ```sudo pip3 install -U notebook==5.2.1rc``` fixes pdf export from the notebook interface!
+
 # 26 October 2017
 * ```README.md``` still mentioned Jessie Lite in one heading. I have shifted to Stretch back in August...
 
