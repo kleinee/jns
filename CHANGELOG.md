@@ -1,9 +1,10 @@
 # 05 November 2017
 * On a Raspberry Pi Zero W In was  only able to build  ```scipy``` after increasing the size os the swap file to 2048. Less might be possible but I did not try.
 * I added more packages ad their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
+* ```notebook 5.2.1``` was officially released. 
 
-#01 November 2017
-* ```sudo pip3 install -U notebook==5.2.1rc``` fixes pdf export from the notebook interface!
+# 01 November 2017
+* ```sudo pip3 install -U notebook==5.2.1rc1``` fixes pdf export from the notebook interface!
 
 # 26 October 2017
 * ```README.md``` still mentioned Jessie Lite in one heading. I have shifted to Stretch back in August...
