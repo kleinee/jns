@@ -1,6 +1,6 @@
-#05 November 2017
+# 05 November 2017
 * On a Raspberry Pi Zero W In was  only able to build  ```scipy``` after increasing the size os the swap file to 2048. Less might be possible but I did not try.
-* I added more packages ad their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Scienc Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
+* I added more packages ad their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
 
 #01 November 2017
 * ```sudo pip3 install -U notebook==5.2.1rc``` fixes pdf export from the notebook interface!
