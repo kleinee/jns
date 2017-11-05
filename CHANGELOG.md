@@ -1,6 +1,6 @@
 # 05 November 2017
 * On a Raspberry Pi Zero W In was  only able to build  ```scipy``` after increasing the size os the swap file to 2048. Less might be possible but I did not try.
-* I added more packages ad their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
+* I added more packages and their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
 * ```notebook 5.2.1``` was officially released. 
 
 # 01 November 2017
