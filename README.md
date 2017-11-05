@@ -3,7 +3,7 @@
 ## Intro
 Project Jupyter not only revolutionizes data-heavy research in all domains - it also boosts personal productivity for problems on a much smaller scale.  
 
-This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.6.2, fully functioning nbconvert and a basic scientific stack.
+This repository documents my efforts to set up and configure a Jupyter Notebook Server on a Raspberry Pi 2 or 3 complete with Python 3.6.3, fully functioning nbconvert and a basic scientific stack.
 
 ## Requirements
 * a Raspberry Pi 2 or 3 complete with 5V micro-usb power-supply
