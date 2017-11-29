@@ -1,5 +1,11 @@
+# 29 November 2017
+* Created new issue as version 0.6.0 of jupyterlab-launcher renders the web interface unusable. For a temporary fix  see issue #14.  
+
+# 28 November 2017
+* On 26 Nov 2017 the repository received star #100
+
 # 05 November 2017
-* On a Raspberry Pi Zero W In was  only able to build  ```scipy``` after increasing the size os the swap file to 2048MB. Less might be possible but I did not try.
+* On a Raspberry Pi Zero W I was  only able to build  ```scipy``` after increasing the size os the swap file to 2048MB. Less might be possible but I did not try.
 * I added more packages and their dependencies in ```install_stack.sh``` as I intend to follow along as I am reading [Python Data Science Handbook by Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/) 
 * ```notebook 5.2.1``` was officially released which fixes the problems I encountered with pdf conversion earlier 
 
