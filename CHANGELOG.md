@@ -1,3 +1,6 @@
+# 05 December 2017
+* jupyterlab version 0.30.1 was just released. This fixes issue #14!
+
 # 29 November 2017
 * Created new issue as version 0.6.0 of jupyterlab-launcher renders the web interface unusable. For a temporary fix  see issue #14.  
 
