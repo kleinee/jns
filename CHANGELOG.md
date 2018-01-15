@@ -1,5 +1,5 @@
 # 15 January 2018
-## IMPORTANT NOTIFICATION: Within this week I will release a new version of jns
+## IMPORTANT NOTIFICATION: I plan to release a new version of jns within this week
 
 ***KEY CHANGES***
 * Rather than installing the latest version of Python, the new version will use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3.
