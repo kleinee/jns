@@ -1,8 +1,8 @@
 # 15 January 2018
-* ***IMPORTANT NOTIFICATION:*** Within this week I will release a new version of jns
+## IMPORTANT NOTIFICATION: Within this week I will release a new version of jns
 
 ***KEY CHANGES***
-* Rather than installing the latest version of Python, the new version will use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.
+* Rather than installing the latest version of Python, the new version will use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3
 * Whilst this seems to be a step backwards, it is a in fact a giant step forward as we benefit from significant installation speedups made possible by the recently released  ***piwheels*** project.
 * The scripts will work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory - I tested Pi 1, 2, 3 and ZeroW.
 * The new  version supports gpio, sensehat and picamera without the worries of breaking breaking things as the new version will pip install into a virual environment to achieve a more maintainable setup
