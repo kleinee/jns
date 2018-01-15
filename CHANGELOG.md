@@ -6,7 +6,7 @@
 * Whilst this seems to be a step backwards, it is a in fact a giant step forward as we benefit from significant installation speedups made possible by the recently released  ***piwheels*** project.
 * The scripts will work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory - I tested Pi 1, 2, 3 and ZeroW.
 * The new  version supports gpio, sensehat and picamera without the worries of breaking breaking things as the new version will pip install into a virual environment to achieve a more maintainable setup
-* Pyhon3, Julia and Bash kernels will be installed. R, Ruby and Octave will follow as I find the time.
+* Pyhon 3, Julia and Bash kernels will be installed. R, Ruby and Octave will follow as I find the time.
 
 # 05 December 2017
 * jupyterlab version 0.30.1 was just released. This fixes issue #14!
