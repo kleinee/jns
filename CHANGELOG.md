@@ -5,8 +5,10 @@
 * Rather than installing the latest version of Python, the new version will use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3
 * Whilst this seems to be a step backwards, it is a in fact a giant step forward as we benefit from significant installation speedups made possible by the recently released  ***piwheels*** project.
 * The scripts will work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory - I tested Pi 1, 2, 3 and ZeroW.
-* The new  version supports gpio, sensehat and picamera without the worries of breaking breaking things as the new version will pip install into a virual environment to achieve a more maintainable setup
-* Pyhon 3, Julia and Bash kernels will be installed. R, Ruby and Octave will follow as I find the time.
+* The new version installs Python modules for  gpio, sensehat and picamera without the worries of breaking things on the system level - all Python modules  will be pip installed into a virual environment to achieve a more maintainable setup
+.
+* Pyhon 3, Julia and Bash kernels will be installed and configured. R, Ruby and Octave are likely to follow as I find the time.
+* Jupyter Lab will be installed and ready to use.
 
 # 05 December 2017
 * jupyterlab version 0.30.1 was just released. This fixes issue #14!
