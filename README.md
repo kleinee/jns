@@ -1,4 +1,4 @@
-# Jupyter Notebook & Lab on Raspberry Pi
+# Jupyter Notebook & Lab Server on Raspberry Pi
 ## Intro
 
 [Project Jupyter](https://jupyter.org) not only revolutionizes data-heavy research across domains - it also boosts personal productivity for problems on a much smaller scale. Due to openness it is an amazing platform for exploring concepts and learning new things.
