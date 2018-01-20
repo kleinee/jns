@@ -1,10 +1,12 @@
 #!/bin/bash
-# script name:     install_tex.sh
-# last modified:   2017/03/05
+# script name:     inst_tex.sh
+# last modified:   2018/01/14
 # sudo:            yes
 
+script_name=$(basename -- "$0")
+
 if ! [ $(id -u) = 0 ]; then
-   echo "to be run with sudo"
+   echo "usage: sudo ./$script_name"
    exit 1
 fi
 
