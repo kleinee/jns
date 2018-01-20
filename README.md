@@ -245,14 +245,14 @@ Enter password:  ****
 Verify password: ****
 ```
 
-## Install $\TeX$ (optional)
+## Install TeX (optional)
 
 ```bash
 sudo ./inst_tex.sh
 ```
 
-* [$\TeX$]() (and [Pandoc](http://pandoc.org)) are used under the hood to convert Jupyter notebooks to other formats including PDF.
-* Whilst not strictly necessary if no PDF export is rquired, I strongly recommend this timeconsuming step.
+* [TeX]() (and [Pandoc](http://pandoc.org)) are used under the hood to convert Jupyter notebooks to other formats including PDF.
+* Whilst not strictly necessary if no PDF export is rquired, I still recommend to run this step.
 
 ```bash
 #!/bin/bash
