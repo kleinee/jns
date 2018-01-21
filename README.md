@@ -137,7 +137,7 @@ cat requirements.txt | xargs -n 1 pip3 install
 ./conf_jupyter.sh
 ```
 
-Thescriptgenerate a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for our notebook / lab server. We also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for our server. In the configuration file, we apply the following changes:
+The scripts generate a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for our notebook / lab server. We also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for our server. In the configuration file, we apply the following changes:
 
 * tell jupyter not to sart a browser upon start - we access the server from a remote machine on the same network
 * set the IP address to '*' 
@@ -146,12 +146,14 @@ Thescriptgenerate a jupyter notebook configuration directory and in it a file ca
 * set the notebook_dir to `~/notebooks`
 * use the password hash for the default server password `jns`
 
-NOTE: This setup still uses password authentication. If you prefer token-based authentication as introduced with notebook you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py` to. Documentation of possible configuration settings can be found [here](http://minrk-notebook.readthedocs.io/en/latest/notebook.html).
+NOTE: This setup still uses password authentication. If you prefer token-based authentication as introduced with notebook you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py` to. Documentation of possible configuration settings can be found [here](http://minrk notebook.readthedocs.io/en/latest/notebook.html).
+
+After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and Jupyter Lab. At the JupyterLab end this requires intstallation of `nodejs` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot`.
 
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/01/14
+# last modified:   2018/01/21
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -187,6 +189,7 @@ arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/$(logname)/notebooks'")
 arr+=(["$app.password"]="$app.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
 
 # apply changes to jupyter_notebook_config.py
+
 for key in ${!arr[@]};do
     if grep -qF $key ${target}; then
         # key found -> replace line
@@ -202,10 +205,19 @@ python3 -m bash_kernel.install
 
 # install extensions
 jupyter serverextension enable --py jupyterlab
-jupyter nbextension enable --py widgetsnbextension --sysprefix
+jupyter nbextension enable --py widgetsnbextension --sys-prefix
+jupyter nbextension enable --py --sys-prefix bqplot
 
 # activate clusters tab in notebook interface
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
+
+# install nodejs and node version manager n
+curl -L https://git.io/n-install | bash -s -- -y
+. /home/pi/.bashrc
+
+jupyter lab clean
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labxtension install bqplot
 ```
 
 ## Start and access your server

@@ -1,3 +1,6 @@
+# 21 January 2018
+* modified `conf_jupyter.sh` mainly for to facilitate use of `ipywidgets` and `bqplot` in JupyterLab
+
 # 20 January 2018
 * new version on GitHub
 

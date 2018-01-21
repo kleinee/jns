@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/01/14
+# last modified:   2018/01/21
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -52,7 +52,16 @@ python3 -m bash_kernel.install
 
 # install extensions
 jupyter serverextension enable --py jupyterlab
-jupyter nbextension enable --py widgetsnbextension
+jupyter nbextension enable --py widgetsnbextension --sys-prefix
+jupyter nbextension enable --py --sys-prefix bqplot
 
 # activate clusters tab in notebook interface
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
+
+# install nodejs and node version manager n
+curl -L https://git.io/n-install | bash -s -- -y
+. /home/pi/.bashrc
+
+jupyter lab clean
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labxtension install bqplot
