@@ -64,4 +64,4 @@ curl -L https://git.io/n-install | bash -s -- -y
 
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
-jupyter labxtension install bqplot
+jupyter labextension install bqplot
