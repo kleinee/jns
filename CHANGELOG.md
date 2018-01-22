@@ -1,3 +1,7 @@
+# 22 January 2018
+* set size of swap_file to 2048MB
+
+
 # 21 January 2018
 * modified `conf_jupyter.sh`in order to facilitate use of `ipywidgets` and `bqplot` in JupyterLab
 

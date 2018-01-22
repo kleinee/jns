@@ -51,6 +51,11 @@ git clone https://github.com/kleinee/jns
 ```bash
 cd ~/jns
 ```
+* To increase size of swap_file to 2048MB open `/etc/dphys-swapfile` and change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=2048`
+
+```bash
+sudo vi /etc/
+```
 
 Technically you now just run `sudo apt ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside this directory.
 
