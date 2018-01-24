@@ -1,5 +1,5 @@
 # 24 January 2018
-* corrected `inst_jns.sh` and correspondin entry in `README.md`
+* corrected `inst_jns.sh` and corresponding entry in `README.md`
 
 
 # 22 January 2018
