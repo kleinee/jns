@@ -1,3 +1,7 @@
+# 24 January 2018
+* corrected `inst_jns.sh` and correspondin entry in `README.md`
+
+
 # 22 January 2018
 * set size of swap_file to 2048MB
 

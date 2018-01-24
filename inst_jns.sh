@@ -15,5 +15,5 @@ fi
 ./inst_pi_hardware.sh
 
 sudo -u pi ./inst_stack.sh
-sudo -u ./conf_jupyter.sh
-sudo -u ./inst_julia.sh
+sudo -u pi ./conf_jupyter.sh
+./inst_julia.sh
