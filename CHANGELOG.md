@@ -1,6 +1,6 @@
 # 26 January 2018
-* added support for sphinx
-* in case you want to add this manually because you already already ran the installtion before thsi modification do the following:
+* added support for Sphinx for new installations 
+* in case you want to add this manually because you already have a working jns installtionmodification just run:
 
 ```bash
 sudo apt install latexmk
