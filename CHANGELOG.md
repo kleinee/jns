@@ -4,7 +4,7 @@
 
 ```bash
 sudo apt install latexmk
-~/.venv/jns/bin/activate
+source ~/.venv/jns/bin/activate
 pip3 install Sphinx docutils 
 ```
 
