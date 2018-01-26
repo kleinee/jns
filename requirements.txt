@@ -1,4 +1,6 @@
+alabaster==0.7.10
 attrs==17.4.0
+Babel==2.5.3
 bash-kernel==0.7.1
 beautifulsoup4==4.6.0
 bleach==2.1.2
@@ -10,6 +12,7 @@ chardet==3.0.4
 cycler==0.10.0
 Cython==0.27.3
 decorator==4.2.1
+docutils==0.14
 entrypoints==0.2.3
 ephem==3.7.6.0
 et-xmlfile==1.0.1
@@ -18,6 +21,7 @@ gpiozero==1.4.0
 h5py==2.7.1
 html5lib==1.0.1
 idna==2.6
+imagesize==0.7.1
 ipykernel==4.8.0
 ipyparallel==6.0.2
 ipython==6.2.1
@@ -53,6 +57,7 @@ pandas==0.22.0
 pandas-datareader==0.5.0
 pandocfilters==1.4.2
 parso==0.1.1
+pdfrw==0.4
 pexpect==4.3.1
 picamera==1.13
 pickleshare==0.7.4
@@ -74,6 +79,7 @@ pytz==2017.3
 PyWavelets==0.5.2
 pyzmq==16.0.4
 qtconsole==4.3.1
+reportlab==3.4.0
 requests==2.18.4
 requests-file==1.4.3
 requests-ftp==0.3.1
@@ -85,6 +91,9 @@ Send2Trash==1.4.2
 sense-hat==2.2.0
 simplegeneric==0.8.1
 six==1.11.0
+snowballstemmer==1.2.1
+Sphinx==1.6.6
+sphinxcontrib-websupport==1.0.1
 SQLAlchemy==1.2.2
 sympy==1.1.1
 terminado==0.8.1

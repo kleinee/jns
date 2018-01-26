@@ -1,3 +1,13 @@
+# 26 January 2018
+* added support for sphinx
+* in case you want to add this manually because you already already ran the installtion before thsi modification do the following:
+
+```bash
+sudo apt install latexmk
+~/.venv/jns/bin/activate
+pip3 install Sphinx docutils 
+```
+
 # 24 January 2018
 * corrected `inst_jns.sh` and corresponding entry in `README.md`
 
