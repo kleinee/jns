@@ -1,6 +1,18 @@
+# 10 February 2018
+* updated requirements.txt
+* if you installed prior to this update, just run:
+
+```bash
+source /home/pi/.venv/jns/bin/activate
+pip list --outdated --format='legacy'
+pip install -U package1 package2...
+```
+where ```package1 package2...``` is a list of package names of the packages you want to update
+ 
+
 # 26 January 2018
 * added support for Sphinx for new installations 
-* in case you want to add this manually because you already have a working jns installtion  just run:
+* in case you want to add this manually because you already have a working jns installation  just run:
 
 ```bash
 sudo apt install latexmk
