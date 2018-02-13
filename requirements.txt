@@ -7,7 +7,7 @@ beautifulsoup4==4.6.0
 bleach==2.1.2
 bokeh==0.12.14
 Bottleneck==1.2.1
-bqplot==0.10.2
+bqplot==0.10.3
 branca==0.2.0
 certifi==2018.1.18
 chardet==3.0.4
@@ -15,6 +15,7 @@ cycler==0.10.0
 Cython==0.27.3
 dbfread==2.0.7
 decorator==4.2.1
+docopt==0.6.2
 docutils==0.14
 entrypoints==0.2.3
 ephem==3.7.6.0
@@ -63,7 +64,7 @@ pandas-datareader==0.6.0
 pandocfilters==1.4.2
 parso==0.1.1
 pdfrw==0.4
-pexpect==4.3.1
+pexpect==4.4.0
 picamera==1.13
 pickleshare==0.7.4
 Pillow==5.0.0
@@ -83,7 +84,7 @@ python-dateutil==2.6.1
 pytz==2018.3
 PyWavelets==0.5.2
 PyYAML==3.12
-pyzmq==16.0.4
+pyzmq==17.0.0
 qtconsole==4.3.1
 reportlab==3.4.0
 requests==2.18.4
@@ -98,7 +99,7 @@ sense-hat==2.2.0
 simplegeneric==0.8.1
 six==1.11.0
 snowballstemmer==1.2.1
-Sphinx==1.6.7
+Sphinx==1.7.0
 sphinx-rtd-theme==0.2.4
 sphinxcontrib-websupport==1.0.1
 SQLAlchemy==1.2.2
