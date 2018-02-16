@@ -1,3 +1,11 @@
+# 17 February 2017
+* updated requirements.txt
+* it is really amazing how quickly udated packages become available on piwheels...
+
+# 14 February 2018
+* HAPPY VALENTINE'S DAY
+* updated requirements.txt 
+
 # 10 February 2018
 * updated requirements.txt
 * if you installed prior to this update, just run:
