@@ -1,6 +1,9 @@
+# 21 Febuary 2017
+* uodated requirements.txt  
+
 # 17 February 2017
 * updated requirements.txt
-* it is really amazing how quickly udated packages become available on piwheels...
+* it is really amazing how quickly updated packages become available on piwheels...
 
 # 14 February 2018
 * HAPPY VALENTINE'S DAY
