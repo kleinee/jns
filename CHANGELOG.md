@@ -1,5 +1,9 @@
+# 22 February 2018
+* updated requirements.txt
+* manually installed the bokeh jupyter lab extension for testing by running: ```jupyter labextension install jupyterlab_bokeh``` Took some time to build but seems to work fine
+
 # 21 Febuary 2017
-* uodated requirements.txt  
+* updated requirements.txt  
 
 # 17 February 2017
 * updated requirements.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/01/21
+# last modified:   2018/02/22
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -65,3 +65,4 @@ curl -L https://git.io/n-install | bash -s -- -y
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install bqplot
+jupyter labextension install jupyterlab_bokeh
