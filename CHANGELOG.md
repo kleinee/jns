@@ -1,3 +1,8 @@
+# 11 March 2018
+* closed issues #15 and #16
+* issue #15 is personal preference - I may pick up on this at a later stage
+* issue #16 is fixed by installing ```nodejs``` with a separate script. For further info please refer to the issue itself
+
 # 22 February 2018
 * updated requirements.txt
 * manually installed the bokeh jupyter lab extension for testing by running: ```jupyter labextension install jupyterlab_bokeh``` Took some time to build but seems to work fine

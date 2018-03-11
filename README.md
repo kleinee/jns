@@ -52,6 +52,7 @@ git clone https://github.com/kleinee/jns
 cd ~/jns
 ```
 * To increase size of swap_file to 2048MB open `/etc/dphys-swapfile` and change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=2048`
+* Reboot for the change to take effect
 
 ```bash
 sudo vi /etc/
@@ -158,7 +159,7 @@ After the basic configuration the script activates the bash kernel and activates
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/02/22
+# last modified:   2018/03/11
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -217,13 +218,33 @@ jupyter nbextension enable --py --sys-prefix bqplot
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
-curl -L https://git.io/n-install | bash -s -- -y
-. /home/pi/.bashrc
+cd ~/jns
+./inst_node.sh
 
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install bqplot
 jupyter labextension install jupyterlab_bokeh
+```
+Creating a new script ```inst_node.sh``` and calling it solves issue #16. The newly introduced file has the following content:
+
+```bash
+#!/bin/bash
+# script name:     inst_node.sh
+# last modified:   2018/03/11
+# sudo:            no
+
+script_name=$(basename -- "$0")
+env="/home/pi/.venv/jns"
+
+if [ $(id -u) = 0 ]
+then
+   echo "usage: ./$script_name"
+   exit 1
+fi
+
+# install nodejs and node version manager n
+curl -L https://git.io/n-install | bash -s -- -y
 ```
 
 ## Start and access your server

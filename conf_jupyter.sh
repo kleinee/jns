@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/02/22
+# last modified:   2018/03/11
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -59,8 +59,8 @@ jupyter nbextension enable --py --sys-prefix bqplot
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
-curl -L https://git.io/n-install | bash -s -- -y
-. /home/pi/.bashrc
+cd ~/jns
+./inst_node.sh
 
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
