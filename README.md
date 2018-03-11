@@ -325,12 +325,10 @@ sudo ./inst_julia.sh
 
 * [IJulia](https://github.com/JuliaLang/IJulia.jl) is the kernel required for Jupyter Notebook / Lab. Backgroud information on Julia on the Raspberry Pi can be found [here](https://www.raspberrypi.org/blog/julia-language-raspberry-pi/).
 
-* [JuliaBerry](https://github.com/JuliaBerry) is a GitHub organization maintaining various repositories with Julia packages for the Raspberry Pi. Sense HAT and GPIO support are definitely worth to explore.
-
 ```bash
 #!/bin/bash
 # script name:     inst_julia.sh
-# last modified:   2018/01/14
+# last modified:   2018/03/11
 # sudo:            yes
 
 env=/home/pi/.venv/jns
