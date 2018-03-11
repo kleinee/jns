@@ -11,11 +11,11 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-#apt -y install julia
+apt -y install julia
 
 su pi <<EOF
 source $env/bin/activate
-#julia -e 'Pkg.add("IJulia")'
+julia -e 'Pkg.add("IJulia")'
 julia -e 'using IJulia'
 julia -e 'Pkg.add("SenseHat")'
 julia -e 'using SenseHat'
