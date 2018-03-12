@@ -1,3 +1,7 @@
+# 12 March 2018
+* removed necessity to reboot after changing ```swap_size``` by stopping and starting the service
+* updated ```requirements.txt``` 
+
 # 11 March 2018
 * closed issues #15 and #16
 * issue #15 is personal preference - I may pick up on this at a later stage
