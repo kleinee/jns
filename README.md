@@ -422,3 +422,17 @@ sudo -u pi ./conf_jupyter.sh
 * list outdated packages with `pip3 list --outdated --format='legacy'`
 
 * Update `package` with `pip3 install -U package` where `package` is the package you want to update.
+
+## Start the server at boot (optional)
+Create a script called ```jupyter_start.sh``` in ```\home\pi``` with the following content:
+
+```
+#!/bin/bash
+. /home/pi/.venv/jns/bin/activate
+jupyter lab
+```
+Replace ```jupyter lab``` with ```jupyter notebook``` if you want to start with the notebook interface instead.
+
+Save the file and make it executable with ```sudo chmod +x ./jupyter_start.sh```.
+
+Open ```/etc/rc.local``` with your editor of choice and add ```sudo -u pi /home/pi/jupyter_start/sh``` before the line ```exit 0```. Save the file and reboot. After reboot you should be able to access the server without logging in.
