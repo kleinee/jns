@@ -1,5 +1,8 @@
+# 15 March 2018
+* added note to the end of ```README.md``` on how to stop the server if launched on boot
+
 # 14 March 2018
-* closer  issue #17
+* closed  issue #17
 * added the solution as an option to ```README.md``` as this might be useful to some
 
 # 12 March 2018
