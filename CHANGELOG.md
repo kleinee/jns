@@ -1,3 +1,7 @@
+# 19 March 2018
+* updated ```requiremnets.txt```
+* fixed ```inst_julia.sh```
+
 # 15 March 2018
 * added note to the end of ```README.md``` on how to stop the server if launched on boot
 

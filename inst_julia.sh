@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     inst_julia.sh
-# last modified:   2018/03/11
+# last modified:   2018/03/19
 # sudo:            yes
 
 env=/home/pi/.venv/jns
@@ -15,6 +15,6 @@ apt -y install julia
 
 su pi <<EOF
 source $env/bin/activate
-julia -e 'Pkg.add("IJulia")'
-julia -e 'using IJulia'
+julia -e 'Pkg.add("IJulia");'
+julia -e 'using IJulia;'
 EOF
