@@ -1,3 +1,6 @@
+# 01 Apr 2018
+* updated requirements.txt 
+
 # 27 March 2018
 * updated requirements.txt
 * in the wake of recent abuse of datascience tools: ***DO NO EVIL!***
