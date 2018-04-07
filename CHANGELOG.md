@@ -1,6 +1,7 @@
 # 07 April 2018
 * updated requirements.txt
 * fixed typo in README.md - thanks for reporting it @m-r-white 
+* ran a fresh install based on the DESKTOP version of Raspbian Stretch to fix issue #21 opened by @gusdrawn and independently confirmed by @m-r-white (Thanks to both!) and updated `README.md` and conf_jupyter` to clarify what went wrong in their installations. The short answer `nodejs 5+` is required for 'conf_jupyter.sh' to run properly. 
 
 # 01 April 2018
 * updated requirements.txt 

@@ -27,14 +27,28 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 * an ethernet or wifi connection for the Pi
 * internet access on the Pi
 * a computer to carry out the installation connected to the same network as the Pi
-* ***LESS TIME THAN EVER BEFORE*** due to the recent release of [piwheels](https://www.piwheels.hostedpi.com). Users new to this project might argue that the setup is still time-consuming. Believe me: In the past 6 hours+ were not uncommon and installing the system on a Raspberry Pi 1 was not impossible but required quite some patience and time.
+* ***LESS TIME THAN EVER BEFORE*** due to the recent release of [piwheels](https://www.piwheels.hostedpi.com). Users new to this project might argue that the setup is still time-consuming. Believe me: In the past 6 hours+ were not uncommon and installing the system on a Raspberry Pi 1 was not impossible but required quite some patience and time. Note that some packages listed in `requirements.txt` may not yet be available as Python wheels. Such packages are then built from source and this takes some time...  
 
 ## Installation
+
+### IMPORTANT NOTE  on fresh installations
+* an increasing number of users seem to install on top of images that have 'nodejs' already installed.
+* The scripts in this repository were initially designed to work based on ***Raspbian Stretch Lite*** as a starting point with the intention to run the server headless in order to maximise memory available for data analysis.
+* One such starting point is the desktop  version of ***Raspbian Stretch*** which comes with`nodejs` (and `git`) pre-installed. `conf_jupyter.sh` explained later now checks for the existence of `nodejs` and only installs it if not yet present on the system.
+ 
+* ***For the scripts to run properly on the desktop version of Raspbian or any other startingpoint with 'nodejs' installed, it is necessary that `nodejs` is version 5 or higher !!!***
+
+* If you start with a fresh Raspbian Stretch Desktop image, you can either uninstall `nodejs` using `apt purge nodejs` and then execute the scripts or - [courtesy of this post](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/) execute:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt install -y nodejs
+```
 
 ### First boot with fresh SD card
 * ssh into your Raspberry Pi with the the fresh install of Raspbian Stretch Lite as user ***pi***. Then run `sudo raspi-config` and set the memory split to 16MB, expand the file-system and set a new password for the user pi. When done, reboot and log in again via ssh.
 
-* Next install `git`:
+* If not yet present,  install `git`:
 
 ```bash
 sudo apt install -y git
@@ -60,7 +74,7 @@ sudo /etc/init.d/dphys-swapfile stop
 sudo /etc/init.d/dphys-swapfile start
 ```
 
-Technically you now just run `sudo apt ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside this directory.
+Technically you can now just run `sudo apt ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside this directory.
 
 ## Install required Raspbian packages with apt
 
@@ -156,12 +170,12 @@ The scripts generate a jupyter notebook configuration directory and in it a file
 
 NOTE: This setup still uses password authentication. If you prefer token-based authentication as introduced with notebook you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py` to. Documentation of possible configuration settings can be found [here](http://minrk notebook.readthedocs.io/en/latest/notebook.html).
 
-After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and Jupyter Lab. At the JupyterLab end this requires intstallation of `nodejs` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot`.
+After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `nodejs` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot`.
 
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/03/11
+# last modified:   2018/04/07
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -193,7 +207,7 @@ arr+=(["$app.open_browser"]="$app.open_browser = False")
 arr+=(["$app.ip"]="$app.ip ='*'")
 arr+=(["$app.port"]="$app.port = 8888")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
-arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/$(logname)/notebooks'")
+arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/pi/notebooks'")
 arr+=(["$app.password"]="$app.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
 
 # apply changes to jupyter_notebook_config.py
@@ -220,8 +234,15 @@ jupyter nbextension enable --py --sys-prefix bqplot
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
-cd ~/jns
-./inst_node.sh
+# if node is not yet installed
+if which node > /dev/null
+    then
+        echo "node is installed, skipping..."
+    else
+        # install nodejs and node version manager n
+        cd ~/jns
+        ./inst_node.sh
+fi
 
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
@@ -320,7 +341,7 @@ apt install -y latexmk
 sudo ./inst_julia.sh
 ```
 
-* [Julia](https://julialang.org) is a relatively new high-level, high-performance dynamic programming language for numerical computing trying to combine the ease of Python with the speed of C. Thanks to the efforts of the Raspberry Pi community `Julia 0.6.0` is availabel in the Raspbian Stretch Repository. It is really worth a try as the language is a rising star in scientific computing biting into the userbase of Matlab.
+* [Julia](https://julialang.org) is a relatively new high-level, high-performance dynamic programming language for numerical computing trying to combine the ease of Python with the speed of C. Thanks to the efforts of the Raspberry Pi community `Julia 0.6.0` is available in the Raspbian Stretch Repository. It is really worth a try as the language is a rising star in scientific computing biting into the userbase of Matlab.
 
 * [IJulia](https://github.com/JuliaLang/IJulia.jl) is the kernel required for Jupyter Notebook / Lab. Backgroud information on Julia on the Raspberry Pi can be found [here](https://www.raspberrypi.org/blog/julia-language-raspberry-pi/).
 
@@ -350,7 +371,7 @@ EOF
 ```
 
 ## Install Python support for Raspberry Pi hardware (optional)
-setting up Python s support for GPIO pins, PICAMERA module and Sense HAT hardware in our virtual environment is almost as simple as one would commonly  do without such environment.
+Setting up Python support for GPIO pins, the PICAMERA module and Sense HAT hardware in our virtual environment is almost as simple as one would commonly  do without such environment.
 ```bash
 #!/bin/bash
 # script name:     inst_pi_hardware.sh
@@ -391,7 +412,7 @@ This script is just convenience - it executes the individual steps described abo
 ```bash
 #!/bin/bash
 # script name:     inst_jns.sh
-# last modified:   2018/01/14
+# last modified:   2018/04/07
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -403,8 +424,7 @@ fi
 
 ./prep.sh
 ./inst_tex.sh
-./inst_pi_hardware.sh
-
+sudo -u pi ./inst_pi_hardware.sh
 sudo -u pi ./inst_stack.sh
 sudo -u pi ./conf_jupyter.sh
 ./inst_julia.sh

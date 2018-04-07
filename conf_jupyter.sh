@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/03/11
+# last modified:   2018/04/07
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -32,7 +32,7 @@ arr+=(["$app.open_browser"]="$app.open_browser = False")
 arr+=(["$app.ip"]="$app.ip ='*'")
 arr+=(["$app.port"]="$app.port = 8888")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
-arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/$(logname)/notebooks'")
+arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/pi/notebooks'")
 arr+=(["$app.password"]="$app.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
 
 # apply changes to jupyter_notebook_config.py
@@ -59,8 +59,15 @@ jupyter nbextension enable --py --sys-prefix bqplot
 /home/pi/.venv/jns/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
-cd ~/jns
-./inst_node.sh
+# if node is not yet installed
+if which node > /dev/null
+    then
+        echo "node is installed, skipping..."
+    else
+        # install nodejs and node version manager n
+        cd ~/jns
+        ./inst_node.sh
+fi
 
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
