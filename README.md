@@ -3,9 +3,9 @@
 
 [Project Jupyter](https://jupyter.org) not only revolutionizes data-heavy research across domains - it also boosts personal productivity for problems on a much smaller scale. Due to openness it is an amazing platform for exploring concepts and learning new things.
 
-I started setting up a Jupyter Notebook Server on a [Raspberry Pi](https://www.raspberrypi.org) following [this blog post](https://arundurvasula.wordpress.com/2014/04/01/remote-ipython-notebook-with-raspberry-pi/) by Arun Durvasula. Convinced of the potential of the platform I started to follow the development. 
+I started setting up a Jupyter Notebook Server on a [Raspberry Pi](https://www.raspberrypi.org) following [this blog post](https://arundurvasula.wordpress.com/2014/04/01/remote-ipython-notebook-with-raspberry-pi/) by Arun Durvasula. Convinced of the potential of the platform I followed the development. 
 
-What started as a personal exercise soon turned taught me a great deal about the underlying architcture. Given Jupyter's complexity, speed of growth and scale it is remarkable that such a system runs fine on a Raspberry Pi.
+My personal exercise soon taught me a great deal about the underlying architcture. Given Jupyter's complexity, speed of growth and scale it is remarkable that such a system runs fine on a Raspberry Pi.
 
 This repository isn't really anything genuine: I owe big thanks to many contributors in the Jupyter, Raspberry Pi, Linux, Python, Julia and greater Open Source communities for providing all the beautiful building blocks - small and large.
 
@@ -53,7 +53,7 @@ cd ~/jns
 ```
 * To increase the size of swap_file to 2048MB open `/etc/dphys-swapfile` and change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=2048`
 
-* Upon saving te file the service needs to be stopped and started for the change to take effect. Just run:
+* Upon saving the file the service needs to be stopped and started for the change to take effect. Just run:
 
 ```bash
 sudo /etc/init.d/dphys-swapfile stop

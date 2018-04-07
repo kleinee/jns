@@ -1,4 +1,8 @@
-# 01 Apr 2018
+# 07 April 2018
+* updated requirements.txt
+* fixed typo in README.md - thanks for reporting it @m-r-white 
+
+# 01 April 2018
 * updated requirements.txt 
 
 # 27 March 2018
