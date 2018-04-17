@@ -439,9 +439,9 @@ sudo -u pi ./conf_jupyter.sh
 
 * activate the virtual environment with `source /home/pi/.venv/jns/bin/activate`
 
-* list outdated packages with `pip3 list --outdated --format='legacy'`
+* list outdated packages with `pip3 list --outdated`
 
-* Update `package` with `pip3 install -U package` where `package` is the package you want to update.
+* Update `package` with `pip3 install -U package` where `package` is the name of package you want to update.
 
 ## Start the server at boot (optional)
 Create a script called ```jupyter_start.sh``` in ```\home\pi``` with the following content:

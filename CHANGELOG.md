@@ -1,3 +1,9 @@
+# 17 April 2018
+* updated requirements.txt
+* removed `format = 'legacy'` in README.md because it is deprecated in the latest version of `pip`
+* temporarily removed the altair package from requirements.txt due to incompatibility 
+* some stats: this repository enjoys roughly 45 clones in a fortnight. Not exactly a lot buty sill more than I had anticipated when I started. With currently 122 Python 3 packages installed the project accounts for ~2.9% oth the download traffic on piwheels.org.  
+
 # 09 April 2018
 * closed issue #21
 
