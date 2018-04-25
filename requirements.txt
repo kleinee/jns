@@ -59,7 +59,7 @@ notebook==5.4.1
 numexpr==2.6.4
 numpy==1.14.2
 olefile==0.45.1
-openpyxl==2.5.2
+openpyxl==2.5.3
 packaging==17.1
 pandas==0.22.0
 pandas-datareader==0.6.0
@@ -81,7 +81,7 @@ ptyprocess==0.5.2
 py==1.5.3
 Pygments==2.2.0
 pyparsing==2.2.0
-pytest==3.5.0
+pytest==3.5.1
 python-dateutil==2.7.2
 pytz==2018.4
 PyWavelets==0.5.2
@@ -101,10 +101,10 @@ sense-hat==2.2.0
 simplegeneric==0.8.1
 six==1.11.0
 snowballstemmer==1.2.1
-Sphinx==1.7.2
+Sphinx==1.7.3
 sphinx-rtd-theme==0.3.0
 sphinxcontrib-websupport==1.0.1
-SQLAlchemy==1.2.6
+SQLAlchemy==1.2.7
 sympy==1.1.1
 terminado==0.8.1
 testpath==0.3.1
