@@ -1,3 +1,6 @@
+# 19 May 2018
+* updated requirements.txt
+
 # 5 May 2018
 * updated requirements.txt
 * added altair + vega_datasets - see https://altair-viz.github.io/index.html for details
