@@ -1,5 +1,5 @@
 # 20 May 2018
-* currently ```conf_jns.sh``` fails!!! Please refer to my first response to issue #22 for a manual workaround until I find a better solution 
+* currently ```conf_jupyter.sh``` fails!!! Please refer to my first response to issue #22 for a manual workaround until I find a better solution 
 
 # 19 May 2018
 * updated requirements.txt
