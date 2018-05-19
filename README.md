@@ -255,8 +255,8 @@ Creating a new script ```inst_node.sh``` and calling it solves issue #16. The ne
 
 ```bash
 #!/bin/bash
-# script name:     inst_node.sh
-# last modified:   2018/03/11
+# script name:     conf_jupyter.sh
+# last modified:   2018/05/20
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -269,7 +269,8 @@ then
 fi
 
 # install nodejs and node version manager n
-curl -L https://git.io/n-install | bash -s -- -y
+# see: https://github.com/mklement0/n-install
+curl -L https://git.io/n-install | bash -s -- -y lts latest
 ```
 
 ## Start and access your server

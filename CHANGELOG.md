@@ -1,4 +1,5 @@
 # 20 May 2018
+* ***fixed further issue*** buy modifying ```inst_node.sh``` - see issue #22
 * ***fixed issue 22*** by modifying ```conf_jupyter.sh``` in accordance with a hint found [here](https://stackoverflow.com/questions/43659084/source-bashrc-in-a-script-not-working).
 * if you encountered this issue, please run the modified version of ```conf_jupyter.sh```
 
