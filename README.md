@@ -175,7 +175,7 @@ After the basic configuration the script activates the bash kernel and activates
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/04/07
+# last modified:   2018/05/20
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -241,7 +241,9 @@ if which node > /dev/null
     else
         # install nodejs and node version manager n
         cd ~/jns
-        ./inst_node.sh
+        # fix for issue #22
+        bash -i ./inst_node.sh
+        . /home/pi/.bashrc
 fi
 
 jupyter lab clean

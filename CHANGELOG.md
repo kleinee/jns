@@ -1,5 +1,6 @@
 # 20 May 2018
-* currently ```conf_jupyter.sh``` fails!!! Please refer to my first response to issue #22 for a manual workaround until I find a better solution 
+* ***fixed issue 22*** by modifying ```conf_jupyter.sh``` in accordance with a hhint found [here](https://stackoverflow.com/questions/43659084/source-bashrc-in-a-script-not-working).
+* if you encountered this issue, please run the modified version of ```conf_jupyter.sh```
 
 # 19 May 2018
 * updated requirements.txt
