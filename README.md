@@ -251,7 +251,7 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install bqplot
 jupyter labextension install jupyterlab_bokeh
 ```
-Creating a new script ```inst_node.sh``` and calling it solves issue #16. The newly introduced file has the following content:
+The script ```inst_node.sh``` -introduced to fix issue #16 and modified to fix issue #22- has the following content:
 
 ```bash
 #!/bin/bash
