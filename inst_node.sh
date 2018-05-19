@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/03/11
+# last modified:   2018/05/20
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -14,4 +14,5 @@ fi
 
 
 # install nodejs and node version manager n
-curl -L https://git.io/n-install | bash -s -- -y
+# see: https://github.com/mklement0/n-install
+curl -L https://git.io/n-install | bash -s -- -y lts latest
