@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018//01/07
+# last modified:   2018/01/07
 # sudo:            yes
 
 script_name=$(basename -- "$0")

@@ -1,4 +1,8 @@
-# 21 May 2019
+# 26 May 2018
+* updated requirements.txt
+* corrected a typo
+
+# 21 May 2018
 * Thanks to comments received form @Kevin--R issue 22 should now be fixed 
 
 # 20 May 2018

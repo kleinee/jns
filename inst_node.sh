@@ -12,7 +12,6 @@ then
    exit 1
 fi
 
-
 # install nodejs and node version manager n
 # see: https://github.com/mklement0/n-install
 curl -L https://git.io/n-install | bash -s -- -y lts latest
