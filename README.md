@@ -34,16 +34,11 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 ### IMPORTANT NOTE  on fresh installations
 * an increasing number of users seem to install on top of images that have 'nodejs' already installed.
 * The scripts in this repository were initially designed to work based on ***Raspbian Stretch Lite*** as a starting point with the intention to run the server headless in order to maximise memory available for data analysis.
-* One such starting point is the desktop  version of ***Raspbian Stretch*** which comes with`nodejs` (and `git`) pre-installed. `conf_jupyter.sh` explained later now checks for the existence of `nodejs` and only installs it if not yet present on the system.
+* One such starting point is the desktop  version of ***Raspbian Stretch*** which comes with`nodejs` (and `git`) pre-installed. `conf_jupyter.sh` explained later now checks for the existence of `node` and only installs it if not yet present on the system.
  
 * ***For the scripts to run properly on the desktop version of Raspbian or any other startingpoint with 'nodejs' installed, it is necessary that `nodejs` is version 5 or higher !!!***
 
-* If you start with a fresh Raspbian Stretch Desktop image, you can either uninstall `nodejs` using `apt purge nodejs` and then execute the scripts or - [courtesy of this post](http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/) execute:
-
-```bash
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt install -y nodejs
-```
+* If you start with a fresh Raspbian Stretch Desktop image, you can either uninstall `nodejs` using `apt purge nodejs` and then execute the scripts.
 
 ### First boot with fresh SD card
 * ssh into your Raspberry Pi with the the fresh install of Raspbian Stretch Lite as user ***pi***. Then run `sudo raspi-config` and set the memory split to 16MB, expand the file-system and set a new password for the user pi. When done, reboot and log in again via ssh.
@@ -159,7 +154,7 @@ cat requirements.txt | xargs -n 1 pip3 install
 ./conf_jupyter.sh
 ```
 
-The scripts generate a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for our notebook / lab server. We also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for our server. In the configuration file, we apply the following changes:
+The script generates a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for our notebook / lab server. We also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for our server. In the configuration file, we apply the following changes:
 
 * tell jupyter not to sart a browser upon start - we access the server from a remote machine on the same network
 * set the IP address to '*' 
@@ -170,12 +165,12 @@ The scripts generate a jupyter notebook configuration directory and in it a file
 
 NOTE: This setup still uses password authentication. If you prefer token-based authentication as introduced with notebook you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py` to. Documentation of possible configuration settings can be found [here](http://minrk notebook.readthedocs.io/en/latest/notebook.html).
 
-After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `nodejs` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot`.
+After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `node` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot` etc.
 
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/05/21
+# last modified:   2018/05/29
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -242,20 +237,20 @@ if which node > /dev/null
         # install nodejs and node version manager n
         cd ~/jns
         # fix for issue #22
-        bash -i ./inst_node.sh
+        # install nodejs and node version manager n
+        # see: https://github.com/mklement0/n-install
+        curl -L https://git.io/n-install | bash -s -- -y lts
 fi
 
-jupyter lab clean
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-jupyter labextension install bqplot
-jupyter labextension install jupyterlab_bokeh
+# install jupyter lab extensions
+bash -i inst_lab_ext.sh
 ```
-The script ```inst_node.sh``` - introduced to fix issue #16 and modified to fix issue #22 plus a temporary issue with node 10.0.0 - has the following content:
+The script ```inst_lab_ext.sh``` - introduced by @Kevin--R to fix issue#23 has the following content:
 
 ```bash
 #!/bin/bash
-# script name:     conf_jupyter.sh
-# last modified:   2018/05/21
+# script name:     inst_lab_ext.sh
+# last modified:   2018/05/29
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -267,10 +262,12 @@ then
    exit 1
 fi
 
-# install nodejs and node version manager n
-# see: https://github.com/mklement0/n-install
-curl -L https://git.io/n-install | bash -s -- -y lts latest
 . /home/pi/.bashrc
+jupyter lab clean
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension install bqplot --no-build
+jupyter labextension install jupyterlab_bokeh --no-build
+jupyter lab build
 ```
 
 ## Start and access your server
@@ -288,6 +285,33 @@ The prompt will change to indicate successfull activation preceding `pi@hostname
 ```bash
 (jns) pi@zerow:~ $
 ```
+
+### Before you proceed
+After installation completes, you will still need to activate the change made to .bashrc when node was installed before doing anything that requires node.
+
+This can be accomplished by any of the following:
+- reboot
+- logout and log back in
+- call `. ~/.bashrc` from the command line
+
+That's the reason for this warning during node installation:
+```
+  IMPORTANT: OPEN A NEW TERMINAL TAB/WINDOW or run `. /home/pi/.bashrc`
+             before using n and Node.js.
+```
+You can see this by running the following commands after your installation completes:
+```
+pi@test-pi:~/jns $ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+pi@test-pi:~/jns $ . ~/.bashrc
+pi@test-pi:~/jns $ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/home/pi/n/bin
+pi@test-pi:~/jns $ 
+```
+If you look at your **$PATH** environmental variable and see **/home/pi/n/bin** you are ready to use node.
+
+Also note that if you uninstall node with `n-uninstall` **/home/pi/n/bin** will remain in your **$PATH** environmental variable until you reboot or logout and log back in.
+
 
 ### Start the server
 To start the server just type `jupyter notebook` or `jupyter lab` 

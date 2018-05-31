@@ -1,3 +1,7 @@
+# 31 May 2018
+* removed `inst_node.sh`, modified ```conf_jupyter.sh` and added `inst_lab_ext.sh` as proposad by @Kevin--R to address issue#23 - Thanks Kevin!
+* modified `README.md` to refelct the changes above 
+
 # 26 May 2018
 * updated requirements.txt
 * corrected a typo

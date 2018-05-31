@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/05/21
+# last modified:   2018/05/29
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -67,10 +67,10 @@ if which node > /dev/null
         # install nodejs and node version manager n
         cd ~/jns
         # fix for issue #22
-        bash -i ./inst_node.sh
+        # install nodejs and node version manager n
+        # see: https://github.com/mklement0/n-install
+        curl -L https://git.io/n-install | bash -s -- -y lts
 fi
 
-jupyter lab clean
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-jupyter labextension install bqplot
-jupyter labextension install jupyterlab_bokeh
+# install jupyter lab extensions
+bash -i inst_lab_ext.sh
