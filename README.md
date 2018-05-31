@@ -340,7 +340,7 @@ Verify password: ****
 sudo ./inst_tex.sh
 ```
 
-* [TeX]() (and [Pandoc](http://pandoc.org)) are used under the hood to convert Jupyter notebooks to other formats including PDF.
+* [TeX](https://en.wikipedia.org/wiki/TeX) (and [Pandoc](http://pandoc.org)) are used under the hood to convert Jupyter notebooks to other formats including PDF.
 * Whilst not strictly necessary if no PDF export is rquired, I still recommend to run this step.
 
 ```bash
