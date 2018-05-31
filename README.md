@@ -163,7 +163,7 @@ The script generates a jupyter notebook configuration directory and in it a file
 * set the notebook_dir to `~/notebooks`
 * use the password hash for the default server password `jns`
 
-NOTE: This setup still uses password authentication. If you prefer token-based authentication, you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py`. Documentation of possible configuration settings can be found [here](notebook.readthedocs.io/en/latest).
+NOTE: This setup still uses password authentication. If you prefer token-based authentication, you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py`. Documentation of possible configuration settings can be found [here](https://jupyter-notebook.readthedocs.io/en/stable/index.html).
 
 After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `node` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot` etc.
 
