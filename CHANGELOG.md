@@ -1,6 +1,8 @@
 # 1 June 2018
 * fixed typo in `README.md`
 * closed issue # 23
+* updated requirements.txt
+
 
 # 31 May 2018
 * removed `inst_node.sh`, modified ```conf_jupyter.sh` and added `inst_lab_ext.sh` as proposad by @Kevin--R to address issue #23 - Thanks Kevin!
