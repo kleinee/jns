@@ -69,7 +69,7 @@ sudo /etc/init.d/dphys-swapfile stop
 sudo /etc/init.d/dphys-swapfile start
 ```
 
-Technically you can now just run `sudo apt ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside this directory.
+Technically you can now just run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside this directory.
 
 ## Install required Raspbian packages with apt
 
