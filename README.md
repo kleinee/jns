@@ -5,18 +5,18 @@
 
 I started setting up a Jupyter Notebook Server on a [Raspberry Pi](https://www.raspberrypi.org) following [this blog post](https://arundurvasula.wordpress.com/2014/04/01/remote-ipython-notebook-with-raspberry-pi/) by Arun Durvasula. Convinced of the potential of the platform I followed the development. 
 
-My personal exercise soon taught me a great deal about the underlying architcture. Given Jupyter's complexity, speed of growth and scale it is remarkable that such a system runs fine on a Raspberry Pi.
+My personal exercise soon taught me a great deal about the underlying architcture. Given Jupyter's complexity, speed of growth and scale, it is remarkable that such a system runs fine on a Raspberry Pi.
 
 This repository isn't really anything genuine: I owe big thanks to many contributors in the Jupyter, Raspberry Pi, Linux, Python, Julia and greater Open Source communities for providing all the beautiful building blocks - small and large.
 
 ### What is new?
 
 * Rather than installing the latest version of Python as I did the past, I decided that the new version would use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3.
-* Whilst this seems to be a step backwards, it is a in fact a giant step forward as we benefit from significant installation speedups made possible by the recently released [piwheels](https://www.piwheels.hostedpi.com) project.
+* Whilst this seems to be a step backwards, it is a in fact a giant step forward as you benefit from significant installation speedups made possible by the recently released [piwheels](https://www.piwheels.hostedpi.com) project.
 * The scripts work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory.
 * Python support for GPIO, Sense HAT and PICAMERA is installed without the earlier worries of breaking things on system level.
 * All Python modules are pip installed into a virtual environment following advice found online: ***You should never use `sudo pip install` -NEVER***. Well I did this in the past and it certainly had me and users confused. We have to learn certain things the hard way to really appreciate the benefits of doing them right. It is worth reading up on this in [this blogpost](http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
-* We now install Python packages into a virtual environment created with `venv` using a `requirements.txt` file. This really achieves a more maintainable setup, opens up more possibilities and hopefully makes this project more useful for the Raspberry Pi and Jupyter communities.
+* You now install Python packages into a virtual environment created with `venv` using a `requirements.txt` file. This really achieves a more maintainable setup, opens up more possibilities and hopefully makes this project more useful for the Raspberry Pi and Jupyter communities.
 * Python 3, Julia and Bash kernels are installed and configured during installation.
 * JupyterLab is installed and ready to use.
 
@@ -36,9 +36,9 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 * The scripts in this repository were initially designed to work based on ***Raspbian Stretch Lite*** as a starting point with the intention to run the server headless in order to maximise memory available for data analysis.
 * One such starting point is the desktop  version of ***Raspbian Stretch*** which comes with`nodejs` (and `git`) pre-installed. `conf_jupyter.sh` explained later now checks for the existence of `node` and only installs it if not yet present on the system.
  
-* ***For the scripts to run properly on the desktop version of Raspbian or any other startingpoint with 'nodejs' installed, it is necessary that `nodejs` is version 5 or higher !!!***
+* ***For the scripts to run properly on the desktop version of Raspbian or any other startingpoint with `node` installed, it is necessary that `node` is version 5 or higher !!!***
 
-* If you start with a fresh Raspbian Stretch Desktop image, you can either uninstall `nodejs` using `apt purge nodejs` and then execute the scripts.
+* If you start with a fresh Raspbian Stretch Desktop image, you can uninstall `node` using `apt purge nodejs` and then execute the scripts.
 
 ### First boot with fresh SD card
 * ssh into your Raspberry Pi with the the fresh install of Raspbian Stretch Lite as user ***pi***. Then run `sudo raspi-config` and set the memory split to 16MB, expand the file-system and set a new password for the user pi. When done, reboot and log in again via ssh.
@@ -55,21 +55,21 @@ sudo apt install -y git
 git clone https://github.com/kleinee/jns
 ```
 
-* change into the new directory `jns` just created with `git`:
+* Change into the new directory `jns` just created with `git`:
 
 ```bash
 cd ~/jns
 ```
 * To increase the size of swap_file to 2048MB open `/etc/dphys-swapfile` and change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=2048`
 
-* Upon saving the file the service needs to be stopped and started for the change to take effect. Just run:
+* Upon saving the file you need to stop and restart the service for the change to take effect. Just run:
 
 ```bash
 sudo /etc/init.d/dphys-swapfile stop
 sudo /etc/init.d/dphys-swapfile start
 ```
 
-Technically you can now just run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns`.
+Technically you can now run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns`.
 
 ## Install required Raspbian packages with apt
 
@@ -77,12 +77,12 @@ Technically you can now just run `sudo ./inst_jns.sh` which is the installer scr
 sudo ./prep.sh
 ```
 
-A couple of packages from the Raspbian repository are required during installation and later for a some Python packages tp work properly. The script just fetches these packages and installs them.
+A couple of packages from the Raspbian repository are required during installation and later for a some Python packages to work properly. The script just fetches these packages and installs them.
 
 ```bash
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018//01/07
+# last modified:   2018/06/03
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -92,8 +92,7 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-apt update
-apt -y upgrade
+apt update && apt -y upgrade
 apt -y install pandoc
 apt -y install libxml2-dev libxslt-dev
 apt -y install libblas-dev liblapack-dev
@@ -107,6 +106,25 @@ apt -y install libnetcdf-dev
 apt -y install python3-pip
 apt -y install python3-venv
 apt -y install libzmq3-dev
+
+# dependencies for python-opencv-headless
+#------------------------------------------------------
+apt -y install libjasper libjasper-dev
+apt -y install libjpeg-dev libtiff5-dev libpng12-dev
+apt -y install libilmbase12
+apt -y install libopenexr22
+apt -y install libgstreamer1.0-0
+apt -y install libavcodec-extra57
+apt -y install libavformat-dev
+apt -y install libilmbase12
+apt -y install libavcodec-dev
+apt -y install libswscale-dev
+apt -y install libv4l-dev
+apt -y install libgtk2.0-dev
+apt -y install libgtk-3-dev
+apt -y install libxvidcore-dev
+apt -y install libx264-dev
+#------------------------------------------------------
 ```
 
 ## Install required Python 3 packages with pip
@@ -115,7 +133,7 @@ apt -y install libzmq3-dev
 ./inst_stack.sh
 ```
 * This creates a virtual Python 3 environment '/home/pi/.venv/jns' and activates it temporarily
-* It then updates `pip3` to the latest version available version from the Python package repository before it processes the `requirements.txt` file line by line. 
+* It then updates `pip3` to the latest version available from the Python package repository before it processes the `requirements.txt` file line by line. 
 * This is a workaround to prevent `pip` from failing if one or more requirements listed fail to install.
 
 ```bash
@@ -154,7 +172,7 @@ cat requirements.txt | xargs -n 1 pip3 install
 ./conf_jupyter.sh
 ```
 
-The script generates a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for our notebook / lab server. We also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for our server. In the configuration file, we apply the following changes:
+With this script you generate a jupyter notebook configuration directory and in it a file called `jupyter_notebook_config.py` that holds the configuration settings for your notebook / lab server. You also create a folder notebooks in the home directory of user `pi` as the `notebook_dir` for your server. In the configuration file, you apply the following changes:
 
 * tell jupyter not to sart a browser upon start - we access the server from a remote machine on the same network
 * set the IP address to '*' 
@@ -163,9 +181,9 @@ The script generates a jupyter notebook configuration directory and in it a file
 * set the notebook_dir to `~/notebooks`
 * use the password hash for the default server password `jns`
 
-NOTE: This setup still uses password authentication. If you prefer token-based authentication, you will have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py`. Documentation of possible configuration settings can be found [here](https://jupyter-notebook.readthedocs.io/en/stable/index.html).
+NOTE: This setup still uses password authentication. If you prefer token-based authentication, you have to change settings in the config file `/home/pi/.jupyter/jupyter_notebook_config.py`. Documentation of possible configuration settings can be found [here](https://jupyter-notebook.readthedocs.io/en/stable/index.html).
 
-After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `node` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows us to use `ipywidgets` and `bqplot` etc.
+After the basic configuration the script activates the bash kernel and activates extensions for Jupyter Notebook and JupyterLab. At the JupyterLab end this requires intstallation of `node` followed by installation of the underlying JS infrastructure which is a bit time-consuming but ultimately allows you to use `ipywidgets`, `bqplot` and potentially other extensions.
 
 ```bash
 #!/bin/bash
@@ -273,23 +291,23 @@ jupyter lab build
 ## Start and access your server
 
 ### Activate the virtual environment
-Since we use a virtual environment to install Python modules, we need to activate this environment before we can start our server:
+Since you used a virtual environment to install Python modules, you need to activate this environment before you can start your server:
 
 
 ```bash
 source /home/pi/.venv/jns/bin/activate
 ```
 
-The prompt will change to indicate successfull activation preceding `pi@hostname:` with the envireonment name - in our case `(jns)`. With hostname set to `zerow` it looks like this:
+The prompt will change to indicate successfull activation preceding `pi@hostname:` with the envireonment name - in case pf this setup `(jns)`. With hostname set to `zerow` it looks like this:
 
 ```bash
 (jns) pi@zerow:~ $
 ```
 
 ### Before you proceed
-After installation completes, you will still need to activate the change made to .bashrc when node was installed before doing anything that requires node.
+After installation completes, you will still need to activate the change made to `~\.bashrc` when node was installed before doing anything that requires node.
 
-This can be accomplished by any of the following:
+You can be accomplish this by any of the following:
 - reboot
 - logout and log back in
 - call `. ~/.bashrc` from the command line
@@ -314,10 +332,10 @@ Also note that if you uninstall node with `n-uninstall` **/home/pi/n/bin** will 
 
 
 ### Start the server
-To start the server just type `jupyter notebook` or `jupyter lab` 
+To start your server just type `jupyter notebook` or `jupyter lab` 
 
 ### Access the server
-To access the server form a webbrowser on a computer running on the same network as your Raspberry Pi just open a browser and use the Pi's IP address / port 8888 as the url. 
+To access your server form a webbrowser on a computer running on the same network as your Raspberry Pi, just open a browser and use the Pi's IP address / port 8888 as the url. 
 
 ```bash
 xxx.xxx.xxx.xxx:8888
@@ -326,7 +344,7 @@ xxx.xxx.xxx.xxx:8888
 Change `xxx.xxx.xxx.xxx' to the IP address of the Raspberry Pi.
 
 ### Login
-During the configuration the default password for the server was set to `jns`. This can be changed by:
+During the configuration the default password for the server was set to `jns`. You can change this by typing:
 
 ```bash
 (jns) pi@zerow:~ $ jupyter notebook password
@@ -368,9 +386,9 @@ apt install -y latexmk
 sudo ./inst_julia.sh
 ```
 
-* [Julia](https://julialang.org) is a relatively new high-level, high-performance dynamic programming language for numerical computing trying to combine the ease of Python with the speed of C. Thanks to the efforts of the Raspberry Pi community `Julia 0.6.0` is available in the Raspbian Stretch Repository. It is really worth a try as the language is a rising star in scientific computing biting into the userbase of Matlab.
+* [Julia](https://julialang.org) is a relatively new high-level, high-performance dynamic programming language for numerical computing trying to combine the ease of Python with the speed of C. Thanks to the efforts of the Raspberry Pi community `Julia 0.6.0` is available in the Raspbian Stretch Repository. It is really worth a try as the language is a rising star in scientific computing.
 
-* [IJulia](https://github.com/JuliaLang/IJulia.jl) is the kernel required for Jupyter Notebook / Lab. Backgroud information on Julia on the Raspberry Pi can be found [here](https://www.raspberrypi.org/blog/julia-language-raspberry-pi/).
+* [IJulia](https://github.com/JuliaLang/IJulia.jl) is the kernel required for Jupyter Notebook / JupyterLab. Backgroud information on Julia on the Raspberry Pi can be found [here](https://www.raspberrypi.org/blog/julia-language-raspberry-pi/).
 
 ```bash
 #!/bin/bash
@@ -398,7 +416,13 @@ EOF
 ```
 
 ## Install Python support for Raspberry Pi hardware (optional)
-Setting up Python support for GPIO pins, the PICAMERA module and Sense HAT hardware in our virtual environment is almost as simple as one would commonly  do without such environment.
+
+```bash
+./inst_pi_hardware.sh
+```
+
+Setting up Python support for GPIO pins, the PICAMERA module and Sense HAT hardware in your virtual environment is almost as simple as you would commonly do without such environment.
+
 ```bash
 #!/bin/bash
 # script name:     inst_pi_hardware.sh
