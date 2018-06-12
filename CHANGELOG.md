@@ -1,3 +1,6 @@
+# 12 June 2018
+* updated `requirements.txt`
+
 # 3 June 2018
 * made minor changes to `README.md`
 * added dependencies for `python-opencv-headless` to `prep.sh`
