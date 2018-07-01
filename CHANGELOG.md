@@ -1,3 +1,6 @@
+# 1 July 2018
+* updated requirements.txt
+
 # 12 June 2018
 * updated `requirements.txt`
 
