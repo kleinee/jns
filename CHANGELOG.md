@@ -1,8 +1,12 @@
+# 8 July 2018
+* updated requirements.txt
+* added snowballstemmer back in
+
 # 1 July 2018
 * updated requirements.txt
 
 # 12 June 2018
-* updated `requirements.txt`
+* updated requirements.txt
 
 # 3 June 2018
 * made minor changes to `README.md`
