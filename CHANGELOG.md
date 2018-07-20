@@ -1,3 +1,6 @@
+# 20 July 2018
+* upgated requirements.txt
+
 # 8 July 2018
 * updated requirements.txt
 * added snowballstemmer back in
