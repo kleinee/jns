@@ -1,3 +1,9 @@
+# 7 August 2918
+* updated requirements.txt
+
+# 31 July 2018
+* updated requirements.txt
+
 # 20 July 2018
 * upgated requirements.txt
 
