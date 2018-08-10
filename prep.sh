@@ -27,8 +27,8 @@ apt -y install libzmq3-dev
 
 # dependencies for python-opencv-headless
 #------------------------------------------------------
-apt -y install libjasper libjasper-dev
-apt -y install libjpeg-dev libtiff5-dev libpng12-dev
+apt -y install libjasper-dev
+apt -y install libjpeg-dev libtiff5-dev libpng-dev
 apt -y install libilmbase12
 apt -y install libopenexr22
 apt -y install libgstreamer1.0-0
