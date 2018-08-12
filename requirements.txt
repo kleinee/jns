@@ -1,4 +1,4 @@
-labaster==0.7.11
+alabaster==0.7.11
 altair==2.1.0
 atomicwrites==1.1.5
 attrs==18.1.0
