@@ -1,4 +1,4 @@
-alabaster==0.7.11
+labaster==0.7.11
 altair==2.1.0
 atomicwrites==1.1.5
 attrs==18.1.0
@@ -115,7 +115,6 @@ Sphinx==1.7.6
 sphinx-rtd-theme==0.4.1
 sphinxcontrib-websupport==1.1.0
 SQLAlchemy==1.2.10
-sqlite3-kernel==1.0
 sympy==1.2
 terminado==0.8.1
 testpath==0.3.1
