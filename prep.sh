@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018/06/03
+# last modified:   2018/08/12
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -24,11 +24,12 @@ apt -y install libnetcdf-dev
 apt -y install python3-pip
 apt -y install python3-venv
 apt -y install libzmq3-dev
+apt -y install sqlite3 
 
 # dependencies for python-opencv-headless
 #------------------------------------------------------
-apt -y install libjasper libjasper-dev
-apt -y install libjpeg-dev libtiff5-dev libpng12-dev
+apt -y install libjasper-dev
+apt -y install libjpeg-dev libtiff5-dev libpng-dev
 apt -y install libilmbase12
 apt -y install libopenexr22
 apt -y install libgstreamer1.0-0

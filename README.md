@@ -60,13 +60,11 @@ git clone https://github.com/kleinee/jns
 ```bash
 cd ~/jns
 ```
-* To increase the size of swap_file to 2048MB open `/etc/dphys-swapfile` and change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=2048`
-
-* Upon saving the file you need to stop and restart the service for the change to take effect. Just run:
-
+* To increase the size of swap_file to 2048MB run:
 ```bash
+sudo sed -i -e 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile stop
-sudo /etc/init.d/dphys-swapfile start
+sudo /etc/init.d/dphys-swapfile st
 ```
 
 Technically you can now run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns`.
@@ -82,7 +80,7 @@ A couple of packages from the Raspbian repository are required during installati
 ```bash
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018/06/03
+# last modified:   2018/08/12
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -106,11 +104,12 @@ apt -y install libnetcdf-dev
 apt -y install python3-pip
 apt -y install python3-venv
 apt -y install libzmq3-dev
+apt -y install sqlite3 
 
 # dependencies for python-opencv-headless
 #------------------------------------------------------
-apt -y install libjasper libjasper-dev
-apt -y install libjpeg-dev libtiff5-dev libpng12-dev
+apt -y install libjasper-dev
+apt -y install libjpeg-dev libtiff5-dev libpng-dev
 apt -y install libilmbase12
 apt -y install libopenexr22
 apt -y install libgstreamer1.0-0
@@ -414,6 +413,40 @@ julia -e 'Pkg.add("IJulia");'
 julia -e 'using IJulia;'
 EOF
 ```
+## Install the SQLite kernel (optional)
+
+* I found the [SQLite kernel](https://github.com/brownan/sqlite3-kernel) quite useful in some experiments with SQLite3 databases in Jupyter Notebooks.
+
+```bash
+sudo ./inst_sqlite.sh
+```
+
+```bash
+#!/bin/bash
+# script name:     conf_jupyter.sh
+# last modified:   2018/08/12
+# sudo:            no
+
+script_name=$(basename -- "$0")
+env="/home/pi/.venv/jns"
+
+if [ $(id -u) = 0 ]
+then
+   echo "usage: ./$script_name"
+   exit 1
+fi
+
+# activate virtual environment
+source $env/bin/activate
+
+# clone SQLite kernel repository
+git clone https://github.com/brownan/sqlite3-kernel.git
+
+# install kernel
+python ./sqlite3-kernel/setup.py install
+python -m sqlite3_kernel.install
+rm -rf sqlite3-kernel/
+```
 
 ## Install Python support for Raspberry Pi hardware (optional)
 
@@ -456,14 +489,27 @@ pip3 install sense-hat
 pip3 install picamera
 pip3 install gpiozero
 ```
-## Put it all together
 
-This script is just convenience - it executes the individual steps described above in the order necessary.
+## Start the server at boot with systemd (optional)
+Credits for the following solution go to mt08xx:
+
+* create an executable file named 'start_jupyter.sh' in '/home/pi' used to start the server
+* create a file named 'jupyter.service' in '/etc/systemd/sytsem'
+* start the service
+
+To do this run:
+
+```bash
+sudo ./service.sh
+```
+
+The file has the following content:
 
 ```bash
 #!/bin/bash
-# script name:     inst_jns.sh
-# last modified:   2018/04/07
+# script name:     service.sh
+# last modified:   2018/08/12
+# credits:         mt08xx
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -473,12 +519,85 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+# create jupyter.sh in /home/pi and make it executable
+cat << 'ONE' > /home/pi/jupyter_start.sh && chmod a+x /home/pi/jupyter_start.sh
+#!/bin/bash
+. /home/pi/.venv/jns/bin/activate
+jupyter lab
+#jupyter notebook
+ONE
+
+cat << 'TWO' | sudo tee /etc/systemd/system/jupyter.service
+[Unit]
+Description=Jupyter
+
+[Service]
+Type=simple
+ExecStart=/home/pi/jupyter_start.sh
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/notebooks
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+TWO
+
+# start jupyter
+systemctl daemon-reload
+systemctl start jupyter
+systemctl enable jupyter
+```
+
+* Next time you boot your Pi, the service is stared automatically.
+* To stop the service for system updates run:
+
+```bash
+sudo systemctl stop jupyter
+```
+
+## Put it all together
+
+This script is just convenience - it executes the individual steps described above in the order necessary.
+You may want to comment out optional features that you do not need. By all features are activated.
+
+```bash
+#!/bin/bash
+# script name:     inst_jns.sh
+# last modified:   2018/08/12
+# sudo:            yes
+
+script_name=$(basename -- "$0")
+
+if ! [ $(id -u) = 0 ]; then
+   echo "usage: sudo ./$script_name"
+   exit 1
+fi
+
+# make necessary preparations
 ./prep.sh
+
+# install TeX OPTIONAL
 ./inst_tex.sh
+
+# install support for Pi hardware OPTIONAL
 sudo -u pi ./inst_pi_hardware.sh
+
+# install Python packages 
 sudo -u pi ./inst_stack.sh
+
+# configure the server OPTIONAL
 sudo -u pi ./conf_jupyter.sh
+
+# install Julia and the IJulia kernel OPTIONAL
 ./inst_julia.sh
+
+# install the SQLite3 kernel OPTIONAL
+./inst_sqlite.sh
+
+# set up service to start the server on boot OPTIONAL
+./service.sh
 ```
 
 ## Keep your installation up to date
@@ -493,19 +612,3 @@ sudo -u pi ./conf_jupyter.sh
 * list outdated packages with `pip3 list --outdated`
 
 * Update `package` with `pip3 install -U package` where `package` is the name of package you want to update.
-
-## Start the server at boot (optional)
-Create a script called ```jupyter_start.sh``` in ```\home\pi``` with the following content:
-
-```
-#!/bin/bash
-. /home/pi/.venv/jns/bin/activate
-jupyter lab
-```
-Replace ```jupyter lab``` with ```jupyter notebook``` if you want to start with the notebook interface instead.
-
-Save the file and make it executable with ```sudo chmod +x ./jupyter_start.sh```.
-
-Open ```/etc/rc.local``` with your editor of choice and add ```sudo -u pi /home/pi/jupyter_start.sh``` before the line ```exit 0```. Save the file and reboot. After reboot you should be able to access the server without logging in via ssh.
-
-To stop the server running in the background log in via ```ssh``` and issue ```pkill jupyter``` from the commandline which works for lab and notebook.

@@ -1,3 +1,9 @@
+# 12 August 2018
+* updated requirements.txt
+* added SQLite3 kernel installation script
+* correted prep.sh - thanks mt08xx
+* adopted mt08xx's nice solution to start the server as a service
+
 # 7 August 2018
 * updated requirements.txt
 
