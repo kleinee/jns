@@ -560,7 +560,7 @@ sudo systemctl stop jupyter
 ## Put it all together
 
 This script is just convenience - it executes the individual steps described above in the order necessary.
-You may want to comment out optional features that you do not need. By all features are activated.
+You may want to comment out optional features that you do not need. By default all features are activated.
 
 ```bash
 #!/bin/bash
