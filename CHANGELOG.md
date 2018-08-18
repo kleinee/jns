@@ -1,3 +1,6 @@
+# 18 August 2018
+* updated requirements.txt
+
 # 12 August 2018
 * updated requirements.txt
 * added SQLite3 kernel installation script
