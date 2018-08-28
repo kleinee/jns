@@ -1,3 +1,7 @@
+# 28 August 2018
+* updated requirements.txt
+* made minor corrections to README.md
+
 # 18 August 2018
 * updated requirements.txt
 

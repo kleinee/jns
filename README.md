@@ -64,7 +64,7 @@ cd ~/jns
 ```bash
 sudo sed -i -e 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile stop
-sudo /etc/init.d/dphys-swapfile st
+sudo /etc/init.d/dphys-swapfile start
 ```
 
 Technically you can now run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns`.
@@ -325,9 +325,9 @@ pi@test-pi:~/jns $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/home/pi/n/bin
 pi@test-pi:~/jns $ 
 ```
-If you look at your **$PATH** environmental variable and see **/home/pi/n/bin** you are ready to use node.
+If you look at your **$PATH** environment variable and see **/home/pi/n/bin** you are ready to use node.
 
-Also note that if you uninstall node with `n-uninstall` **/home/pi/n/bin** will remain in your **$PATH** environmental variable until you reboot or logout and log back in.
+Also note that if you uninstall node with `n-uninstall` **/home/pi/n/bin** will remain in your **$PATH** environment variable until you reboot or logout and log back in.
 
 
 ### Start the server
