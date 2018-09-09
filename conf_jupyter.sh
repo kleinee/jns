@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/05/29
+# last modified:   2018/09/09
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -73,4 +73,4 @@ if which node > /dev/null
 fi
 
 # install jupyter lab extensions
-bash -i inst_lab_ext.sh
+bash -i ./inst_lab_ext.sh

@@ -1,3 +1,7 @@
+# 9 September 2018
+* installed from scratch on a Raspberry Pi 3 and in the process made some fixes
+* updated requirements.txt
+
 # 28 August 2018
 * updated requirements.txt
 * made minor corrections to README.md

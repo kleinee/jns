@@ -1,6 +1,6 @@
 #!/bin/bash
-# script name:     inst_tex.sh
-# last modified:   2018/06/02
+# script name:     inst_opencv.sh
+# last modified:   2018/09/09
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -29,5 +29,7 @@ apt install -y libxvidcore-dev
 apt install -y libx264-dev
 #------------------------------------------------------
 
-source $env/bin/activate
-sudo -u pi pip install opencv-python-headless
+su - pi <<'EOF'
+source /home/pi/.venv/jns/bin/activate
+pip install opencv-python-headless
+EOF

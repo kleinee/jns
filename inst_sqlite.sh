@@ -1,6 +1,6 @@
 #!/bin/bash
-# script name:     conf_jupyter.sh
-# last modified:   2018/08/12
+# script name:     inst_sqlite,sh
+# last modified:   2018/09/09
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -19,6 +19,8 @@ source $env/bin/activate
 git clone https://github.com/brownan/sqlite3-kernel.git
 
 # install kernel
-python ./sqlite3-kernel/setup.py install
+cd sqlite3-kernel
+python setup.py install
 python -m sqlite3_kernel.install
+cd ..
 rm -rf sqlite3-kernel/

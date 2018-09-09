@@ -80,7 +80,7 @@ A couple of packages from the Raspbian repository are required during installati
 ```bash
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018/08/12
+# last modified:   2018/09/09
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -105,25 +105,6 @@ apt -y install python3-pip
 apt -y install python3-venv
 apt -y install libzmq3-dev
 apt -y install sqlite3 
-
-# dependencies for python-opencv-headless
-#------------------------------------------------------
-apt -y install libjasper-dev
-apt -y install libjpeg-dev libtiff5-dev libpng-dev
-apt -y install libilmbase12
-apt -y install libopenexr22
-apt -y install libgstreamer1.0-0
-apt -y install libavcodec-extra57
-apt -y install libavformat-dev
-apt -y install libilmbase12
-apt -y install libavcodec-dev
-apt -y install libswscale-dev
-apt -y install libv4l-dev
-apt -y install libgtk2.0-dev
-apt -y install libgtk-3-dev
-apt -y install libxvidcore-dev
-apt -y install libx264-dev
-#------------------------------------------------------
 ```
 
 ## Install required Python 3 packages with pip
@@ -139,7 +120,7 @@ apt -y install libx264-dev
 #!/bin/bash
 # script name:     inst_stack.sh
 # last modified:   2018/01/14
-# sudo:            no
+# sudo: no
 
 script_name=$(basename -- "$0")
 env="/home/pi/.venv/jns"
@@ -150,7 +131,6 @@ then
    exit 1
 fi
 
-# create virtual environment
 if [ ! -d "$venv" ]; then
   python3 -m venv $env
 fi
@@ -159,8 +139,8 @@ fi
 source $env/bin/activate
 
 pip3 install pip==9.0.0
+pip3 install setuptools
 pip3 install -U pip
-pip3 install -U setuptools
 
 cat requirements.txt | xargs -n 1 pip3 install
 ```
@@ -187,7 +167,7 @@ After the basic configuration the script activates the bash kernel and activates
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/05/29
+# last modified:   2018/09/09
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -260,8 +240,9 @@ if which node > /dev/null
 fi
 
 # install jupyter lab extensions
-bash -i inst_lab_ext.sh
+bash -i ./inst_lab_ext.sh
 ```
+
 The script ```inst_lab_ext.sh``` - introduced by @Kevin--R to fix issue#23 has the following content:
 
 ```bash
@@ -317,7 +298,7 @@ That's the reason for this warning during node installation:
              before using n and Node.js.
 ```
 You can see this by running the following commands after your installation completes:
-```
+```bash
 pi@test-pi:~/jns $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 pi@test-pi:~/jns $ . ~/.bashrc
@@ -418,13 +399,13 @@ EOF
 * I found the [SQLite kernel](https://github.com/brownan/sqlite3-kernel) quite useful in some experiments with SQLite3 databases in Jupyter Notebooks.
 
 ```bash
-sudo ./inst_sqlite.sh
+./inst_sqlite.sh
 ```
 
 ```bash
 #!/bin/bash
-# script name:     conf_jupyter.sh
-# last modified:   2018/08/12
+# script name:     inst_sqlite,sh
+# last modified:   2018/09/09
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -443,8 +424,10 @@ source $env/bin/activate
 git clone https://github.com/brownan/sqlite3-kernel.git
 
 # install kernel
-python ./sqlite3-kernel/setup.py install
+cd sqlite3-kernel
+python setup.py install
 python -m sqlite3_kernel.install
+cd ..
 rm -rf sqlite3-kernel/
 ```
 
@@ -489,26 +472,65 @@ pip3 install sense-hat
 pip3 install picamera
 pip3 install gpiozero
 ```
+## Install openCV (optional)
+
+```bash
+#!/bin/bash
+# script name:     inst_opencv.sh
+# last modified:   2018/09/09
+# sudo:            yes
+
+script_name=$(basename -- "$0")
+env="/home/pi/.venv/jns"
+
+if ! [ $(id -u) = 0 ]; then
+   echo "usage: sudo ./$script_name"
+   exit 1
+fi
+
+#------------------------------------------------------
+apt install -y libjasper libjasper-dev
+apt install -y libjpeg-dev libtiff5-dev libpng12-dev
+apt install -y libilmbase12
+apt install -y libopenexr22
+apt install -y libgstreamer1.0-0
+apt install -y libavcodec-extra57
+apt install -y libavformat-dev
+apt install -y libilmbase12
+apt onstall -y libavcodec-dev
+apt install -y libswscale-dev 
+apt install -y libv4l-dev
+apt install -y libgtk2.0-dev 
+apt install -y libgtk-3-dev
+apt install -y libxvidcore-dev 
+apt install -y libx264-dev
+#------------------------------------------------------
+
+su - pi <<'EOF'
+source /home/pi/.venv/jns/bin/activate
+pip install opencv-python-headless
+EOF
+```
 
 ## Start the server at boot with systemd (optional)
 Credits for the following solution go to mt08xx:
 
 * create an executable file named 'start_jupyter.sh' in '/home/pi' used to start the server
-* create a file named 'jupyter.service' in '/etc/systemd/sytsem'
+* create a file named 'jupyter.service' in '/etc/systemd/system'
 * start the service
 
 To do this run:
 
 ```bash
-sudo ./service.sh
+sudo ./conf_service.sh
 ```
 
 The file has the following content:
 
 ```bash
 #!/bin/bash
-# script name:     service.sh
-# last modified:   2018/08/12
+# script name:     conf_service.sh
+# last modified:   2018/09/09
 # credits:         mt08xx
 # sudo:            yes
 
@@ -565,7 +587,7 @@ You may want to comment out optional features that you do not need. By default a
 ```bash
 #!/bin/bash
 # script name:     inst_jns.sh
-# last modified:   2018/08/12
+# last modified:   2018/09/09
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -578,26 +600,31 @@ fi
 # make necessary preparations
 ./prep.sh
 
+# install Python packages 
+sudo -u pi ./inst_stack.sh
+
+# configure the server
+sudo -u pi ./conf_jupyter.sh
+
+#-----------------------------------------------
+
 # install TeX OPTIONAL
 ./inst_tex.sh
 
 # install support for Pi hardware OPTIONAL
 sudo -u pi ./inst_pi_hardware.sh
 
-# install Python packages 
-sudo -u pi ./inst_stack.sh
-
-# configure the server OPTIONAL
-sudo -u pi ./conf_jupyter.sh
-
 # install Julia and the IJulia kernel OPTIONAL
 ./inst_julia.sh
 
 # install the SQLite3 kernel OPTIONAL
-./inst_sqlite.sh
+sudo -u pi ./inst_sqlite.sh
+
+# install opencv OPTIONAL
+./inst_opencv.sh
 
 # set up service to start the server on boot OPTIONAL
-./service.sh
+./conf_service.sh
 ```
 
 ## Keep your installation up to date
