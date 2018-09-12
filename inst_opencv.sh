@@ -33,3 +33,4 @@ su - pi <<'EOF'
 source /home/pi/.venv/jns/bin/activate
 pip install opencv-python-headless
 EOF
+

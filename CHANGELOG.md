@@ -1,3 +1,4 @@
+
 # 9 September 2018
 * installed from scratch on a Raspberry Pi 3 and in the process made some fixes
 * updated requirements.txt

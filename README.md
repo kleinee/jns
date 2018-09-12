@@ -639,3 +639,4 @@ sudo -u pi ./inst_sqlite.sh
 * list outdated packages with `pip3 list --outdated`
 
 * Update `package` with `pip3 install -U package` where `package` is the name of package you want to update.
+

@@ -24,3 +24,4 @@ python setup.py install
 python -m sqlite3_kernel.install
 cd ..
 rm -rf sqlite3-kernel/
+

@@ -74,3 +74,4 @@ fi
 
 # install jupyter lab extensions
 bash -i ./inst_lab_ext.sh
+
