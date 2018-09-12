@@ -1,3 +1,10 @@
+[![hardware](https://img.shields.io/badge/hardware-Raspberry_Pi-red.svg)](https://www.raspberrypi.org/products/)
+[![os](https://img.shields.io/badge/OS-Raspbian_Stretch_Lite-blue.svg)](https://www.raspberrypi.org/downloads/raspbian/)
+![python](https://img.shields.io/badge/python-3.5.3-green.svg)
+![nodejs](https://img.shields.io/badge/nodejs-v8.11.4-green.svg)
+[![jupyter](https://img.shields.io/badge/more_info-jupyter-orange.svg)](http://jupyter.org)
+[![jupyter](https://img.shields.io/badge/more_info-piwheels-yellow.svg)](https://www.piwheels.hostedpi.com)
+
 # Jupyter Notebook & Lab Server on Raspberry Pi
 ## Intro
 
