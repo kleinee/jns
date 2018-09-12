@@ -1,3 +1,6 @@
+# 12 September 2018
+* updated requirements.txt
+* removed service.sh as it is renamed to conf_servivice.sh
 
 # 9 September 2018
 * installed from scratch on a Raspberry Pi 3 and in the process made some fixes
