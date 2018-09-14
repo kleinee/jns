@@ -69,7 +69,7 @@ opencv-python-headless==3.4.2.17
 openpyxl==2.5.6
 packaging==17.1
 pandas==0.23.4
-pandas-datareader==0.6.0
+pandas-datareader==0.7.0
 pandocfilters==1.4.2
 parso==0.3.1
 pathlib2==2.3.2
@@ -111,7 +111,7 @@ sense-hat==2.2.0
 simplegeneric==0.8.1
 six==1.11.0
 snowballstemmer==1.2.1
-Sphinx==1.7.9
+Sphinx==1.8.0
 sphinx-rtd-theme==0.4.1
 sphinxcontrib-websupport==1.1.0
 SQLAlchemy==1.2.11

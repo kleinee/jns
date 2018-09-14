@@ -1,3 +1,6 @@
+# 14 Septmber 2018
+* updated requirements.txt
+
 # 12 September 2018
 * updated requirements.txt
 * removed service.sh as it is renamed to conf_servivice.sh
