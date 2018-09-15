@@ -22,19 +22,19 @@ sudo -u pi ./conf_jupyter.sh
 #-----------------------------------------------
 
 # install TeX OPTIONAL
-# ./inst_tex.sh
+./inst_tex.sh
 
 # install support for Pi hardware OPTIONAL
-# sudo -u pi ./inst_pi_hardware.sh
+sudo -u pi ./inst_pi_hardware.sh
 
 # install Julia and the IJulia kernel OPTIONAL
-#./inst_julia.sh
+./inst_julia.sh
 
 # install the SQLite3 kernel OPTIONAL
-# sudo -u pi ./inst_sqlite.sh
+sudo -u pi ./inst_sqlite.sh
 
 # install opencv OPTIONAL
-# ./inst_opencv.sh
+./inst_opencv.sh
 
 # set up service to start the server on boot OPTIONAL
 ./conf_service.sh
