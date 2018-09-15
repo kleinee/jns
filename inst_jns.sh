@@ -11,13 +11,13 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 # make necessary preparations
-# ./prep.sh
+./prep.sh
 
 # install Python packages 
-# sudo -u pi ./inst_stack.sh
+sudo -u pi ./inst_stack.sh
 
 # configure the server
-# sudo -u pi ./conf_jupyter.sh
+sudo -u pi ./conf_jupyter.sh
 
 #-----------------------------------------------
 
