@@ -1,3 +1,7 @@
+# 15 September 2018
+* updated requirements.txt
+* simpified requirements using pipdeptree -f --warn silence | grep -P '^[\w0-9\-=.]+'
+
 # 14 Septmber 2018
 * updated requirements.txt
 
