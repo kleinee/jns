@@ -3,7 +3,7 @@
 ![python](https://img.shields.io/badge/python-3.5.3-green.svg)
 ![nodejs](https://img.shields.io/badge/nodejs-v8.11.4-green.svg)
 [![jupyter](https://img.shields.io/badge/more_info-jupyter-orange.svg)](http://jupyter.org)
-[![jupyter](https://img.shields.io/badge/more_info-piwheels-yellow.svg)](https://www.piwheels.hostedpi.com)
+[![jupyter](https://img.shields.io/badge/more_info-piwheels-yellow.svg)](https://www.piwheels.org)
 
 # Jupyter Notebook & Lab Server on Raspberry Pi
 ## Intro
@@ -19,7 +19,7 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 ### What is new?
 
 * Rather than installing the latest version of Python as I did the past, I decided that the new version would use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3.
-* Whilst this seems to be a step backwards, it is a in fact a giant step forward as you benefit from significant installation speedups made possible by the recently released [piwheels](https://www.piwheels.hostedpi.com) project.
+* Whilst this seems to be a step backwards, it is a in fact a giant step forward as you benefit from significant installation speedups made possible by the recently released [piwheels](https://www.piwheels.org) project.
 * The scripts work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory.
 * Python support for GPIO, Sense HAT and PICAMERA is installed without the earlier worries of breaking things on system level.
 * All Python modules are pip installed into a virtual environment following advice found online: ***You should never use `sudo pip install` -NEVER***. Well I did this in the past and it certainly had me and users confused. We have to learn certain things the hard way to really appreciate the benefits of doing them right. It is worth reading up on this in [this blogpost](http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
@@ -34,7 +34,7 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 * an ethernet or wifi connection for the Pi
 * internet access on the Pi
 * a computer to carry out the installation connected to the same network as the Pi
-* ***LESS TIME THAN EVER BEFORE*** due to the recent release of [piwheels](https://www.piwheels.hostedpi.com). Users new to this project might argue that the setup is still time-consuming. Believe me: In the past 6 hours+ were not uncommon and installing the system on a Raspberry Pi 1 was not impossible but required quite some patience and time. Note that some packages listed in `requirements.txt` may not yet be available as Python wheels. Such packages are then built from source and this takes some time...  
+* ***LESS TIME THAN EVER BEFORE*** due to the recent release of [piwheels](https://www.piwheels.org). Users new to this project might argue that the setup is still time-consuming. Believe me: In the past 6 hours+ were not uncommon and installing the system on a Raspberry Pi 1 was not impossible but required quite some patience and time. Note that some packages listed in `requirements.txt` may not yet be available as Python wheels. Such packages are then built from source and this takes some time...  
 
 ## Installation
 
