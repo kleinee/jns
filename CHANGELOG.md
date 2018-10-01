@@ -1,3 +1,7 @@
+# 1 October 2018
+* added tensorflow
+* update requirements.txt
+
 # 23 September 2018
 * updated requirements.txt
 * modified conf_jupyter.sh to fix issue #26 by setting ```c.NotebookApp.allow_remote_access = True``` in the configuration file located at ```~/.jupyter/jupyter_notebook_config.py```. In existing installtions just edit the configuration file manually
