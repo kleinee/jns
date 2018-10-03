@@ -1,6 +1,10 @@
+# 4 October 2018
+* updated requirements.txt
+* both ipython and jupyter-console are now compatible with prompt-toolkit 2.0.5 
+
 # 1 October 2018
 * added tensorflow
-* update requirements.txt
+* updated requirements.txt
 
 # 23 September 2018
 * updated requirements.txt
