@@ -451,7 +451,7 @@ Setting up Python support for GPIO pins, the PICAMERA module and Sense HAT hardw
 ```bash
 #!/bin/bash
 # script name:     inst_pi_hardware.sh
-# last modified:   2018/01/14
+# last modified:   2018/10/04
 # sudo: no
 
 script_name=$(basename -- "$0")
@@ -466,10 +466,10 @@ fi
 # activate virtual environment
 source $env/bin/activate
 
-pip3 install RTIMULib
-pip3 install sense-hat
-pip3 install picamera
-pip3 install gpiozero
+pip install RTIMULib
+pip install sense-hat
+pip install picamera
+pip install gpiozero
 ```
 ## Install openCV (optional)
 
