@@ -20,7 +20,7 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 
 * Rather than installing the latest version of Python as I did the past, I decided that the new version would use the latest Python 3 version supported in Raspbian - as of this writing Python 3.5.3.
 * Whilst this seems to be a step backwards, it is a in fact a giant step forward as you benefit from significant installation speedups made possible by the recently released [piwheels](https://www.piwheels.org) project.
-* The scripts work across the entire range of Raspberry Pis - perhaps with the exception of the early models with just 256MB of memory.
+* The scripts work across the entire range of Raspberry Pis - including the early models with just 256MB of memory.
 * Python support for GPIO, Sense HAT and PICAMERA is installed without the earlier worries of breaking things on system level.
 * All Python modules are pip installed into a virtual environment following advice found online: ***You should never use `sudo pip install` -NEVER***. Well I did this in the past and it certainly had me and users confused. We have to learn certain things the hard way to really appreciate the benefits of doing them right. It is worth reading up on this in [this blogpost](http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
 * You now install Python packages into a virtual environment created with `venv` using a `requirements.txt` file. This really achieves a more maintainable setup, opens up more possibilities and hopefully makes this project more useful for the Raspberry Pi and Jupyter communities.
@@ -56,17 +56,6 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 sudo apt install -y git
 ```
 
-* With preparations out of the way clone this repository into the home directory of user ***pi***
-
-```bash
-git clone https://github.com/kleinee/jns
-```
-
-* Change into the new directory `jns` just created with `git`:
-
-```bash
-cd ~/jns
-```
 * To increase the size of swap_file to 2048MB run:
 ```bash
 sudo sed -i -e 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
@@ -74,7 +63,20 @@ sudo /etc/init.d/dphys-swapfile stop
 sudo /etc/init.d/dphys-swapfile start
 ```
 
-Technically you can now run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns`.
+* With preparations out of the way clone this repository into the home directory of user ***pi***
+
+```bash
+git clone https://github.com/kleinee/jns
+```
+* Change into the new directory `~/jns/scripts` just created with `git`:
+
+```bash
+cd ~/jns/scripts
+```
+
+Technically you can now run `sudo ./inst_jns.sh` which is the installer script that combines the steps described below.  If you follow along I assume that you run all scripts from inside the directory `~/jns/scripts`.
+
+You might not want all features on your system. Feel free to edit `inst_jns.sh' to suit your requirements.
 
 ## Install required Raspbian packages with apt
 
