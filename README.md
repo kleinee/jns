@@ -464,17 +464,7 @@ fi
 # activate virtual environment
 source $env/bin/activate
 
-git clone https://github.com/RPi-Distro/RTIMULib
-
-cd ./RTIMULib/Linux/python/
-
-python3 setup.py build
-python3 setup.py install
-
-cd /home/pi/jns
-
-rm -rf RTIMULib
-
+pip3 install RTIMULib
 pip3 install sense-hat
 pip3 install picamera
 pip3 install gpiozero
