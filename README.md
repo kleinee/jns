@@ -56,13 +56,6 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 sudo apt install -y git
 ```
 
-* To increase the size of swap_file to 2048MB run:
-```bash
-sudo sed -i -e 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
-sudo /etc/init.d/dphys-swapfile stop
-sudo /etc/init.d/dphys-swapfile start
-```
-
 * With preparations out of the way clone this repository into the home directory of user ***pi***
 
 ```bash
@@ -89,15 +82,24 @@ A couple of packages from the Raspbian repository are required during installati
 ```bash
 #!/bin/bash
 # script name:     prep.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            yes
 
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
    exit 1
 fi
+
+# increase SWAP_SIZE
+sed -i -e 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=2048/' /etc/dphys-swapfile
+/etc/init.d/dphys-swapfile stop
+/etc/init.d/dphys-swapfile start
 
 apt update && apt -y upgrade
 apt -y install pandoc
@@ -113,7 +115,7 @@ apt -y install libnetcdf-dev
 apt -y install python3-pip
 apt -y install python3-venv
 apt -y install libzmq3-dev
-apt -y install sqlite3 
+apt -y install sqlite3
 ```
 
 ## Install required Python 3 packages with pip
@@ -128,11 +130,14 @@ apt -y install sqlite3
 ```bash
 #!/bin/bash
 # script name:     inst_stack.sh
-# last modified:   2018/01/14
+# last modified:   2018/09/19
 # sudo: no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -140,7 +145,7 @@ then
    exit 1
 fi
 
-if [ ! -d "$venv" ]; then
+if [ ! -d "$env" ]; then
   python3 -m venv $env
 fi
 
@@ -151,7 +156,7 @@ pip3 install pip==9.0.0
 pip3 install setuptools
 pip3 install -U pip
 
-cat requirements.txt | xargs -n 1 pip3 install
+cat requirements.txt | xargs -n 1 pip install
 ```
 
 ## Configure Jupyter
@@ -176,11 +181,14 @@ After the basic configuration the script activates the bash kernel and activates
 ```bash
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/20
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -196,10 +204,10 @@ source $env/bin/activate
 # if configuration file exeists, we overwrite it (-y)
 
 jupyter notebook -y --generate-config
-cd $home
+cd $home_dir
 mkdir -p notebooks
 
-target=~/.jupyter/jupyter_notebook_config.py
+target=$home_dir/.jupyter/jupyter_notebook_config.py
 
 # set up dictionary of changes for jupyter_config.py
 declare -A arr
@@ -210,6 +218,8 @@ arr+=(["$app.port"]="$app.port = 8888")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
 arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/pi/notebooks'")
 arr+=(["$app.password"]="$app.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
+arr+=(["$app.allow_remote_access"]="$app.allow_remote_access  = True")
+arr+=(["$app.quit_button"]="$app.quit_button  = False")
 
 # apply changes to jupyter_notebook_config.py
 
@@ -232,7 +242,7 @@ jupyter nbextension enable --py widgetsnbextension --sys-prefix
 jupyter nbextension enable --py --sys-prefix bqplot
 
 # activate clusters tab in notebook interface
-/home/pi/.venv/jns/bin/ipcluster nbextension enable --user
+$env/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
 # if node is not yet installed
@@ -241,27 +251,27 @@ if which node > /dev/null
         echo "node is installed, skipping..."
     else
         # install nodejs and node version manager n
-        cd ~/jns
-        # fix for issue #22
-        # install nodejs and node version manager n
-        # see: https://github.com/mklement0/n-install
+        cd $home_dir
         curl -L https://git.io/n-install | bash -s -- -y lts
+        cd $script_dir 
 fi
 
 # install jupyter lab extensions
-bash -i ./inst_lab_ext.sh
+bash -i $script_dir/inst_lab_ext.sh
 ```
-
 The script ```inst_lab_ext.sh``` - introduced by @Kevin--R to fix issue#23 has the following content:
 
 ```bash
 #!/bin/bash
 # script name:     inst_lab_ext.sh
-# last modified:   2018/05/29
+# last modified:   2018/09/19
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=`dirname $0`
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -269,7 +279,8 @@ then
    exit 1
 fi
 
-. /home/pi/.bashrc
+. $home_dir/.bashrc
+. $env/bin/activate
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install bqplot --no-build
@@ -353,10 +364,14 @@ sudo ./inst_tex.sh
 ```bash
 #!/bin/bash
 # script name:     inst_tex.sh
-# last modified:   2018/03/11
+# last modified:   2018/09/19
 # sudo:            yes
 
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
@@ -382,18 +397,19 @@ sudo ./inst_julia.sh
 ```bash
 #!/bin/bash
 # script name:     inst_julia.sh
-# last modified:   2018/03/19
+# last modified:   2018/09/19
 # sudo:            yes
 
-env=/home/pi/.venv/jns
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
    exit 1
 fi
-
-env=/home/pi/.venv/jns
 
 apt -y install julia
 
@@ -414,11 +430,14 @@ EOF
 ```bash
 #!/bin/bash
 # script name:     inst_sqlite,sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -436,7 +455,7 @@ git clone https://github.com/brownan/sqlite3-kernel.git
 cd sqlite3-kernel
 python setup.py install
 python -m sqlite3_kernel.install
-cd ..
+cd $script_dir
 rm -rf sqlite3-kernel/
 ```
 
@@ -476,11 +495,14 @@ pip install gpiozero
 ```bash
 #!/bin/bash
 # script name:     inst_opencv.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            yes
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
@@ -505,8 +527,8 @@ apt install -y libxvidcore-dev
 apt install -y libx264-dev
 #------------------------------------------------------
 
-su - pi <<'EOF'
-source /home/pi/.venv/jns/bin/activate
+su - pi <<EOF
+source $env/bin/activate
 pip install opencv-python-headless
 EOF
 ```
@@ -529,38 +551,40 @@ The file has the following content:
 ```bash
 #!/bin/bash
 # script name:     conf_service.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # credits:         mt08xx
 # sudo:            yes
 
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
    exit 1
 fi
 
-# create jupyter.sh in /home/pi and make it executable
-cat << 'ONE' > /home/pi/jupyter_start.sh && chmod a+x /home/pi/jupyter_start.sh
+# create jupyter.sh in $home_directory and make it executable
+cat << ONE > $home_dir/jupyter_start.sh && chmod a+x $home_dir/jupyter_start.sh
 #!/bin/bash
-. /home/pi/.venv/jns/bin/activate
+. $env/bin/activate
 jupyter lab
 #jupyter notebook
 ONE
 
-cat << 'TWO' | sudo tee /etc/systemd/system/jupyter.service
+cat << TWO | sudo tee /etc/systemd/system/jupyter.service
 [Unit]
 Description=Jupyter
-
 [Service]
 Type=simple
-ExecStart=/home/pi/jupyter_start.sh
+ExecStart=$home_dir/jupyter_start.sh
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/notebooks
+WorkingDirectory=$home_dir/notebooks
 Restart=always
 RestartSec=10
-
 [Install]
 WantedBy=multi-user.target
 TWO
@@ -586,10 +610,23 @@ You may want to comment out optional features that you do not need. By default a
 ```bash
 #!/bin/bash
 # script name:     inst_jns.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            yes
 
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+log_file="$script_dir/jns.log"
+revision=$(cat /proc/cpuinfo | grep Revision)
+SECONDS=0
+
+function log_duration(){
+printf "%s %s %s %s %s\n" $(date +"%Y-%m-%d %T") ${revision:10} "$1" $SECONDS | tee -a $log_file
+SECONDS=0
+}
+
+function log_message(){
+printf "%s %s %s %s\n" $(date +"%Y-%m-%d %T") ${revision:10} "$1" | tee -a $log_file
+}
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
@@ -598,32 +635,41 @@ fi
 
 # make necessary preparations
 ./prep.sh
+log_duration "prep.sh"
 
 # install Python packages 
 sudo -u pi ./inst_stack.sh
+log_duration "inst_stack.sh"
 
 # configure the server
 sudo -u pi ./conf_jupyter.sh
+log_duration "conf_jupyter.sh"
 
 #-----------------------------------------------
 
 # install TeX OPTIONAL
 ./inst_tex.sh
+log_duration "inst_tex.sh"
 
 # install support for Pi hardware OPTIONAL
 sudo -u pi ./inst_pi_hardware.sh
+log_duration "inst_pi_hardware.sh"
 
 # install Julia and the IJulia kernel OPTIONAL
 ./inst_julia.sh
+log_duration "inst_julia.sh"
 
 # install the SQLite3 kernel OPTIONAL
 sudo -u pi ./inst_sqlite.sh
+log_duration "inst_sqlite.sh"
 
 # install opencv OPTIONAL
 ./inst_opencv.sh
+log_duration "inst_opencv.sh"
 
 # set up service to start the server on boot OPTIONAL
 ./conf_service.sh
+log_duration "conf_service.sh"
 ```
 
 ## Keep your installation up to date
