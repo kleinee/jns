@@ -1,10 +1,13 @@
 #!/bin/bash
 # script name:     inst_julia.sh
-# last modified:   2018/03/19
+# last modified:   2018/09/19
 # sudo:            yes
 
-env=/home/pi/.venv/jns
 script_name=$(basename -- "$0")
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"

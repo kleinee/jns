@@ -1,10 +1,13 @@
 #!/bin/bash
 # script name:     conf_jupyter.sh
-# last modified:   2018/09/23
+# last modified:   2018/09/20
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -20,10 +23,10 @@ source $env/bin/activate
 # if configuration file exeists, we overwrite it (-y)
 
 jupyter notebook -y --generate-config
-cd $home
+cd $home_dir
 mkdir -p notebooks
 
-target=~/.jupyter/jupyter_notebook_config.py
+target=$home_dir/.jupyter/jupyter_notebook_config.py
 
 # set up dictionary of changes for jupyter_config.py
 declare -A arr
@@ -34,7 +37,8 @@ arr+=(["$app.port"]="$app.port = 8888")
 arr+=(["$app.enable_mathjax"]="$app.enable_mathjax = True")
 arr+=(["$app.notebook_dir"]="$app.notebook_dir = '/home/pi/notebooks'")
 arr+=(["$app.password"]="$app.password = 'sha1:5815fb7ca805:f09ed218dfcc908acb3e29c3b697079fea37486a'")
-arr+=(["$app.allow_remote_access"]="$app.allow_remote_access = True")
+arr+=(["$app.allow_remote_access"]="$app.allow_remote_access  = True")
+arr+=(["$app.quit_button"]="$app.quit_button  = False")
 
 # apply changes to jupyter_notebook_config.py
 
@@ -57,7 +61,7 @@ jupyter nbextension enable --py widgetsnbextension --sys-prefix
 jupyter nbextension enable --py --sys-prefix bqplot
 
 # activate clusters tab in notebook interface
-/home/pi/.venv/jns/bin/ipcluster nbextension enable --user
+$env/bin/ipcluster nbextension enable --user
 
 # install nodejs and node version manager n
 # if node is not yet installed
@@ -66,13 +70,10 @@ if which node > /dev/null
         echo "node is installed, skipping..."
     else
         # install nodejs and node version manager n
-        cd ~/jns
-        # fix for issue #22
-        # install nodejs and node version manager n
-        # see: https://github.com/mklement0/n-install
+        cd $home_dir
         curl -L https://git.io/n-install | bash -s -- -y lts
+        cd $script_dir 
 fi
 
 # install jupyter lab extensions
-bash -i ./inst_lab_ext.sh
-
+bash -i $script_dir/inst_lab_ext.sh

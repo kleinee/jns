@@ -1,10 +1,13 @@
 #!/bin/bash
 # script name:     inst_lab_ext.sh
-# last modified:   2018/05/29
+# last modified:   2018/09/19
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=`dirname $0`
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -12,7 +15,8 @@ then
    exit 1
 fi
 
-. /home/pi/.bashrc
+. $home_dir/.bashrc
+. $env/bin/activate
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install bqplot --no-build

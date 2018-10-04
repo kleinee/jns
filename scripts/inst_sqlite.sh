@@ -1,10 +1,13 @@
 #!/bin/bash
 # script name:     inst_sqlite,sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            no
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if [ $(id -u) = 0 ]
 then
@@ -22,6 +25,5 @@ git clone https://github.com/brownan/sqlite3-kernel.git
 cd sqlite3-kernel
 python setup.py install
 python -m sqlite3_kernel.install
-cd ..
+cd $script_dir
 rm -rf sqlite3-kernel/
-

@@ -1,10 +1,13 @@
 #!/bin/bash
 # script name:     inst_opencv.sh
-# last modified:   2018/09/09
+# last modified:   2018/09/19
 # sudo:            yes
 
 script_name=$(basename -- "$0")
-env="/home/pi/.venv/jns"
+script_dir=$(pwd)
+jns_user='pi'
+home_dir="/home/$jns_user"
+env="$home_dir/.venv/jns"
 
 if ! [ $(id -u) = 0 ]; then
    echo "usage: sudo ./$script_name"
@@ -29,8 +32,7 @@ apt install -y libxvidcore-dev
 apt install -y libx264-dev
 #------------------------------------------------------
 
-su - pi <<'EOF'
-source /home/pi/.venv/jns/bin/activate
+su - pi <<EOF
+source $env/bin/activate
 pip install opencv-python-headless
 EOF
-
