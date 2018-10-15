@@ -1,5 +1,8 @@
+# 15 October 2018
+* updated requirements
+
 # 4 October 2018
-* ended up in a mess with my dev branck anf had to recreate it
+* ended up in a mess with my dev branch and had to recreate it
 * updated requirements.txt
 * both ipython and jupyter-console are now compatible with prompt-toolkit 2.0.5 
 * merged 2 pull requests from @bennuttall - THANKS BEN! 
