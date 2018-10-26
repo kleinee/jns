@@ -1,4 +1,7 @@
-#20 October 2018
+# 27 October 2018
+* updated requirements.txt
+
+# 20 October 2018
 * updated requirements.txt
 
 # 15 October 2018
