@@ -1,30 +1,33 @@
+# 10 November 2018
+* updated requirements
+
 # 27 October 2018
-* updated requirements.txt
+* updated requirements
 
 # 20 October 2018
-* updated requirements.txt
+* updated requirements
 
 # 15 October 2018
-* updated requirements.txt
+* updated requirements
 
 # 6 October 2018
-* updated requirements.txt
+* updated requirements
 
 # 4 October 2018
-* updated requirements.txt
+* updated requirements
 * both ipython and jupyter-console are now compatible with prompt-toolkit 2.0.5 
 * merged 2 pull requests from @bennuttall - THANKS BEN! 
 
 # 1 October 2018
 * added tensorflow
-* updated requirements.txt
+* updated requirements
 
 # 23 September 2018
-* updated requirements.txt
+* updated requirements
 * modified conf_jupyter.sh to fix issue #26 by setting ```c.NotebookApp.allow_remote_access = True``` in the configuration file located at ```~/.jupyter/jupyter_notebook_config.py```. In existing installtions just edit the configuration file manually
 
 # 15 September 2018
-* updated requirements.txt
+* updated requirements
 * simpified requirements using pipdeptree -f --warn silence | grep -P '^[\w0-9\-=.]+'
 
 # 14 Septmber 2018
@@ -37,61 +40,61 @@
 >>>>>>> create dev branch
 
 # 12 September 2018
-* updated requirements.txt
+* updated requirements
 * removed service.sh as it is renamed to conf_servivice.sh
 
 # 9 September 2018
 * installed from scratch on a Raspberry Pi 3 and in the process made some fixes
-* updated requirements.txt
+* updated requirements
 
 # 28 August 2018
-* updated requirements.txt
+* updated requirements
 * made minor corrections to README.md
 
 # 18 August 2018
-* updated requirements.txt
+* updated requirements
 
 # 12 August 2018
-* updated requirements.txt
+* updated requirements
 * added SQLite3 kernel installation script
 * correted prep.sh - thanks mt08xx
 * adopted mt08xx's nice solution to start the server as a service
 
 # 7 August 2018
-* updated requirements.txt
+* updated requirements
 
 # 31 July 2018
-* updated requirements.txt
+* updated requirements
 
 # 20 July 2018
-* upgated requirements.txt
+* upgated requirements
 
 # 8 July 2018
-* updated requirements.txt
+* updated requirements
 * added snowballstemmer back in
 
 # 1 July 2018
-* updated requirements.txt
+* updated requirements
 
 # 12 June 2018
-* updated requirements.txt
+* updated requirements
 
 # 3 June 2018
 * made minor changes to `README.md`
 * added dependencies for `python-opencv-headless` to `prep.sh`
-* updated `requirements.txt`
+* updated requirements
 
 # 1 June 2018
 * fixed typo in `README.md`
 * closed issue # 23
-* updated requirements.txt
+* updated requirements
 
 # 31 May 2018
 * removed `inst_node.sh`, modified ```conf_jupyter.sh` and added `inst_lab_ext.sh` as proposad by @Kevin--R to address issue #23 - Thanks Kevin!
 * modified `README.md` to refelct the changes above 
 
 # 26 May 2018
-* updated requirements.txt
+* updated requirements
 * corrected a typo
 
 # 21 May 2018
@@ -103,17 +106,17 @@
 * if you encountered this issue, please run the modified version of ```conf_jupyter.sh```
 
 # 19 May 2018
-* updated requirements.txt
+* updated requirements
 
 # 5 May 2018
-* updated requirements.txt
+* updated requirements
 * added altair + vega_datasets - see https://altair-viz.github.io/index.html for details
 
 # 25 April 2018
-* updated requirements.txt
+* updated requirements
 
 # 17 April 2018
-* updated requirements.txt
+* updated requirements
 * removed `format = 'legacy'` in README.md because it is deprecated in the latest version of `pip`
 * temporarily removed the altair package from requirements.txt due to incompatibility 
 
@@ -121,19 +124,19 @@
 * closed issue #21
 
 # 07 April 2018
-* updated requirements.txt
+* updated requirements
 * fixed typo in README.md - thanks for reporting it @m-r-white 
 * ran a fresh install based on the DESKTOP version of Raspbian Stretch to fix issue #21 opened by @gusdrawn and independently confirmed by @m-r-white (Thanks to both!) and updated `README.md` and `conf_jupyter` to clarify what possibly went wrong in their installations. The short answer: `nodejs 5+` is required for `conf_jupyter.sh` to run properly. 
 
 # 01 April 2018
-* updated requirements.txt 
+* updated requirements
 
 # 27 March 2018
-* updated requirements.txt
+* updated requirements
 * in the wake of recent abuse of datascience tools: ***DO NO EVIL!***
 
 # 19 March 2018
-* updated ```requiremnets.txt```
+* updated ```requiremnets```
 * fixed ```inst_julia.sh```
 
 # 15 March 2018
@@ -145,7 +148,7 @@
 
 # 12 March 2018
 * removed necessity to reboot after changing ```swap_size``` by stopping and starting the service
-* updated ```requirements.txt``` 
+* updated ```requirements``` 
 
 # 11 March 2018
 * closed issues #15 and #16
@@ -155,22 +158,22 @@
 * simplified TeX installtion as suggested in the documentation of ```nbconvert```
 
 # 22 February 2018
-* updated requirements.txt
+* updated requirements
 * manually installed the bokeh jupyter lab extension for testing by running: ```jupyter labextension install jupyterlab_bokeh``` Took some time to build but seems to work fine
 
 # 21 Febuary 2017
-* updated requirements.txt  
+* updated requirements  
 
 # 17 February 2017
-* updated requirements.txt
+* updated requirements
 * it is really amazing how quickly updated packages become available on piwheels...
 
 # 14 February 2018
 * HAPPY VALENTINE'S DAY
-* updated requirements.txt 
+* updated requirements 
 
 # 10 February 2018
-* updated requirements.txt
+* updated requirements
 * if you installed prior to this update, just run:
 
 ```bash
