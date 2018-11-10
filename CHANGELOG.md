@@ -1,3 +1,9 @@
+# 10 November 2018
+* updated requirements
+
+# 27 October 2018
+* updated requirements
+
 # 20 October 2018
 * updated requirements
 
