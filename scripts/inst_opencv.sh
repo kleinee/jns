@@ -12,7 +12,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #------------------------------------------------------
-apt install -y libjasper libjasper-dev
+apt install -y libjasper1 libjasper-dev
 apt install -y libjpeg-dev libtiff5-dev libpng12-dev
 apt install -y libilmbase12
 apt install -y libopenexr22
