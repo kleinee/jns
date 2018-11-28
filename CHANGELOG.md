@@ -1,3 +1,8 @@
+# 27 November 2018
+* updated requirements
+* fixed inst_opencv.sh as suggested by @mt08
+* revised README.md accordingly
+
 # 10 November 2018
 * updated requirements
 
