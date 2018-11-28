@@ -476,7 +476,7 @@ pip install gpiozero
 ```bash
 #!/bin/bash
 # script name:     inst_opencv.sh
-# last modified:   2018/09/09
+# last modified:   2018/11/27
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -488,7 +488,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 #------------------------------------------------------
-apt install -y libjasper libjasper-dev
+apt install -y libjasper1 libjasper-dev
 apt install -y libjpeg-dev libtiff5-dev libpng12-dev
 apt install -y libilmbase12
 apt install -y libopenexr22
