@@ -1,3 +1,6 @@
+# 20 December 2018
+* updated requirements
+
 # 27 November 2018
 * updated requirements
 * fixed inst_opencv.sh as suggested by @mt08
