@@ -20,7 +20,7 @@ Type=simple
 ExecStart=/home/pi/.venv/jns/bin/jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
 User=root
 Group=root
-WorkingDirectory=/home/pi/notebooks
+WorkingDirectory=/etc/jupyterhub
 Restart=always
 RestartSec=10
 
