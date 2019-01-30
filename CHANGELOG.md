@@ -1,3 +1,8 @@
+# 30 January 2019
+* updated requirements.txt
+* downgraded vega to version 1.4 to resolve issue #31
+* credits go to @jakevdp who made this suggestion
+
 # 20 December 2018
 * updated requirements
 
