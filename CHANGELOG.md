@@ -1,3 +1,7 @@
+# 30 January 2019
+* updated requirements.txt
+* fixed issue #31 thanks to input from %jakevdp
+
 # 20 December 2018
 * updated requirements
 
