@@ -1,10 +1,11 @@
 # 3 March 2019
 * updated requirements.txt
 * the file is now longer as pipdeptree - which I used in the past to cut down the file - fails: It has some requirements that do not match the package versions that I whish to push.
+* in consequence I removed pipdeptree from the requirements
 
 # 30 January 2019
 * updated requirements.txt
-* fixed issue #31 thanks to input from %jakevdp
+* fixed issue #31 thanks to input from @jakevdp
 
 # 20 December 2018
 * updated requirements
