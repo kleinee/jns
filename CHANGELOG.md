@@ -1,3 +1,8 @@
+# 3 March 2019
+* updated requirements
+* was notified by GitHub in PyYAML before 4.1, the yaml.load() API could execute arbitrary code. In other words, yaml.safe_load is not used.
+* updated PyYAML
+
 # 30 January 2019
 * updated requirements.txt
 * downgraded vega to version 1.4 to resolve issue #31
