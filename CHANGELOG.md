@@ -1,3 +1,7 @@
+# 4 MArch 2019
+* updated requirements.txt again
+* quite a challenge to keep up with the pace of the python community
+
 # 3 March 2019
 * updated requirements
 * was notified by GitHub in PyYAML before 4.1, the yaml.load() API could execute arbitrary code. In other words, yaml.safe_load is not used.
