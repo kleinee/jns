@@ -1,3 +1,6 @@
+# 9 March 2019
+* updated requirements
+
 # 6 March 2019
 * downgraded tornado to 5.1.1 to fix issue #32 as suggested by @Kevin--R - Thanks Kevin!
 
