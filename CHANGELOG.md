@@ -1,7 +1,10 @@
+# 9 March 2019
+* updated requirements
+
 # 6 March 2019
 * downgraded tornado to 5.1.1 to fix issue #32 as suggested by @Kevin--R - Thanks Kevin!
 
-# 4 MArch 2019
+# 4 March 2019
 * updated requirements.txt again
 * quite a challenge to keep up with the pace of the python community
 
