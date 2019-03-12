@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     inst_lab_ext.sh
-# last modified:   2018/05/29
+# last modified:   2019/03/12
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -13,6 +13,7 @@ then
 fi
 
 . /home/pi/.bashrc
+. $env/bin/activate
 jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install bqplot --no-build
