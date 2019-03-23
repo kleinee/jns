@@ -1,4 +1,4 @@
-absl-py==0.7.0
+absl-py==0.7.1
 alabaster==0.7.12
 altair==2.4.1
 astor==0.7.1
@@ -23,7 +23,7 @@ cycler==0.10.0
 Cython==0.29.6
 dask==1.1.4
 dbfread==2.0.7
-decorator==4.3.2
+decorator==4.4.0
 defusedxml==0.5.0
 docopt==0.6.2
 docutils==0.14
@@ -32,7 +32,7 @@ ephem==3.7.6.0
 et-xmlfile==1.0.1
 feedfinder2==0.0.4
 feedparser==5.2.1
-folium==0.8.2
+folium==0.8.3
 gast==0.2.2
 gpiozero==1.5.0
 grpcio==1.19.0
@@ -42,7 +42,7 @@ idna==2.8
 imagesize==1.1.0
 ipykernel==5.1.0
 ipyparallel==6.2.3
-ipython==7.3.0
+ipython==7.4.0
 ipython-genutils==0.2.0
 ipywidgets==7.4.2
 jdcal==1.4
@@ -83,7 +83,7 @@ olefile==0.46
 opencv-python-headless==3.4.4.19
 openpyxl==2.6.1
 packaging==19.0
-pandas==0.24.1
+pandas==0.24.2
 pandas-datareader==0.7.0
 pandocfilters==1.4.2
 parso==0.3.4
@@ -96,7 +96,7 @@ pickleshare==0.7.5
 Pillow==5.4.1
 Pint==0.9
 pkg-resources==0.0.0
-plotly==3.7.0
+plotly==3.7.1
 pluggy==0.9.0
 pollster==2.0.2
 prometheus-client==0.6.0
@@ -109,11 +109,11 @@ py==1.8.0
 Pygments==2.3.1
 pyparsing==2.3.1
 pyrsistent==0.14.11
-pytest==4.3.0
+pytest==4.3.1
 python-dateutil==2.8.0
 pytz==2018.9
 PyWavelets==1.0.2
-PyYAML==5.1b1
+PyYAML==5.1
 pyzmq==18.0.1
 qtconsole==4.4.3
 reportlab==3.5.13
@@ -159,7 +159,7 @@ vega==1.4.0
 vega-datasets==0.7.0
 wcwidth==0.1.7
 webencodings==0.5.1
-Werkzeug==0.14.1
+Werkzeug==0.15.1
 widgetsnbextension==3.4.2
 wrapt==1.11.1
 xlrd==1.2.0

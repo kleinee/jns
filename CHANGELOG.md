@@ -1,3 +1,6 @@
+# 23 March 2019
+* updated requirements
+
 # 12 March 2019
 * corrected inst_lab_ext.sh as the line that activates the environment. This fixes issue #33 filed by @dwblair. Thanks for reporting this Don! 
 
