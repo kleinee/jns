@@ -1,3 +1,6 @@
+# 3 April 2019
+* updated requirements as GitHub reported the notebook verions < 5.7,9 to be vulnerable
+
 # 31 March 2019
 * updated requirements
 
