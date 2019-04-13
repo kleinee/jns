@@ -1,3 +1,8 @@
+# 6 April 2019
+* updated requirements
+* added a line to inst_labextensions.sh to use ipyleaflet in lab
+* updated README.md accordingly
+
 # 3 April 2019
 * updated requirements as GitHub reported the notebook verions < 5.7,9 to be vulnerable
 

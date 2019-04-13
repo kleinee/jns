@@ -1,6 +1,6 @@
 #!/bin/bash
 # script name:     inst_lab_ext.sh
-# last modified:   2019/03/12
+# last modified:   2019/04/06
 # sudo:            no
 
 script_name=$(basename -- "$0")
@@ -18,4 +18,5 @@ jupyter lab clean
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install bqplot --no-build
 jupyter labextension install jupyterlab_bokeh --no-build
+jupyter labextension install jupyter-leaflet --no-build
 jupyter lab build
