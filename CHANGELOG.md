@@ -1,3 +1,6 @@
+# 20 April 2019
+* updated requirements as GitHub urllib3 < 1.24.2 to be vulnerable
+
 # 3 April 2019
 * updated requurements
 
