@@ -1,3 +1,6 @@
+# 20 April 2019
+* updated requirements as GitHub urllib3 < 1.24.2 to be vulnerable
+
 # 6 April 2019
 * updated requirements
 * added a line to inst_labextensions.sh to use ipyleaflet in lab
