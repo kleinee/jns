@@ -1,3 +1,8 @@
+# 11 May 2019
+* updated requirements
+* removed line sqlite3-kernel==1.0 from requirements as the kernel is pulled from GitHub
+* this fixes issue #34 raised by #chalgand
+
 # 20 April 2019
 * updated requirements as GitHub urllib3 < 1.24.2 to be vulnerable
 
