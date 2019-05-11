@@ -429,7 +429,7 @@ EOF
 
 ```bash
 #!/bin/bash
-# script name:     inst_sqlite,sh
+# script name:     inst_sqlite.sh
 # last modified:   2018/09/19
 # sudo:            no
 
