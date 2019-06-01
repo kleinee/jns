@@ -1,9 +1,14 @@
+
 [![hardware](https://img.shields.io/badge/hardware-Raspberry_Pi-red.svg)](https://www.raspberrypi.org/products/)
-[![os](https://img.shields.io/badge/OS-Raspbian_Stretch_Lite-blue.svg)](https://www.raspberrypi.org/downloads/raspbian/)
-![python](https://img.shields.io/badge/python-3.5.3-green.svg)
+[![os](https://img.shields.io/badge/OS-Raspbian_Stretch_Lite-red.svg)](https://www.raspberrypi.org/downloads/raspbian/)
+
+![python](https://img.shields.io/badge/python-3.5.3-yellow.svg)
 ![nodejs](https://img.shields.io/badge/nodejs-v8.11.4-green.svg)
-[![jupyter](https://img.shields.io/badge/more_info-jupyter-orange.svg)](http://jupyter.org)
-[![jupyter](https://img.shields.io/badge/more_info-piwheels-yellow.svg)](https://www.piwheels.org)
+![Julia](https://img.shields.io/badge/julia-v1.1.0-magenta.svg)
+![R](https://img.shields.io/badge/R-v3.6.0-blue.svg)
+
+[![jupyter](https://img.shields.io/badge/more_info-jupyter-black.svg)](http://jupyter.org)
+[![piwheels](https://img.shields.io/badge/more_info-piwheels-black.svg)](https://www.piwheels.org)
 
 # Jupyter Notebook & Lab Server on Raspberry Pi
 ## Intro
@@ -38,8 +43,8 @@ This repository isn't really anything genuine: I owe big thanks to many contribu
 
 ## Installation
 
-### IMPORTANT NOTE  on fresh installations
-* an increasing number of users seem to install on top of images that have 'nodejs' already installed.
+### IMPORTANT NOTE on fresh installations
+* An increasing number of users seem to install on top of images that have 'nodejs' already installed.
 * The scripts in this repository were initially designed to work based on ***Raspbian Stretch Lite*** as a starting point with the intention to run the server headless in order to maximise memory available for data analysis.
 * One such starting point is the desktop  version of ***Raspbian Stretch*** which comes with`nodejs` (and `git`) pre-installed. `conf_jupyter.sh` explained later now checks for the existence of `node` and only installs it if not yet present on the system.
  
@@ -372,19 +377,172 @@ apt install -y latexmk
 ```
 
 ## Install Julia and the IJulia kernel (optional)
-
-```bash
-sudo ./inst_julia.sh
-```
-
 * [Julia](https://julialang.org) is a relatively new high-level, high-performance dynamic programming language for numerical computing trying to combine the ease of Python with the speed of C. Thanks to the efforts of the Raspberry Pi community `Julia 0.6.0` is available in the Raspbian Stretch Repository. It is really worth a try as the language is a rising star in scientific computing.
 
 * [IJulia](https://github.com/JuliaLang/IJulia.jl) is the kernel required for Jupyter Notebook / JupyterLab. Backgroud information on Julia on the Raspberry Pi can be found [here](https://www.raspberrypi.org/blog/julia-language-raspberry-pi/).
 
+### Alternative 1: Julia 1.1.0 (RECOMMENDED)
+
+```bash
+sudo ./inst_julia-1.1.0.sh
+```
+* ***NOTE*** tha the installer assumes that *** Julia IS NOT yet installed***. If it is and you want to proceed with installing Julia-1.1.0, I suggest to remove the existing Julia installation before you proceed.
+
+* ```Julia 1.1.0``` binaries were cross-compiled by Mr Satoshi Terasaki (for more information follow [this link](https://gist.github.com/terasakisatoshi/3f8a55391b1fc22a5db4a43da8d92c98)) and Mr Satoshi thankfully hosts his binaries [here](https://drive.google.com/file/d/1fj6pNAJgmUD7bsSXqh8ocC1wESx8jkRh/view).
+
+* We need to download a large file from Google Drive and need to install the right binary based on the CPU architecture. The download contains binaries for both architectures.
+
+#### The Download Helper
+As per comments in the script this is literally a 1:1 copy of code found on stack overflow - adjustments were only necessary to set the ***FILE_ID*** and the ***DESTINATION*** as required in the context of this repository. The helper is called by the installer script and is not meant to be exceuted manually.
+
+```Python
+#!/home/pi/.venv/jns/bin/python
+
+#
+# last modified 2019/05/26
+#
+# Python helper script to download Julia 1.1.0 binaries
+# not meant to be executed manually
+# https://stackoverflow.com/questions/38511444/python-download-files-from-google-drive-using-url
+#
+
+FILE_ID = '1fj6pNAJgmUD7bsSXqh8ocC1wESx8jkRh'
+DESTINATION = './julia-1.1.0-arm32bit.zip'
+
+import requests
+
+def download_file_from_google_drive(id, destination):
+    URL = "https://docs.google.com/uc?export=download"
+
+    session = requests.Session()
+
+    response = session.get(URL, params = { 'id' : id }, stream = True)
+    token = get_confirm_token(response)
+
+    if token:
+        params = { 'id' : id, 'confirm' : token }
+        response = session.get(URL, params = params, stream = True)
+
+    save_response_content(response, destination)    
+
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            return value
+
+    return None
+
+def save_response_content(response, destination):
+    CHUNK_SIZE = 32768
+
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(CHUNK_SIZE):
+            if chunk: # filter out keep-alive new chunks
+                f.write(chunk)
+
+if __name__ == "__main__":
+    file_id = FILE_ID
+    destination = DESTINATION
+    download_file_from_google_drive(file_id, destination)
+```
+
+#### The Installer
+
+Note that the code assumes that julia is not present.   
+
+* installs necessary dependencies as suggested by Mr Terasaki
+* uses the downlaod helper to downlaod his binaries
+* detects the CPU architecture and installs the matching julia binary
+* creates a soft link in ```/usr/local/bin```
+* installs the the IJulia kernel
+
 ```bash
 #!/bin/bash
-# script name:     inst_julia.sh
-# last modified:   2018/03/19
+# script name:     inst_julia-1.1.0.sh
+# last modified:   2019/05/26
+# sudo:            yes
+
+SCRIPT_NAME=$(basename -- "$0")
+JNS_USER='pi'
+HOME_DIR="/home/$JNS_USER"
+ENV="$HOME_DIR/.venv/jns"
+
+JULIA_HOME=$HOME_DIR/julia/
+
+if ! [ $(id -u) = 0 ]; then
+   echo "usage: sudo ./$SCRIPT_NAME"
+   exit 1
+fi
+
+#
+# apt install dependencies
+#
+apt install -y build-essential 
+apt install -y libatomic1
+apt install -y gfortran 
+apt install -y perl 
+apt install -y wget
+apt install -y m4
+apt install -y cmake 
+apt install -y pkg-config
+apt install -y libopenblas-base libopenblas-dev
+apt install -y libatlas3-base libatlas-base-dev
+apt install -y liblapack-dev
+apt install -y libmpfr-dev libgmp3-dev
+apt install -y libgfortran3
+
+#
+# download and install julia based on architecture
+#
+su pi <<ONE
+    cd $HOME_DIR
+    . $ENV/bin/activate
+    ./dnld_julia-1.1.0-arm32bit.py
+    unzip ./julia-1.1.0-arm32bit.zip
+    
+    ARCHITECTURE=$(python -c 'import os; print(str(os.uname()[4]));')
+    if (("$ARCHITECTURE" == "armv7l"))
+    then
+        mv ./julia1.1.0-arm32bit/rpi3/julia-1.1.0.zip $HOME_DIR
+    else
+        mv ./julia1.1.0-arm32bit/rpizero/julia-1.1.0.zip $HOME_DIR
+    fi
+
+    unzip julia-1.1.0.zip
+    mv julia-1.1.0 julia
+    rm -rf julia1.1.0-arm32bit
+    rm ./julia-1.1.0-arm32bit.zip
+    rm ./julia-1.1.0.zip
+    rm -rf __MACOSX/
+ONE
+
+#
+# add symbolic link for julia executable
+#
+
+ln -s $JULIA_HOME/bin/julia /usr/local/bin/julia
+
+#
+#  install IJulia kernel
+#
+
+su pi <<TWO
+    julia -e 'using Pkg; Pkg.add("IJulia");'
+    julia -e 'using IJulia;'
+TWO
+```
+
+### Alternative 2: Julia 0.6.0 provided with Raspbian Stretch (NOT RECOMMENDED)
+This is ***NOT RECOMMENDED*** as Julia 0.6.0 is no longer maintained. I keep the installer here for reference only.
+
+```bash
+sudo ./inst_julia-0.6.0.sh
+```
+
+```bash
+#!/bin/bash
+# script name:     inst_julia-0.6.0.sh
+# last modified:   2019/05/23
 # sudo:            yes
 
 env=/home/pi/.venv/jns
@@ -405,6 +563,79 @@ julia -e 'Pkg.add("IJulia");'
 julia -e 'using IJulia;'
 EOF
 ```
+
+## Install R-3.6.0 and the IRkernel (optional)
+
+Since the R binaries that come with Raspbian Stretch are quite dated, I decided to install R from source. Compilation takes a while. So be patient when running the script.
+
+Note that this installer checks whether R is alredy present and if it is, skips compilition and just installs the IRkernel.
+
+```bash
+   sudo ./inst_R-3.6.0.sh
+```
+
+```bash
+#!/bin/bash
+# script name:     inst_R-3.6.0.sh
+# last modified:   2019/05/19
+# sudo:            yes
+
+SCRIPT_NAME=$(basename -- "$0")
+JNS_USER='pi'
+HOME_DIR="/home/$JNS_USER"
+ENV="$HOME_DIR/.venv/jns"
+
+R_VERSION="R-3.6.0"
+R_DOWNLOAD_URL="http://mirrors.psu.ac.th/pub/cran/src/base/R-3/$R_VERSION.tar.gz"
+R_EXEC=$(which R)
+R_HOME="$HOME_DIR/R"
+
+if ! [ $(id -u) = 0 ]; then
+   echo "usage: sudo ./$SCRIPT_NAME"
+   exit 1
+fi
+
+cd $HOME_DIR
+
+#
+#  apt install additional packages
+#
+apt install -y libreadline-dev
+apt install -y libbz2-dev
+
+#
+#  download R source and compile
+#  if R is not yet present  
+#
+su pi <<ONE
+    if [ -z ${R_EXEC} ]; then
+        if [-z ${R_HOME}]; then
+            mkdir $R_HOME
+        fi
+        wget $R_DOWNLOAD_URL
+        tar -xvf "$R_VERSION.tar.gz"
+        rm "$R_VERSION.tar.gz"
+        cd ./$R_VERSION 
+        ./configure --with-x=no --disable-java --prefix=$R_HOME
+        make && make install
+        cd $HOME_DIR
+        rm -rf $R_VERSION
+    fi
+ONE
+
+#
+#  create soft link in /usr/local/bin
+#
+ln -s $R_HOME/bin/R /usr/local/bin/R
+ln -s $R_HOME/bin/Rscript /usr/local/bin/Rscript
+
+su pi <<TWO
+    . $ENV/bin/activate
+    echo "install.packages('IRkernel', repos='http://cran.rstudio.com/')" | R --no-save
+    echo "IRkernel::installspec()" | R --no-save
+TWO
+```
+
 ## Install the SQLite kernel (optional)
 
 * I found the [SQLite kernel](https://github.com/brownan/sqlite3-kernel) quite useful in some experiments with SQLite3 databases in Jupyter Notebooks.
@@ -472,7 +703,7 @@ pip install RTIMULib
 pip install sense-hat
 pip install picamera
 pip install gpiozero
-```
+
 ## Install openCV (optional)
 
 ```bash
@@ -583,12 +814,17 @@ sudo systemctl stop jupyter
 ## Put it all together
 
 This script is just convenience - it executes the individual steps described above in the order necessary.
-You may want to comment out optional features that you do not need. By default all features are activated.
+Note that installation of additinal languages and their respective kernels as well as installtion of opnencv is deactivated by default as not all users may need this functionality. I recommend to run ```inst_jns.sh``` as is and install additional functionality using the individual scripts.
+
++ inst_sqlite.sh
++ inst_R-3.6.0.sh
++ inst_julia-0.6.0.sh
++ inst_julia-1.1.0.sh
 
 ```bash
 #!/bin/bash
 # script name:     inst_jns.sh
-# last modified:   2018/09/09
+# last modified:   2019/05/26
 # sudo:            yes
 
 script_name=$(basename -- "$0")
@@ -598,34 +834,53 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+#-----------------------------------------------
+# MANDATORY
+#-----------------------------------------------
+
 # make necessary preparations
 ./prep.sh
 
 # install Python packages 
 sudo -u pi ./inst_stack.sh
 
-# configure the server
+# configure server
 sudo -u pi ./conf_jupyter.sh
 
+
+#-----------------------------------------------
+# OPTIONAL, RECOMMENDED
 #-----------------------------------------------
 
-# install TeX OPTIONAL
+# install TeX
 ./inst_tex.sh
 
-# install support for Pi hardware OPTIONAL
+# install support for Pi hardware
 sudo -u pi ./inst_pi_hardware.sh
 
-# install Julia and the IJulia kernel OPTIONAL
-./inst_julia.sh
-
-# install the SQLite3 kernel OPTIONAL
-sudo -u pi ./inst_sqlite.sh
-
-# install opencv OPTIONAL
-./inst_opencv.sh
-
-# set up service to start the server on boot OPTIONAL
+# set up service to start the server on boot
 ./conf_service.sh
+
+
+#-----------------------------------------------
+# OPTIONAL, DISABLED BY DEFAULT
+#-----------------------------------------------
+
+# install Julia 0.6.0 and the IJulia kernel NOT RECOMMENDED
+# ./inst_julia-0.6.0.sh
+
+# install Julia 1.1.0 and the IJulia kernel
+# ./inst_julia-1.1.0.sh
+
+# install R 3.6.0 and the IRkernel
+# ./inst_R-3.6.0.sh
+
+# install the SQLite3 kernel
+# sudo -u pi ./inst_sqlite.sh
+
+# install opencv
+# ./inst_opencv.sh
+
 ```
 
 ## Keep your installation up to date
@@ -640,4 +895,3 @@ sudo -u pi ./inst_sqlite.sh
 * list outdated packages with `pip3 list --outdated`
 
 * Update `package` with `pip3 install -U package` where `package` is the name of package you want to update.
-

@@ -1,3 +1,10 @@
+# 1 June 2019
+* added R-3.6.0 + IRkernel installer
+* added Julia-1.1.0 + IJulia installer
+* commented out a couple of optional installs in inst_jns.sh
+* updated requierments.txt
+* updated README.md - may still require some tweaks. Will attendd to it again as I find the time
+
 # 11 May 2019
 * updated requirements
 * removed line sqlite3-kernel==1.0 from requirements as the kernel is pulled from GitHub
