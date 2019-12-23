@@ -1,3 +1,7 @@
+# 23 December 2019
+* If we exclude Julia for a moment, the setup works fine on Buster as well.
+* But when it comes to Julia, it is getting trickier and trickier to support ARM v6 based Raspberry Pi boards as official ARM v6 Julia binaries do no longer exist. Whilst Terasaki Satoshi cross-compiled several Julia versions including 1.3.0 using Docker and his binaries work fine, I cannot get IJulia to work with any of them on ARM v6. IJulia builds ok but the resulting kernels die. The same by the way happens with apt-get installed Julia. I searched the web intensively without finding a solution. If you do, kindly get in touch. Thanks & Merry Christmas!
+
 # 1 June 2019
 * added R-3.6.0 + IRkernel installer
 * added Julia-1.1.0 + IJulia installer
