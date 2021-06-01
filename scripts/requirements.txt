@@ -166,7 +166,7 @@ tqdm==4.32.1
 traitlets==4.3.2
 traittypes==0.2.1
 typing==3.6.6
-urllib3==1.24.2
+urllib3==1.26.5
 vega==1.4.0
 vega-datasets==0.7.0
 wcwidth==0.1.7
