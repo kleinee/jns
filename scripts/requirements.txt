@@ -86,7 +86,7 @@ notebook==6.4.1
 numexpr==2.6.9
 numpy==1.16.4
 olefile==0.46
-opencv-python-headless==3.4.4.19
+opencv-python-headless==3.4.7.28
 openpyxl==2.6.2
 packaging==19.0
 pandas==0.24.2
