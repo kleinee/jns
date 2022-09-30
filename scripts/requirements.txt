@@ -54,7 +54,7 @@ jdcal==1.4.1
 jedi==0.13.3
 jieba3k==0.35.1
 Jinja2==2.11.3
-joblib==0.13.2
+joblib==1.2.0
 jsonschema==3.0.1
 jupyter==1.0.0
 jupyter-client==5.2.4
