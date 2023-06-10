@@ -47,7 +47,7 @@ importlib-metadata==0.17
 ipykernel==5.1.1
 ipyleaflet==0.10.2
 ipyparallel==6.2.4
-ipython==7.16.3
+ipython==8.10.0
 ipython-genutils==0.2.0
 ipywidgets==7.4.2
 jdcal==1.4.1
