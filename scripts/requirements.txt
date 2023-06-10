@@ -72,7 +72,7 @@ Markdown==3.1.1
 MarkupSafe==1.1.1
 matplotlib==3.0.3
 memory-profiler==0.55.0
-mistune==0.8.4
+mistune==2.0.3
 mock==3.0.5
 more-itertools==7.0.0
 mpmath==1.1.0
