@@ -122,7 +122,7 @@ PyWavelets==1.0.3
 PyYAML==5.4
 pyzmq==18.0.1
 qtconsole==4.5.1
-reportlab==3.5.23
+reportlab==3.5.55
 requests==2.22.0
 requests-file==1.4.3
 requests-ftp==0.3.1
