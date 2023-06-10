@@ -59,7 +59,7 @@ jsonschema==3.0.1
 jupyter==1.0.0
 jupyter-client==5.2.4
 jupyter-console==6.0.0
-jupyter-core==4.4.0
+jupyter-core==4.11.2
 jupyterlab==1.2.21
 jupyterlab-launcher==0.13.1
 jupyterlab-server==0.2.0
