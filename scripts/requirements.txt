@@ -171,7 +171,7 @@ vega==1.4.0
 vega-datasets==0.7.0
 wcwidth==0.1.7
 webencodings==0.5.1
-Werkzeug==0.15.4
+Werkzeug==2.2.3
 widgetsnbextension==3.4.2
 wrapt==1.11.1
 xarray==0.12.1
